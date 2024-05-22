@@ -1,7 +1,7 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'notes';
-    $title = 'Заметки';
+    $modul = 'rotations';
+    $title = 'Севообороты';
 @endphp
 @section('title', $title)
 
@@ -26,8 +26,8 @@
                     <tr>
                         <td>{{ $records->firstItem() + $key }}</td>
                         <td>
-                            <a class="td-title" href="{{ route($modul . '.edit', $record->id) }}">
-                                <span class="fw-medium">{{ $record->field->title }} - {{ $record->problem->title }}</span>
+                            <a class="td-title" href="{{ route($modul . '.show', $record->id) }}">
+                                <span class="fw-medium">{{ $record->field->title }} - {{ $record->culture->title }}</span>
                             </a>
                         </td>
                         <td class="text-right">

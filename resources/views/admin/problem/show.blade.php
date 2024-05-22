@@ -1,7 +1,7 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'cultures';
-    $title = 'Страница культуры';
+    $modul = 'problems';
+    $title = 'Просмотр проблемы';
 @endphp
 @section('title', $title)
 

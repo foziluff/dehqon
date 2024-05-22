@@ -25,8 +25,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'surname',
+        'phone',
+        'born_in',
         'password',
+        'gender',
+        'role',
+        'currency',
+        'profile_photo_path',
     ];
 
     /**
@@ -60,6 +66,29 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'born_in' => 'datetime'
         ];
     }
+    public function fields()
+    {
+        return $this->hasMany(Field::class);
+    }
+    public function cultures()
+    {
+        return $this->hasMany(Culture::class);
+    }
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+    public function promblems()
+    {
+        return $this->hasMany(Problem::class);
+    }
+    public function rotations()
+    {
+        return $this->hasMany(Rotation::class);
+    }
+
+
 }

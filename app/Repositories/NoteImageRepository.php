@@ -1,45 +1,24 @@
 <?php
 
 namespace App\Repositories;
-use App\Models\Note as Model;
+use App\Models\NoteImage as Model;
 
-class NoteRepository extends CoreRepository
+class NoteImageRepository extends CoreRepository
 {
     protected function getModelClass()
     {
         return Model::class;
     }
 
-    public function getAllWithPaginate($quantity)
+    public function getByNoteId($id)
     {
-        return $this->startConditions()->orderBy('id', 'desc')->toBase()->paginate($quantity);
-    }
-
-
-    public function search($value)
-    {
-        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
-    }
-
-    public function getAll()
-    {
-        return $this->startConditions()->all()->toBase();
+        return $this->startConditions()->where('note_id', $id)->toBase()->get();
     }
 
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('problem', 'field')
             ->findOrFail($id);
-    }
-
-
-
-    public function update($id, $data)
-    {
-        $record = $this->getEditOrFail($id);
-        $record->update($data);
-        return $record;
     }
 
     public function create($data)

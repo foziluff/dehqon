@@ -16,10 +16,10 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role == 1) {
+        if (Auth::check() && Auth::user()->role == 1) {
             return $next($request);
         }
 
-        return back()->with(['danger' => 'Такой пользователь не зарегистрирован!']);
+        abort(403, 'У вас нет прав!');
     }
 }

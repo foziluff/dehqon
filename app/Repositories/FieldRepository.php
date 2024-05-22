@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Repositories;
-use App\Models\Culture as Model;
+use App\Models\Field as Model;
 
-class CultureRepository extends CoreRepository
+class FieldRepository extends CoreRepository
 {
     protected function getModelClass()
     {
@@ -15,12 +15,12 @@ class CultureRepository extends CoreRepository
         return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
     }
 
-    public function getAllWithPaginateCatId($quantity, $catId)
+    public function getAllMine($user_id)
     {
         return $this->startConditions()
-            ->where('category_id', $catId)
+            ->where('user_id', $user_id)
             ->toBase()
-            ->paginate($quantity);
+            ->get();
     }
 
     public function search($value)
@@ -35,8 +35,11 @@ class CultureRepository extends CoreRepository
 
     public function getEditOrFail($id)
     {
-        return $this->startConditions()->findOrFail($id);
+        return $this->startConditions()
+            ->with('culture', 'prevCulture', 'fuelType')
+            ->findOrFail($id);
     }
+
 
 
     public function update($id, $data)

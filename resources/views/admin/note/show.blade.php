@@ -1,6 +1,7 @@
 @extends('admin.layouts.index')
 @php
-    $title = 'Страница поля';
+    $modul = 'notes';
+    $title = 'Просмотр заметки';
 @endphp
 @section('title', $title)
 @section('content')
@@ -10,84 +11,44 @@
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
                 <div class="mt-3">
-                    <label class="form-label">Название</label>
-                    <div class="form-control">{{ $record->title }}</div>
+                    <label class="form-label">Поля*</label>
+                    <input type="text" class="form-control" value="{{ $record->field->title }}" readonly>
                 </div>
 
                 <div class="mt-3">
-                    <label class="form-label">Культура</label>
-                    <div class="form-control">{{ $record->culture->title }}</div>
+                    <label class="form-label">Дата*</label>
+                    <input type="text" class="form-control" value="{{ $record->date }}" readonly>
                 </div>
 
                 <div class="mt-3">
-                    <label class="form-label">Сорт</label>
-                    <div class="form-control">{{ $record->sort }}</div>
+                    <label class="form-label">Проблема*</label>
+                    <input type="text" class="form-control" value="{{ $record->problem->title }}" readonly>
                 </div>
 
                 <div class="mt-3">
-                    <label class="form-label">Площадь</label>
-                    <div class="form-control">{{ $record->area }}</div>
+                    <label class="form-label">Описание*</label>
+                    <textarea class="form-control" rows="3" readonly>{{ $record->description }}</textarea>
                 </div>
 
                 <div class="mt-3">
-                    <label class="form-label">Тип топлива</label>
-                    <div class="form-control">{{ $record->fuelType->title }}</div>
+                    <label class="form-label">Площадь поражения*</label>
+                    <input type="number" class="form-control" value="{{ $record->defeated_area }}" readonly>
                 </div>
 
                 <div class="mt-3">
-                    <label class="form-label">Год Посева</label>
-                    <div class="form-control">{{ $record->sowing_year }}</div>
-                </div>
-
-                <div class="mt-3">
-                    <label class="form-label">Предыдущая культура</label>
-                    <div class="form-control">{{ $record->prevCulture->title }}</div>
-                </div>
-
-                <div class="mt-3">
-                    <label class="form-label">Предыдущий Сорт</label>
-                    <div class="form-control">{{ $record->prev_sort }}</div>
-                </div>
-
-                <div class="mt-3">
-                    <label class="form-label">Год Посева Предыдущей Культуры</label>
-                    <div class="form-control">{{ $record->prev_sowing_year }}</div>
-                </div>
-
-                <div class="mt-3">
-                    <label class="form-label">Координаты*</label>
-                    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-
-                    <div class="form-control leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" id="map" style="height: 400px; position: relative;" tabindex="0">
-                        <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
-                            <div class="leaflet-pane leaflet-tile-pane">
-                                <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+                    <label class="form-label">Изображения</label>
+                    <div class="form-control">
+                        <div class="mt-3">
+                            @foreach($record->images as $image)
+                                <div class="image-container">
+                                    <img src="{{ $image->image_path }}" alt="Изображение" class="img-fluid">
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-
-                    <input type="hidden" id="coordinates" value='{{ json_encode($record->coordinates) }}'>
-
-                    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-                    <script>
-                        var coordinatesString = document.getElementById('coordinates').value;
-                        var coordinates = JSON.parse(coordinatesString);
-                        var points = JSON.parse(coordinates[0]);
-
-                        var centerLatitude = (points[0].latitude + points[1].latitude) / 2;
-                        var centerLongitude = (points[0].longitude + points[1].longitude) / 2;
-
-                        var map = L.map('map').setView([centerLatitude, centerLongitude], 13);
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                            maxZoom: 19
-                        }).addTo(map);
-
-                        points.forEach(function(point) {
-                            L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map);
-                        });
-                    </script>
                 </div>
+
+                <a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
             </div>
         </div>
     </div>

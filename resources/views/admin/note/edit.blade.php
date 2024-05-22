@@ -1,7 +1,7 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'fields';
-    $title = 'Редактирование поля';
+    $modul = 'notes';
+    $title = 'Редактирование заметки';
 @endphp
 @section('title', $title)
 @section('content')
@@ -10,102 +10,67 @@
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
+
+               @if(!$images->isEmpty())
+                    <div class="mt-3 form-control">
+                        <div class="mt-3">
+                            @foreach($images as $image)
+                                <div class="image-container">
+                                    <form action="{{ route('noteImages.destroy', $image->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <img src="{{ $image->image_path }}" alt="Изображение" class="img-fluid">
+                                        <button type="submit" class="btn btn-icon btn-outline-danger">
+                                            <span class="tf-icons bx bx-trash"></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+               @endif
                 <form action="{{ route($modul . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
-                    <div class="mt-3">
-                        <label class="form-label">Название*</label>
-                        <input value="{{ $record->title }}" name="title" placeholder="Название" type="text" class="form-control" required>
-                    </div>
 
                     <div class="mt-3">
-                        <label for="culture_id" class="form-label">Культура*</label>
-                        <select id="culture_id" class="form-select" name="culture_id" required>
-                            <option disabled selected>Выбрать культуру</option>
-                            @foreach($cultures as $culture)
-                                <option value="{{ $culture->id }}" {{ $record->culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title }}</option>
+                        <label class="form-label">Поля*</label>
+                        <select id="field_id" class="form-select" name="field_id" required>
+                            <option disabled selected>Выбрать поле</option>
+                            @foreach($fields as $field)
+                                <option value="{{ $field->id }}" {{ $record->field_id == $field->id ? 'selected' : '' }}>{{ $field->title }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Сорт*</label>
-                        <input value="{{ $record->sort }}" name="sort" placeholder="Сорт" type="text" class="form-control" required>
+                        <label class="form-label">Дата*</label>
+                        <input value="{{ \Carbon\Carbon::parse($record->date)->format('Y-m-d') }}" name="date" type="date" class="form-control" required>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Площадь*</label>
-                        <input value="{{ $record->area }}" name="area" placeholder="Площадь" type="number" class="form-control" required>
-                    </div>
-
-                    <div class="mt-3">
-                        <label for="fuel_type_id" class="form-label">Тип топлива*</label>
-                        <select id="fuel_type_id" class="form-select" name="fuel_type_id" required>
-                            <option disabled selected>Выбрать тип топлива</option>
-                            @foreach($fuelTypes as $fuelType)
-                                <option value="{{ $fuelType->id }}" {{ $record->fuel_type_id == $fuelType->id ? 'selected' : '' }}>{{ $fuelType->title }}</option>
+                        <label for="problem_id" class="form-label">Проблема*</label>
+                        <select id="problem_id" class="form-select" name="problem_id" required>
+                            <option disabled selected>Выбрать проблему</option>
+                            @foreach($problems as $problem)
+                                <option value="{{ $problem->id }}" {{ $record->problem_id == $problem->id ? 'selected' : '' }}>{{ $problem->title }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Год Посева*</label>
-                        <input value="{{ $record->sowing_year }}" name="sowing_year" placeholder="Год Посева" type="number" class="form-control" required>
+                        <label class="form-label">Описание*</label>
+                        <textarea name="description" class="form-control" rows="3" required>{{ $record->description }}</textarea>
                     </div>
 
                     <div class="mt-3">
-                        <label for="prev_culture_id" class="form-label">Предыдущая культура*</label>
-                        <select id="prev_culture_id" class="form-select" name="prev_culture_id">
-                            <option disabled selected>Выбрать предыдущую культуру</option>
-                            @foreach($cultures as $culture)
-                                <option value="{{ $culture->id }}" {{ $record->prev_culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title }}</option>
-                            @endforeach
-                        </select>
+                        <label class="form-label">Площадь поражения*</label>
+                        <input value="{{ $record->defeated_area }}" name="defeated_area" placeholder="Площадь поражения" type="number" class="form-control" required>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Предыдущий Сорт*</label>
-                        <input value="{{ $record->prev_sort }}" name="prev_sort" placeholder="Предыдущий Сорт" type="text" class="form-control">
-                    </div>
-
-                    <div class="mt-3">
-                        <label class="form-label">Год Посева Предыдущей Культуры*</label>
-                        <input value="{{ $record->prev_sowing_year }}" name="prev_sowing_year" placeholder="Год Посева Предыдущей Культуры" type="number" class="form-control">
-                    </div>
-
-                    <div class="mt-3">
-                        <label class="form-label">Координаты*</label>
-                        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-
-                        <div class="form-control leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" id="map" style="height: 400px; position: relative;" tabindex="0">
-                            <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
-                                <div class="leaflet-pane leaflet-tile-pane">
-                                    <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <input type="hidden" id="coordinates" name="coordinates[]" value='{{ json_encode($record->coordinates) }}'>
-
-                        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-                        <script>
-                            var coordinatesString = document.getElementById('coordinates').value;
-                            var coordinates = JSON.parse(coordinatesString);
-                            var points = JSON.parse(coordinates[0]);
-
-                            var centerLatitude = (points[0].latitude + points[1].latitude) / 2;
-                            var centerLongitude = (points[0].longitude + points[1].longitude) / 2;
-
-                            var map = L.map('map').setView([centerLatitude, centerLongitude], 13);
-                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19
-                            }).addTo(map);
-
-                            points.forEach(function(point) {
-                                L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map);
-                            });
-                        </script>
+                        <label class="form-label">Изображения</label>
+                        <input type="file" name="images[]" class="form-control" multiple>
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-3">Сохранить</button>

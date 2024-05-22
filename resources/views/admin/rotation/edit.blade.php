@@ -1,7 +1,7 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'notes';
-    $title = 'Редактирование заметки';
+    $modul = 'rotations';
+    $title = 'Редактирование севооборота';
 @endphp
 @section('title', $title)
 @section('content')
@@ -10,67 +10,53 @@
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
-
-               @if(!$images->isEmpty())
-                    <div class="mt-3 form-control">
-                        <div class="mt-3">
-                            @foreach($images as $image)
-                                <div class="image-container">
-                                    <form action="{{ route('noteImages.destroy', $image->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <img src="{{ $image->image_path }}" alt="Изображение" class="img-fluid">
-                                        <button type="submit" class="btn btn-icon btn-outline-danger">
-                                            <span class="tf-icons bx bx-trash"></span>
-                                        </button>
-                                    </form>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-               @endif
-                <form action="{{ route($modul . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($modul . '.update', $record->id) }}" method="POST">
                     @csrf
                     @method('PATCH')
 
                     <div class="mt-3">
-                        <label class="form-label">Поля*</label>
+                        <label class="form-label">Поле*</label>
                         <select id="field_id" class="form-select" name="field_id" required>
                             <option disabled selected>Выбрать поле</option>
                             @foreach($fields as $field)
-                                <option value="{{ $field->id }}" {{ $record->field_id == $field->id ? 'selected' : '' }}>{{ $field->title }}</option>
+                                <option value="{{ $field->id }}" {{ old('field_id', $record->field_id) == $field->id ? 'selected' : '' }}>{{ $field->title }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Дата*</label>
-                        <input value="{{ \Carbon\Carbon::parse($record->date)->format('Y-m-d') }}" name="date" type="date" class="form-control" required>
-                    </div>
-
-                    <div class="mt-3">
-                        <label for="problem_id" class="form-label">Проблема*</label>
-                        <select id="problem_id" class="form-select" name="problem_id" required>
-                            <option disabled selected>Выбрать проблему</option>
-                            @foreach($problems as $problem)
-                                <option value="{{ $problem->id }}" {{ $record->problem_id == $problem->id ? 'selected' : '' }}>{{ $problem->title }}</option>
+                        <label class="form-label">Культура*</label>
+                        <select id="culture_id" class="form-select" name="culture_id" required>
+                            <option disabled selected>Выбрать культуру</option>
+                            @foreach($cultures as $culture)
+                                <option value="{{ $culture->id }}" {{ old('culture_id', $record->culture_id) == $culture->id ? 'selected' : '' }}>{{ $culture->title }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Описание*</label>
-                        <textarea name="description" class="form-control" rows="3" required>{{ $record->description }}</textarea>
+                        <label class="form-label">Сорт культуры*</label>
+                        <input value="{{ old('culture_sort', $record->culture_sort) }}" name="culture_sort" type="text" class="form-control" required>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Площадь поражения*</label>
-                        <input value="{{ $record->defeated_area }}" name="defeated_area" placeholder="Площадь поражения" type="number" class="form-control" required>
+                        <label class="form-label">Дата посева*</label>
+                        <input value="{{ \Carbon\Carbon::parse(old('sowing_date', $record->sowing_date))->format('Y-m-d') }}" name="sowing_date" type="date" class="form-control" required>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Изображения</label>
-                        <input type="file" name="images[]" class="form-control" multiple>
+                        <label class="form-label">Дата сбора*</label>
+                        <input value="{{ \Carbon\Carbon::parse(old('harvesting_date', $record->harvesting_date))->format('Y-m-d') }}" name="harvesting_date" type="date" class="form-control" required>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Средний урожай*</label>
+                        <input value="{{ old('average_yield', $record->average_yield) }}" name="average_yield" type="number" class="form-control" required>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Единица измерения урожая*</label>
+                        <input value="{{ old('average_yield_unit', $record->average_yield_unit) }}" name="average_yield_unit" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-3">Сохранить</button>

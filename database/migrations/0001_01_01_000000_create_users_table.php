@@ -14,17 +14,40 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('surname');
+            $table->string('phone')->unique();
+            $table->timestamp('born_in');
             $table->string('password');
+            $table->integer('gender');
+            $table->string('currency');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('profile_photo_path', 2048)->default('/images/no-image.jpg');
+            $table->string('device')->nullable();
+
+            $table->string('_token')->nullable();
+
+            $table->integer('role')->nullable();
+
+            $table->timestamps();
+        });
+
+        Schema::create('phone_verify_codes', function (Blueprint $table) {
+            $table->id();
+            $table->string('phone');
+            $table->integer('code');
+            $table->timestamps();
+        });
+
+        Schema::create('register_tokens', function (Blueprint $table) {
+            $table->id();
+            $table->string('phone');
+            $table->string('token');
             $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
+            $table->string('phone')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
@@ -47,5 +70,7 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('phone_verify_codes');
+        Schema::dropIfExists('register_tokens');
     }
 };
