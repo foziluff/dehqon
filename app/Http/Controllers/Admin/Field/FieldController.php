@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\Field\StoreFieldRequest;
 use App\Http\Requests\Admin\Field\UpdateFieldRequest;
 use App\Repositories\Culture\CultureRepository;
 use App\Repositories\Field\FieldRepository;
-use App\Repositories\FuelTypeRepository;
+use App\Repositories\FuelType\FuelTypeRepository;
 
 class FieldController extends Controller
 {
