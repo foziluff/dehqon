@@ -54,7 +54,7 @@
 <div class="layout-wrapper layout-content-navbar ">
     <div class="layout-container">
 
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" data-bg-class="bg-menu-theme">
 
             <!-- ! Hide app brand if navbar-full -->
             <div class="app-brand demo">
@@ -73,34 +73,151 @@
             <div class="menu-inner-shadow"></div>
 
             <ul class="menu-inner py-1 overflow-auto">
+                <!-- Культуры -->
                 <li class="menu-item {{ Request::segment(2) === 'cultures' ? 'active' : '' }}">
                     <a href="{{ route('cultures.index') }}" class="menu-link">
                         <i class='menu-icon tf-icons bx bxs-pear'></i>
                         <div>Культуры</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::segment(2) === 'fields' ? 'active' : '' }}">
-                    <a href="{{ route('fields.index') }}" class="menu-link">
+
+                <!-- Поля -->
+                <li class="menu-item fields-submenu {{ Request::segment(2) === 'fields' ||
+                            Request::segment(2) === 'rotations' ||
+                            Request::segment(2) === 'problems' ||
+                            Request::segment(2) === 'notes' ||
+                            Request::segment(2) === 'works' ||
+                            Request::segment(2) === 'work-plans' ||
+                            Request::segment(2) === 'work-stages' ||
+                            Request::segment(2) === 'product-quantities' ||
+                            Request::segment(2) === 'incomes' ||
+                            Request::segment(2) === 'consumption-categories' ||
+                            Request::segment(2) === 'consumption-namings' ||
+                            Request::segment(2) === 'consumption-operations' ||
+                            Request::segment(2) === 'consumption-production-means' ||
+                            Request::segment(2) === 'consumptions' ? 'active open' : '' }}">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class='menu-icon tf-icons bx bx-map'></i>
                         <div>Поля</div>
                     </a>
+                    <ul class="menu-sub">
+                        <!-- Поля -->
+                        <li class="menu-item {{ Request::segment(2) === 'fields' ? 'active' : '' }}">
+                            <a href="{{ route('fields.index') }}" class="menu-link">
+                                <div>Поля</div>
+                            </a>
+                        </li>
+                        <!-- Севооборот -->
+                        <li class="menu-item {{ Request::segment(2) === 'rotations' ? 'active' : '' }}">
+                            <a href="{{ route('rotations.index') }}" class="menu-link">
+                                <div>Севооборот</div>
+                            </a>
+                        </li>
+                        <!-- Заметки -->
+                        <li class="menu-item {{ Request::segment(2) === 'notes' ? 'active' : '' }}">
+                            <a href="{{ route('notes.index') }}" class="menu-link">
+                                <div>Заметки</div>
+                            </a>
+                        </li>
+                        <!-- Проблемы -->
+                        <li class="menu-item {{ Request::segment(2) === 'problems' ? 'active' : '' }}">
+                            <a href="{{ route('problems.index') }}" class="menu-link">
+                                <div>Проблемы</div>
+                            </a>
+                        </li>
+                        <li class="menu-item {{ Request::segment(2) === 'product-quantities' ? 'active' : '' }}">
+                            <a href="{{ route('productQuantities.index') }}" class="menu-link">
+                                <div>Количество продуктции</div>
+                            </a>
+                        </li>
+                        <li class="menu-item {{ Request::segment(2) === 'incomes' ? 'active' : '' }}">
+                            <a href="{{ route('incomes.index') }}" class="menu-link">
+                                <div>Доходы</div>
+                            </a>
+                        </li>
+                         <!-- Расходы -->
+                        <li class="menu-item consumption-submenu {{ Request::segment(2) === 'consumption-categories' ||
+                                        Request::segment(2) === 'consumption-namings' ||
+                                        Request::segment(2) === 'consumption-operations' ||
+                                        Request::segment(2) === 'consumption-production-means' ||
+                                        Request::segment(2) === 'consumptions' ? 'active open' : '' }}">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <div>Расходы</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <!-- Категории расходов -->
+                                <li class="menu-item {{ Request::segment(2) === 'consumption-categories' ? 'active' : '' }}">
+                                    <a href="{{ route('consumptionCategories.index') }}" class="menu-link">
+                                        <div>Категории расходов</div>
+                                    </a>
+                                </li>
+                                <!-- Наименование расходов -->
+                                <li class="menu-item {{ Request::segment(2) === 'consumption-namings' ? 'active' : '' }}">
+                                    <a href="{{ route('consumptionNamings.index') }}" class="menu-link">
+                                        <div>Наименование расходов</div>
+                                    </a>
+                                </li>
+                                <!-- Операции расходов -->
+                                <li class="menu-item {{ Request::segment(2) === 'consumption-operations' ? 'active' : '' }}">
+                                    <a href="{{ route('consumptionOperations.index') }}" class="menu-link">
+                                        <div>Операции расходов</div>
+                                    </a>
+                                </li>
+                                <!-- Средства производства -->
+                                <li class="menu-item {{ Request::segment(2) === 'consumption-production-means' ? 'active' : '' }}">
+                                    <a href="{{ route('consumptionProductionMeans.index') }}" class="menu-link">
+                                        <div>Средства производства</div>
+                                    </a>
+                                </li>
+                                <!-- Расходы -->
+                                <li class="menu-item {{ Request::segment(2) === 'consumptions' ? 'active' : '' }}">
+                                    <a href="{{ route('consumptions.index') }}" class="menu-link">
+                                        <div>Расходы</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Работы -->
+                        <li class="menu-item {{ Request::segment(2) === 'works' || Request::segment(2) === 'work-plans' || Request::segment(2) === 'work-stages' ? 'active open' : '' }}">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <div>Работы</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <!-- Работы -->
+                                <li class="menu-item {{ Request::segment(2) === 'works' ? 'active' : '' }}">
+                                    <a href="{{ route('works.index') }}" class="menu-link">
+                                        <div>Работы</div>
+                                    </a>
+                                </li>
+                                <!-- План работ -->
+                                <li class="menu-item {{ Request::segment(2) === 'work-plans' ? 'active' : '' }}">
+                                    <a href="{{ route('workPlans.index') }}" class="menu-link">
+                                        <div>План работ</div>
+                                    </a>
+                                </li>
+                                <!-- Этап работ -->
+                                <li class="menu-item {{ Request::segment(2) === 'work-stages' ? 'active' : '' }}">
+                                    <a href="{{ route('workStages.index') }}" class="menu-link">
+                                        <div>Этап работ</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
                 </li>
-                <li class="menu-item {{ Request::segment(2) === 'rotations' ? 'active' : '' }}">
-                    <a href="{{ route('rotations.index') }}" class="menu-link">
-                        <i class='menu-icon tf-icons bx bx-leaf'></i>
-                        <div>Севооборот</div>
+
+                <li class="menu-item {{ Request::segment(2) === 'stocks' ? 'active' : '' }}">
+                    <a href="{{ route('stocks.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-archive-in'></i>
+                        <div>Склад</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::segment(2) === 'notes' ? 'active' : '' }}">
-                    <a href="{{ route('notes.index') }}" class="menu-link">
-                        <i class='menu-icon tf-icons bx bx-notepad'></i>
-                        <div>Заметки</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ Request::segment(2) === 'problems' ? 'active' : '' }}">
-                    <a href="{{ route('problems.index') }}" class="menu-link">
-                        <i class='menu-icon tf-icons bx bx-calendar-exclamation'></i>
-                        <div>Проблемы</div>
+
+                <li class="menu-item {{ Request::segment(2) === 'conversions' ? 'active' : '' }}">
+                    <a href="{{ route('conversions.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-recycle'></i>
+                        <div>Переработки</div>
                     </a>
                 </li>
             </ul>
@@ -176,14 +293,12 @@
 <!-- / Layout wrapper -->
 <!--/ Layout Content -->
 
-
 <!-- Include Scripts -->
 <!-- BEGIN: Vendor JS-->
 <script src="{{ asset('assets/vendor/libs/jquery/jquery.js?id=d6912bbf9b29bbcc108b2a81baac5fb1') }}"></script>
 <script src="{{ asset('assets/vendor/libs/popper/popper.js?id=f5aae921cb2529b79f3186eebddf5a32') }}"></script>
 <script src="{{ asset('assets/vendor/js/bootstrap.js?id=95bd886657816de98a4973e6fa33679a') }}"></script>
-<script
-    src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js?id=7c36751c61f8450005e3e6f02bb84ab6') }}"></script>
+<script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js?id=7c36751c61f8450005e3e6f02bb84ab6') }}"></script>
 <script src="{{ asset('assets/vendor/js/menu.js?id=d20d4c6cb4af8e665da4e49ce564dd18') }}"></script>
 <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 <!-- END: Page Vendor JS-->

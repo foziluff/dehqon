@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\FuelType;
-use App\Models\User;
+use App\Models\Auth\User;
+use App\Models\FuelType\FuelType;
 
 class FuelTypePolicy
 {

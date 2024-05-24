@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
-use App\Models\WorkPlan;
-use Illuminate\Auth\Access\Response;
+use App\Models\Auth\User;
+use App\Models\Field\Work\WorkPlan;
 
 class WorkPlanPolicy
 {

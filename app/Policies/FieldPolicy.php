@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Field;
-use App\Models\User;
+use App\Models\Auth\User;
+use App\Models\Field\Field;
 
 class FieldPolicy
 {

@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Rotation;
-use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use App\Models\Auth\User;
+use App\Models\Field\Rotation;
 
 class RotationPolicy
 {

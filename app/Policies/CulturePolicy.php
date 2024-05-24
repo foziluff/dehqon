@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Culture;
-use App\Models\User;
+use App\Models\Auth\User;
+use App\Models\Culture\Culture;
 
 class CulturePolicy
 {

@@ -2,8 +2,8 @@
 
 namespace App\Actions;
 
+use App\Models\Field\Note\NoteImage;
 use Illuminate\Http\Request;
-use App\Models\NoteImage;
 
 class NoteImagesAction
 {

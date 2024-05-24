@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Note;
-use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use App\Models\Auth\User;
+use App\Models\Field\Note\Note;
 
 class NotePolicy
 {

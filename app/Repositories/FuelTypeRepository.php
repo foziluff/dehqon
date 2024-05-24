@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repositories;
-use App\Models\FuelType as Model;
+use App\Models\FuelType\FuelType as Model;
 
 class FuelTypeRepository extends CoreRepository
 {
