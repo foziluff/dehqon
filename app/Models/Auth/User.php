@@ -5,6 +5,7 @@ namespace App\Models\Auth;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Conversion\Consumption\ConversionConsumption;
 use App\Models\Conversion\Conversion;
+use App\Models\Conversion\Income\ConversionIncome;
 use App\Models\Culture\Culture;
 use App\Models\Field\Consumption\Consumption;
 use App\Models\Field\Field;
@@ -152,6 +153,11 @@ class User extends Authenticatable
     public function conversionConsumptions()
     {
         return $this->hasMany(ConversionConsumption::class);
+    }
+
+    public function conversionIncomes()
+    {
+        return $this->hasMany(ConversionIncome::class);
     }
 
 
