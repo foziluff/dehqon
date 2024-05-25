@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Field\Consumption;
-use App\Models\Field\Consumption\Consumption as Model;
+namespace App\Repositories\Conversion\Consumption;
+use App\Models\Conversion\Consumption\ConversionConsumption as Model;
 use App\Repositories\CoreRepository;
 
-class ConsumptionRepository extends CoreRepository
+class ConversionConsumptionRepository extends CoreRepository
 {
     protected function getModelClass()
     {
@@ -31,12 +31,13 @@ class ConsumptionRepository extends CoreRepository
     {
         return $this->startConditions()
             ->with(
-                'consumptionNaming',
-                'consumptionProductionMean',
-                'consumptionOperation',
+                'conversionNaming',
+                'conversionProductionMean',
+                'conversionOperation',
                 'conversionCategory',
                 'productType',
-                'field',
+                'conversionType',
+                'conversion',
                 'culture'
             )
             ->findOrFail($id);

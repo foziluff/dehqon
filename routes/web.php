@@ -1,6 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AuthController;
+use App\Http\Controllers\Admin\Conversion\Consumption\ConversionCategoryController;
+use App\Http\Controllers\Admin\Conversion\Consumption\ConversionConsumptionController;
+use App\Http\Controllers\Admin\Conversion\Consumption\ConversionNamingController;
+use App\Http\Controllers\Admin\Conversion\Consumption\ConversionOperationController;
+use App\Http\Controllers\Admin\Conversion\Consumption\ConversionProductionMeanController;
+use App\Http\Controllers\Admin\Conversion\Consumption\ConversionTypeController;
 use App\Http\Controllers\Admin\Conversion\ConversionController;
 use App\Http\Controllers\Admin\Culture\CultureController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionCategoryController;
@@ -56,4 +62,10 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/stocks', StockController::class)->names('stocks');
     Route::resource('/conversions', ConversionController::class)->names('conversions');
 
+    Route::resource('/conversion-consumptions', ConversionConsumptionController::class)->names('conversionConsumptions');
+    Route::resource('/conversion-categories', ConversionCategoryController::class)->names('conversionCategories');
+    Route::resource('/conversion-namings', ConversionNamingController::class)->names('conversionNamings');
+    Route::resource('/conversion-operations', ConversionOperationController::class)->names('conversionOperations');
+    Route::resource('/conversion-production-means', ConversionProductionMeanController::class)->names('conversionProductionMeans');
+    Route::resource('/conversion-types', ConversionTypeController::class)->names('conversionTypes');
 });

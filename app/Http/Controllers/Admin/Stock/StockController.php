@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Stock;
 use App\Http\Controllers\Base\Controller;
 use App\Http\Requests\Admin\Stock\StoreStockRequest;
 use App\Http\Requests\Admin\Stock\UpdateStockRequest;
-use App\Repositories\Field\Consumption\ConsumptionProductionMeanRepository;
+use App\Repositories\Field\Consumption\ConversionProductionMeanRepository;
 use App\Repositories\Stock\StockRepository;
 
 class StockController extends Controller
@@ -17,7 +17,7 @@ class StockController extends Controller
     {
         parent::__construct();
         $this->stockRepository = app(StockRepository::class);
-        $this->consumptionProductionMeanRepository = app(ConsumptionProductionMeanRepository::class);
+        $this->consumptionProductionMeanRepository = app(ConversionProductionMeanRepository::class);
     }
 
     /**

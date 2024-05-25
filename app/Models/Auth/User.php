@@ -3,6 +3,7 @@
 namespace App\Models\Auth;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Conversion\Consumption\ConversionConsumption;
 use App\Models\Conversion\Conversion;
 use App\Models\Culture\Culture;
 use App\Models\Field\Consumption\Consumption;
@@ -146,6 +147,11 @@ class User extends Authenticatable
     public function conversions()
     {
         return $this->hasMany(Conversion::class);
+    }
+
+    public function conversionConsumptions()
+    {
+        return $this->hasMany(ConversionConsumption::class);
     }
 
 

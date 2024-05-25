@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Conversion;
-use App\Models\Conversion\Conversion as Model;
+namespace App\Repositories\Conversion\Consumption;
+use App\Models\Conversion\Consumption\ConversionNaming as Model;
 use App\Repositories\CoreRepository;
 
-class ConversionRepository extends CoreRepository
+class ConversionNamingRepository extends CoreRepository
 {
     protected function getModelClass()
     {
@@ -16,18 +16,6 @@ class ConversionRepository extends CoreRepository
         return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
     }
 
-
-    public function getAllMine($user_id)
-    {
-        return $this->startConditions()
-            ->where('user_id', $user_id)
-            ->toBase()
-            ->get();
-    }
-    public function search($value)
-    {
-        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
-    }
 
     public function getAll()
     {
