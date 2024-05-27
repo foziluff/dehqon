@@ -27,6 +27,9 @@ use App\Http\Controllers\Admin\Field\RotationController;
 use App\Http\Controllers\Admin\Field\Work\WorkController;
 use App\Http\Controllers\Admin\Field\Work\WorkPlanController;
 use App\Http\Controllers\Admin\Field\Work\WorkStageController;
+use App\Http\Controllers\Admin\News\NewsController;
+use App\Http\Controllers\Admin\News\NewsImageController;
+use App\Http\Controllers\Admin\Question\QuestionController;
 use App\Http\Controllers\Admin\Stock\StockController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,4 +77,8 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/conversion-incomes', ConversionIncomeController::class)->names('conversionIncomes');
     Route::resource('/conversion-quantities', ConversionQuantityController::class)->names('conversionQuantities');
 
+    Route::resource('/news', NewsController::class)->names('news');
+    Route::delete('/news-images/{id}', [NewsImageController::class, 'destroy'])->name('newsImages.destroy');
+
+    Route::resource('/questions', QuestionController::class)->names('questions');
 });

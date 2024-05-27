@@ -18,6 +18,8 @@ use App\Models\Field\Rotation;
 use App\Models\Field\Work\Work;
 use App\Models\Field\Work\WorkPlan;
 use App\Models\Field\Work\WorkStage;
+use App\Models\News\News;
+use App\Models\Question\Question;
 use App\Models\Stock\Stock;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -164,6 +166,16 @@ class User extends Authenticatable
     public function conversionQuantities()
     {
         return $this->hasMany(ConversionQuantity::class);
+    }
+
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 
 

@@ -207,6 +207,20 @@
                     </ul>
                 </li>
 
+                <li class="menu-item {{ Request::segment(2) === 'news' ? 'active' : '' }}">
+                    <a href="{{ route('news.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-file'></i>
+                        <div>Новости</div>
+                    </a>
+                </li>
+
+                <li class="menu-item {{ Request::segment(2) === 'questions' ? 'active' : '' }}">
+                    <a href="{{ route('questions.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-question-mark'></i>
+                        <div>Вопросы</div>
+                    </a>
+                </li>
+
                 <li class="menu-item {{ Request::segment(2) === 'stocks' ? 'active' : '' }}">
                     <a href="{{ route('stocks.index') }}" class="menu-link">
                         <i class='menu-icon tf-icons bx bx-archive-in'></i>
