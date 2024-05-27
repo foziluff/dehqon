@@ -6,7 +6,7 @@ use App\Http\Controllers\Base\Controller;
 use App\Http\Requests\Admin\Conversion\Income\StoreConversionIncomeRequest;
 use App\Http\Requests\Admin\Conversion\Income\UpdateConversionIncomeRequest;
 use App\Repositories\Conversion\ConversionRepository;
-use App\Repositories\Conversion\Income\ConversionQuantityRepository;
+use App\Repositories\Conversion\Income\ConversionIncomeRepository;
 use App\Repositories\Conversion\Consumption\ConversionNamingRepository;
 use App\Repositories\Conversion\Consumption\ConversionTypeRepository;
 
@@ -20,7 +20,7 @@ class ConversionIncomeController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->conversionIncomeRepository = app(ConversionQuantityRepository::class);
+        $this->conversionIncomeRepository = app(ConversionIncomeRepository::class);
         $this->conversionRepository = app(ConversionRepository::class);
         $this->conversionNamingRepository = app(ConversionNamingRepository::class);
         $this->conversionTypeRepository = app(ConversionTypeRepository::class);
