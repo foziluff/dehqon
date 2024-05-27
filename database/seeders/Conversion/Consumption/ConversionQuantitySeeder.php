@@ -1,11 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Conversion\Consumption;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ConversionIncomeSeeder extends Seeder
+class ConversionQuantitySeeder extends Seeder
 {
     /**
      * Run the database seeds.

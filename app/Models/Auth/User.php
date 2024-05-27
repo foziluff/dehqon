@@ -6,6 +6,7 @@ namespace App\Models\Auth;
 use App\Models\Conversion\Consumption\ConversionConsumption;
 use App\Models\Conversion\Conversion;
 use App\Models\Conversion\Income\ConversionIncome;
+use App\Models\Conversion\Quantity\ConversionQuantity;
 use App\Models\Culture\Culture;
 use App\Models\Field\Consumption\Consumption;
 use App\Models\Field\Field;
@@ -158,6 +159,11 @@ class User extends Authenticatable
     public function conversionIncomes()
     {
         return $this->hasMany(ConversionIncome::class);
+    }
+
+    public function conversionQuantities()
+    {
+        return $this->hasMany(ConversionQuantity::class);
     }
 
 

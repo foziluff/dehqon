@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Conversion\Consumption\ConversionProductionMeanCo
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionTypeController;
 use App\Http\Controllers\Admin\Conversion\ConversionController;
 use App\Http\Controllers\Admin\Conversion\Income\ConversionIncomeController;
+use App\Http\Controllers\Admin\Conversion\Quantity\ConversionQuantityController;
 use App\Http\Controllers\Admin\Culture\CultureController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionCategoryController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionController;
@@ -71,5 +72,6 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/conversion-types', ConversionTypeController::class)->names('conversionTypes');
 
     Route::resource('/conversion-incomes', ConversionIncomeController::class)->names('conversionIncomes');
+    Route::resource('/conversion-quantities', ConversionQuantityController::class)->names('conversionQuantities');
 
 });

@@ -217,6 +217,7 @@
                 <!-- Переработки -->
                 <li class="menu-item fields-submenu {{ Request::segment(2) === 'conversions' ||
                             Request::segment(2) === 'conversion-categories' ||
+                            Request::segment(2) === 'conversion-quantities' ||
                             Request::segment(2) === 'conversion-types' ||
                             Request::segment(2) === 'conversion-incomes' ||
                             Request::segment(2) === 'conversion-namings' ||
@@ -232,6 +233,11 @@
                         <li class="menu-item {{ Request::segment(2) === 'conversions' ? 'active' : '' }}">
                             <a href="{{ route('conversions.index') }}" class="menu-link">
                                 <div>Переработки</div>
+                            </a>
+                        </li>
+                        <li class="menu-item {{ Request::segment(2) === 'conversion-quantities' ? 'active' : '' }}">
+                            <a href="{{ route('conversionQuantities.index') }}" class="menu-link">
+                                <div>Количество переработок</div>
                             </a>
                         </li>
                         <li class="menu-item {{ Request::segment(2) === 'conversion-incomes' ? 'active' : '' }}">
