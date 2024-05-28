@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'workPlans';
+    $module = 'workPlans';
     $title = 'Добавление плана работ';
 @endphp
 @section('title', $title)
@@ -10,7 +10,7 @@
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
-                <form action="{{ route($modul . '.store') }}" method="POST">
+                <form action="{{ route($module . '.store') }}" method="POST">
                     @csrf
                     <div class="mt-3">
                         <label class="form-label">Название*</label>

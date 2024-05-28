@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'consumptionProductMeans';
+    $module = 'consumptionProductMeans';
     $title = 'Редактирование типа продутка';
 @endphp
 @section('title', $title)
@@ -11,7 +11,7 @@
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
-                <form action="{{ route($modul . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($module . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
                     @method('PATCH')@csrf
                     <div class="mt-3">
                         <label class="form-label">Название</label>

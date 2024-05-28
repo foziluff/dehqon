@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'notes';
+    $module = 'notes';
     $title = 'Редактирование заметки';
 @endphp
 @section('title', $title)
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                @endif
-                <form action="{{ route($modul . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($module . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
 

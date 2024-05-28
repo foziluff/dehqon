@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'news';
+    $module = 'news';
     $title = 'Редактирование новости';
 @endphp
 @section('title', $title)
@@ -16,7 +16,7 @@
                         <div class="mt-3">
                             @foreach($images as $image)
                                 <div class="image-container">
-                                    <form action="{{ route($modul . 'Images.destroy', $image->id) }}" method="POST">
+                                    <form action="{{ route($module . 'Images.destroy', $image->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <img src="{{ $image->image_path }}" alt="Изображение" class="img-fluid">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                @endif
-                <form action="{{ route($modul . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($module . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
 

@@ -1,14 +1,14 @@
-<a href="{{ route($modul . '.show', $record->id) }}" class="btn btn-icon btn-outline-primary">
+<a href="{{ route($module . '.show', $record->id) }}" class="btn btn-icon btn-outline-primary">
     <i class='bx bx-book-open'></i>
 </a>
-<a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-icon btn-outline-success">
+<a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-icon btn-outline-success">
     <i class='bx bx-pencil'></i>
 </a>
 <button data-bs-toggle="modal" data-bs-target="#modalCenter{{ $record->id }}" type="button" class="btn btn-icon btn-outline-danger" >
     <i class='bx bx-basket'></i>
 </button>
 <div class="modal fade" id="modalCenter{{ $record->id }}" tabindex="-1" aria-hidden="true">
-    <form action="{{ route($modul . '.destroy', $record->id) }}" method="POST">
+    <form action="{{ route($module . '.destroy', $record->id) }}" method="POST">
         @method('DELETE') @csrf
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

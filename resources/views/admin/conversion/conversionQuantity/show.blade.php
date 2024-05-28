@@ -1,7 +1,7 @@
 @extends('admin.layouts.index')
 
 @php
-    $modul = 'conversionQuantities';
+    $module = 'conversionQuantities';
     $title = 'Просмотр количество переработки';
 @endphp
 
@@ -43,7 +43,7 @@
                     <div class="form-control">{{ $record->quantity_unit }}</div>
                 </div>
 
-                <a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
             </div>
         </div>
     </div>

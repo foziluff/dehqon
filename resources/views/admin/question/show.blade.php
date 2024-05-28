@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'questions';
+    $module = 'questions';
     $title = 'Просмотр вопроса';
 @endphp
 @section('title', $title)
@@ -19,7 +19,7 @@
                     <div class="form-control">{{ $record->answer }}</div>
                 </div>
 
-                <a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
             </div>
         </div>
     </div>

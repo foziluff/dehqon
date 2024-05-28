@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'consumptionNamings';
+    $module = 'consumptionNamings';
     $title = 'Просмотр наименовании';
 @endphp
 @section('title', $title)
@@ -15,7 +15,7 @@
                     <div class="form-control">{{ $record->title }}</div>
                 </div>
 
-                <a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
             </div>
         </div>
     </div>

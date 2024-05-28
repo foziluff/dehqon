@@ -1,7 +1,7 @@
 @extends('admin.layouts.index')
 
 @php
-    $modul = 'incomes';
+    $module = 'incomes';
     $title = 'Просмотр дохода';
 @endphp
 
@@ -48,7 +48,7 @@
                     <div class="form-control">{{ $record->price }}</div>
                 </div>
 
-                <a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
 
             </div>
         </div>

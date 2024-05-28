@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'workStages';
+    $module = 'workStages';
     $title = 'Просмотр этапа работ';
 @endphp
 @section('title', $title)
@@ -29,7 +29,7 @@
                     <label class="form-label">Единица измерения материала</label>
                     <div class="form-control">{{ $record->material_quantity_unit }}</div>
                 </div>
-                <a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
 
             </div>
         </div>

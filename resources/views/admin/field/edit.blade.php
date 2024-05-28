@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'fields';
+    $module = 'fields';
     $title = 'Редактирование поля';
 @endphp
 @section('title', $title)
@@ -10,7 +10,7 @@
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
-                <form action="{{ route($modul . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($module . '.update', $record->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="mt-3">

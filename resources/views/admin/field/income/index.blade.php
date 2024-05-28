@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'incomes';
+    $module = 'incomes';
     $title = 'Доходы';
 @endphp
 @section('title', $title)
@@ -10,7 +10,7 @@
     <div class="card">
         <div class="d-flex justify-content-between">
             <h5 class="card-header">{{ $title }}</h5>
-            <a class="card-header" href="{{ route($modul . '.create') }}"><i class='bx bx-message-square-add'></i> Добавить</a>
+            <a class="card-header" href="{{ route($module . '.create') }}"><i class='bx bx-message-square-add'></i> Добавить</a>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover mb-2">
@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{ $records->firstItem() + $key }}</td>
                         <td>
-                            <a class="td-title" href="{{ route($modul . '.show', $record->id) }}">
+                            <a class="td-title" href="{{ route($module . '.show', $record->id) }}">
                                 <span class="fw-medium">{{ $record->productType->title }} - {{ $record->price }}</span>
                             </a>
                         </td>

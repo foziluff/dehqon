@@ -1,7 +1,7 @@
 @extends('admin.layouts.index')
 
 @php
-    $modul = 'conversionConsumptions';
+    $module = 'conversionConsumptions';
     $title = 'Добавление расхода';
 @endphp
 
@@ -13,7 +13,7 @@
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
-                <form action="{{ route($modul . '.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route($module . '.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mt-3">
                         <label class="form-label">Дата*</label>

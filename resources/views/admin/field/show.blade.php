@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @php
-    $modul = 'fields';
+    $module = 'fields';
     $title = 'Просмотр поля';
 @endphp
 @section('title', $title)
@@ -91,7 +91,7 @@
                 </div>
 
 
-                <a href="{{ route($modul . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
 
             </div>
         </div>
