@@ -8,15 +8,18 @@
 @section('content')
     @include('admin.layouts.components.messages')
     <div class="card">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-header">{{ $title }}</h5>
-            <a class="card-header" href="{{ route($module . '.create') }}"><i class='bx bx-message-square-add'></i> Добавить</a>
+            <div style="padding-right: 1.25rem;">
+                <a class="btn btn-primary" href="{{ route($module . '.create') }}">Добавить</a>
+            </div>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover mb-2">
                 <thead>
                 <tr>
                     <th style="width:6%">№</th>
+                    <th style="width: 0%">Фото</th>
                     <th>Название</th>
                     <th class="text-right">Действия</th>
                 </tr>
@@ -25,6 +28,11 @@
                 @foreach($records as $key => $record)
                     <tr>
                         <td>{{ $records->firstItem() + $key }}</td>
+                        <td>
+                            <div>
+                                <img src="{{ $record->image_path }}" alt="" class="img-fluid rounded-circle" style="min-width: 50px; height: 50px;">
+                            </div>
+                        </td>
                         <td>
                             <a class="td-title" href="{{ route($module . '.show', $record->id) }}">
                                 <span class="fw-medium">{{ $record->title }}</span>

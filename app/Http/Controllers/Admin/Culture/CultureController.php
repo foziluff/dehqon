@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Culture;
 
+use App\Actions\CultureImageAction;
 use App\Http\Controllers\Base\Controller;
 use App\Http\Requests\Admin\Culture\StoreCultureRequest;
 use App\Http\Requests\Admin\Culture\UpdateCultureRequest;
@@ -38,7 +39,8 @@ class CultureController extends Controller
      */
     public function store(StoreCultureRequest $request)
     {
-        $record = $this->user->cultures()->create($request->validated());
+        $request = (new CultureImageAction())->handle($request);
+        $record = $this->user->cultures()->create($request->only(['title', 'image_path']));
         return redirect()->route('cultures.edit', $record->id)->with(['success' => 'Успешно добавлен!']);
     }
 
@@ -65,7 +67,8 @@ class CultureController extends Controller
      */
     public function update(UpdateCultureRequest $request, int $id)
     {
-        $this->cultureRepository->update($id, $request->validated());
+        $request = (new CultureImageAction())->handle($request);
+        $this->cultureRepository->update($id, $request->only(['title', 'image_path']));
         return redirect()->back()->with(['success' => 'Успешно обновлен!']);
     }
 

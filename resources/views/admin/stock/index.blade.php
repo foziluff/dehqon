@@ -8,9 +8,11 @@
 @section('content')
     @include('admin.layouts.components.messages')
     <div class="card">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-header">{{ $title }}</h5>
-            <a class="card-header" href="{{ route($module . '.create') }}"><i class='bx bx-message-square-add'></i> Добавить</a>
+            <div style="padding-right: 1.25rem;">
+                <a class="btn btn-primary" href="{{ route($module . '.create') }}">Добавить</a>
+            </div>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover mb-2">

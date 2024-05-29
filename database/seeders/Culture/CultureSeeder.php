@@ -26,7 +26,7 @@ class CultureSeeder extends Seeder
         ];
 
         foreach ($fruits as $fruit) {
-            Culture::factory()->create(['title' => $fruit, 'user_id' => 1]);
+            Culture::factory()->create(['title' => $fruit, 'user_id' => 1, 'image_path' => '/files/images/1716890967_6655ad57de75b.png']);
         }
     }
 }

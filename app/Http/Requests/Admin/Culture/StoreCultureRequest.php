@@ -23,6 +23,7 @@ class StoreCultureRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:100',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

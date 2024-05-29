@@ -16,6 +16,10 @@
                         <label class="form-label">Название</label>
                         <input value="{{ old('title') }}" name="title" placeholder="Название" type="text" class="form-control">
                     </div>
+                    <div class="mt-3">
+                        <label for="defaultFormControlInput" class="form-label">Изображение</label>
+                        <input type="file" name="image" class="form-control">
+                    </div>
                     <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                 </form>
             </div>
