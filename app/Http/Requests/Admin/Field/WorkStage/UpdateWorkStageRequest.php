@@ -24,6 +24,7 @@ class UpdateWorkStageRequest extends FormRequest
         return [
             'date'                      => 'required|date',
             'work_id'                   => 'required|exists:works,id',
+            'work_plan_id'              => 'required|exists:work_plans,id',
             'material'                  => 'required|string',
             'material_quantity'         => 'required|numeric',
             'material_quantity_unit'    => 'required|string',

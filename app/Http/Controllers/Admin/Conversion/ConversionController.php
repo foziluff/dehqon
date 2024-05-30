@@ -27,6 +27,16 @@ class ConversionController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByUser($id)
+    {
+        $records = $this->conversionRepository->getByUserIdPaginate($id, 20);
+        return view('admin.conversion.index', compact('records'));
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

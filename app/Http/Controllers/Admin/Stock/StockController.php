@@ -30,6 +30,16 @@ class StockController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByUser($id)
+    {
+        $records = $this->stockRepository->getByUserIdPaginate($id, 20);
+        return view('admin.stock.index', compact('records'));
+    }
+
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

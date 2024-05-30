@@ -36,6 +36,15 @@ class ProductQuantityController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByField($id)
+    {
+        $records = $this->productQuantityRepository->getByFieldIdPaginate($id, 20);
+        return view('admin.field.productQuantity.index', compact('records'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

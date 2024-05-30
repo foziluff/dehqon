@@ -16,6 +16,15 @@ class ConversionConsumptionRepository extends CoreRepository
         return $this->startConditions()->orderBy('id', 'desc')->with('productType')->paginate($quantity);
     }
 
+    public function getByWorkConversionIdPaginate($conversion_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('conversion_id', $conversion_id)
+            ->with('conversionType')
+            ->paginate($quantity);
+    }
+
 
     public function search($value)
     {

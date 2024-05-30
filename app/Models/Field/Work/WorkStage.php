@@ -13,6 +13,7 @@ class WorkStage extends Model
         'date',
         'work_id',
         'material',
+        'work_plan_id',
         'material_quantity',
         'material_quantity_unit',
     ];
@@ -20,5 +21,10 @@ class WorkStage extends Model
     public function work()
     {
         return $this->belongsTo(Work::class);
+    }
+
+    public function workPlan()
+    {
+        return $this->belongsTo(WorkPlan::class);
     }
 }

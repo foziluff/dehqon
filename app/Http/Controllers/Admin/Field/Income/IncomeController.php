@@ -32,6 +32,15 @@ class IncomeController extends Controller
         return view('admin.field.income.index', compact('records'));
     }
 
+    /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByField($id)
+    {
+        $records = $this->incomeRepository->getByFieldIdPaginate($id, 20);
+        return view('admin.field.income.index', compact('records'));
+    }
+
     public function create()
     {
         $fields = $this->fieldRepository->getAllMine($this->user->id);

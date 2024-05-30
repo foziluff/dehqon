@@ -44,6 +44,15 @@ class ConsumptionController extends Controller
         return view('admin.field.consumption.index', compact('records'));
     }
 
+    /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByField($id)
+    {
+        $records = $this->consumptionRepository->getByFieldIdPaginate($id, 20);
+        return view('admin.field.consumption.index', compact('records'));
+    }
+
     public function create()
     {
         $consumptionCategories = $this->consumptionCategoryRepository->getAll();

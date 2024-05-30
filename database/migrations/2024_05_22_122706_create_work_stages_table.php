@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->dateTime('date');
             $table->unsignedBigInteger('work_id');
+            $table->unsignedBigInteger('work_plan_id');
             $table->unsignedBigInteger('user_id');
             $table->string('material');
             $table->double('material_quantity');
             $table->string('material_quantity_unit');
             $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');
+            $table->foreign('work_plan_id')->references('id')->on('work_plans')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

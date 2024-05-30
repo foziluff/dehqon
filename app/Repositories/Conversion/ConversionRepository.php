@@ -16,6 +16,15 @@ class ConversionRepository extends CoreRepository
         return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
     }
 
+    public function getByUserIdPaginate($user_id, $quantity)
+    {
+        return $this->startConditions()
+            ->where('user_id', $user_id)
+            ->orderBy('title', 'asc')
+            ->toBase()
+            ->paginate($quantity);
+    }
+
 
     public function getAllMine($user_id)
     {

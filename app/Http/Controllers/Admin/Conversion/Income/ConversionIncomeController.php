@@ -32,6 +32,15 @@ class ConversionIncomeController extends Controller
         return view('admin.conversion.income.index', compact('records'));
     }
 
+    /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByConversion($id)
+    {
+        $records = $this->conversionIncomeRepository->getByWorkConversionIdPaginate($id, 20);
+        return view('admin.conversion.income.index', compact('records'));
+    }
+
     public function create()
     {
         $conversions = $this->conversionRepository->getAllMine($this->user->id);

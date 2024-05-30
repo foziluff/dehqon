@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('currency');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->default('/images/no-image.jpg');
+            $table->string('image_path', 2048)->nullable();
             $table->string('device')->nullable();
 
             $table->string('_token')->nullable();

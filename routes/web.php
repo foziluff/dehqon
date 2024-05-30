@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\Auth\AuthController;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Auth\SendCodeController;
+use App\Http\Controllers\Admin\Auth\Users\UsersController;
+use App\Http\Controllers\Admin\Auth\VerifyCodeController;
+use App\Http\Controllers\Admin\Auth2\AuthController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionCategoryController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionConsumptionController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionNamingController;
@@ -34,18 +38,45 @@ use App\Http\Controllers\Admin\Stock\StockController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/login', [AuthController::class, 'index']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('/login', [AuthController::class, 'login'])->name('login')
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login'])->name('login')
     ->middleware('throttle:3,2');
 
+
+Route::get('/send-code', [LoginController::class, 'sendCodeView'])->name('reset');
+Route::get('/verify-code', [LoginController::class, 'verifyView'])->name('verify');
+
+Route::post('/send-code', [SendCodeController::class, 'sendCode'])->name('sendCode')->middleware('throttle:1,1');
+Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->name('verifyCode')->middleware('throttle:3,3');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.layouts.main');
     })->name('main');
-    Route::resource('/cultures', CultureController::class)->names('cultures');
+
+    Route::resource('/users', UsersController::class)->names('users');
+    Route::get('/users/{id}/fields', [FieldController::class, 'filterByUser'])->name('users.fields');
+    Route::get('/users/{id}/conversions', [ConversionController::class, 'filterByUser'])->name('users.conversions');
+    Route::get('/users/{id}/stocks', [StockController::class, 'filterByUser'])->name('users.stocks');
+
     Route::resource('/fields', FieldController::class)->names('fields');
+    Route::get('/fields/{id}/notes', [NoteController::class, 'filterByField'])->name('fields.notes');
+    Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField'])->name('fields.rotations');
+    Route::get('/fields/{id}/product-quantities', [ProductQuantityController::class, 'filterByField'])->name('fields.productQuantities');
+    Route::get('/fields/{id}/incomes', [IncomeController::class, 'filterByField'])->name('fields.incomes');
+    Route::get('/fields/{id}/consumptions', [ConsumptionController::class, 'filterByField'])->name('fields.consumptions');
+    Route::get('/fields/{id}/work-plans', [WorkPlanController::class, 'filterByField'])->name('fields.workPlans');
+
+    Route::get('/work-plans/{id}/work-stages', [WorkStageController::class, 'filterByWorkPlan'])->name('workPlans.workStages');
+
+    Route::get('/conversions/{id}/incomes', [ConversionIncomeController::class, 'filterByConversion'])->name('conversions.incomes');
+    Route::get('/conversions/{id}/consumptions', [ConversionConsumptionController::class, 'filterByConversion'])->name('conversions.consumptions');
+    Route::get('/conversions/{id}/quantities', [ConversionQuantityController::class, 'filterByConversion'])->name('conversions.quantities');
+
+
+    Route::resource('/cultures', CultureController::class)->names('cultures');
     Route::resource('/problems', ProblemController::class)->names('problems');
     Route::resource('/notes', NoteController::class)->names('notes');
     Route::delete('/notes-images/{id}', [NoteImageController::class, 'destroy'])->name('noteImages.destroy');

@@ -70,7 +70,14 @@
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите номер телефона" autofocus>
                         </div>
                         <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label" for="password">Пароль</label>
+                                <a href="{{ route('sendCode') }}">
+                                    <small>Забыли пароль?</small>
+                                </a>
+                            </div>
                             <div class="input-group input-group-merge">
+
                                 <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>

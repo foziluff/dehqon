@@ -27,6 +27,15 @@
                         </select>
                     </div>
                     <div class="mt-3">
+                        <label class="form-label">План*</label>
+                        <select id="work_plan_id" class="form-select" name="work_plan_id" required>
+                            <option disabled selected>Выбрать план</option>
+                            @foreach($workPlans as $workPlan)
+                                <option value="{{ $workPlan->id }}" {{ old('work_plan_id', $record->work_plan_id) == $workPlan->id ? 'selected' : '' }}>{{ $workPlan->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mt-3">
                         <label class="form-label">Материал*</label>
                         <input value="{{ $record->material }}" name="material" placeholder="Материал" type="text" class="form-control" required>
                     </div>

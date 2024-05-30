@@ -16,6 +16,15 @@ class IncomeRepository extends CoreRepository
         return $this->startConditions()->orderBy('id', 'desc')->with('productType')->paginate($quantity);
     }
 
+    public function getByFieldIdPaginate($field_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('field_id', $field_id)
+            ->with('productType')
+            ->paginate($quantity);
+    }
+
 
 
     public function search($value)

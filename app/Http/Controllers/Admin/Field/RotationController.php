@@ -33,6 +33,15 @@ class RotationController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByField($id)
+    {
+        $records = $this->rotationRepository->getByFieldIdPaginate($id, 20);
+        return view('admin.field.rotation.index', compact('records'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

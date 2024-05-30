@@ -50,7 +50,7 @@ class User extends Authenticatable
         'gender',
         'role',
         'currency',
-        'profile_photo_path',
+        'image_path',
     ];
 
     /**

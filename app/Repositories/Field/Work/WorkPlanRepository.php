@@ -19,6 +19,23 @@ class WorkPlanRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getByFieldIdPaginate($field_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('field_id', $field_id)
+            ->with('field')
+            ->paginate($quantity);
+    }
+
+
+    public function getAllMine($user_id)
+    {
+        return $this->startConditions()
+            ->where('user_id', $user_id)
+            ->toBase()
+            ->get();
+    }
     public function getAllByFieldId($field_id)
     {
         return $this->startConditions()

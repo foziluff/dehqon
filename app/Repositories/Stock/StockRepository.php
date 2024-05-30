@@ -16,6 +16,15 @@ class StockRepository extends CoreRepository
         return $this->startConditions()->orderBy('id', 'desc')->with('consumptionProductionMean')->paginate($quantity);
     }
 
+    public function getByUserIdPaginate($user_id, $quantity)
+    {
+        return $this->startConditions()
+            ->where('user_id', $user_id)
+            ->orderBy('title', 'asc')
+            ->toBase()
+            ->paginate($quantity);
+    }
+
 
 
     public function search($value)

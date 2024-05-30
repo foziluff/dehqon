@@ -19,6 +19,15 @@ class RotationRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getByFieldIdPaginate($field_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('field_id', $field_id)
+            ->with('field', 'culture')
+            ->paginate($quantity);
+    }
+
     public function getAllMine($user_id)
     {
         return $this->startConditions()

@@ -73,6 +73,13 @@
             <div class="menu-inner-shadow"></div>
 
             <ul class="menu-inner py-1 overflow-auto">
+                <!-- Пользователи -->
+                <li class="menu-item {{ Request::segment(2) === 'users' ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-user'></i>
+                        <div>Пользователи</div>
+                    </a>
+                </li>
                 <!-- Культуры -->
                 <li class="menu-item {{ Request::segment(2) === 'cultures' ? 'active' : '' }}">
                     <a href="{{ route('cultures.index') }}" class="menu-link">
@@ -83,19 +90,12 @@
 
                 <!-- Поля -->
                 <li class="menu-item fields-submenu {{ Request::segment(2) === 'fields' ||
-                            Request::segment(2) === 'rotations' ||
                             Request::segment(2) === 'problems' ||
-                            Request::segment(2) === 'notes' ||
                             Request::segment(2) === 'works' ||
-                            Request::segment(2) === 'work-plans' ||
-                            Request::segment(2) === 'work-stages' ||
-                            Request::segment(2) === 'product-quantities' ||
-                            Request::segment(2) === 'incomes' ||
                             Request::segment(2) === 'consumption-categories' ||
                             Request::segment(2) === 'consumption-namings' ||
                             Request::segment(2) === 'consumption-operations' ||
-                            Request::segment(2) === 'consumption-production-means' ||
-                            Request::segment(2) === 'consumptions' ? 'active open' : '' }}">
+                            Request::segment(2) === 'consumption-production-means' ? 'active open' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class='menu-icon tf-icons bx bx-map'></i>
                         <div>Поля</div>
@@ -107,32 +107,10 @@
                                 <div>Поля</div>
                             </a>
                         </li>
-                        <!-- Севооборот -->
-                        <li class="menu-item {{ Request::segment(2) === 'rotations' ? 'active' : '' }}">
-                            <a href="{{ route('rotations.index') }}" class="menu-link">
-                                <div>Севооборот</div>
-                            </a>
-                        </li>
-                        <!-- Заметки -->
-                        <li class="menu-item {{ Request::segment(2) === 'notes' ? 'active' : '' }}">
-                            <a href="{{ route('notes.index') }}" class="menu-link">
-                                <div>Заметки</div>
-                            </a>
-                        </li>
                         <!-- Проблемы -->
                         <li class="menu-item {{ Request::segment(2) === 'problems' ? 'active' : '' }}">
                             <a href="{{ route('problems.index') }}" class="menu-link">
                                 <div>Проблемы</div>
-                            </a>
-                        </li>
-                        <li class="menu-item {{ Request::segment(2) === 'product-quantities' ? 'active' : '' }}">
-                            <a href="{{ route('productQuantities.index') }}" class="menu-link">
-                                <div>Количество продуктции</div>
-                            </a>
-                        </li>
-                        <li class="menu-item {{ Request::segment(2) === 'incomes' ? 'active' : '' }}">
-                            <a href="{{ route('incomes.index') }}" class="menu-link">
-                                <div>Доходы</div>
                             </a>
                         </li>
                          <!-- Расходы -->
@@ -169,39 +147,13 @@
                                         <div>Средства производства</div>
                                     </a>
                                 </li>
-                                <!-- Расходы -->
-                                <li class="menu-item {{ Request::segment(2) === 'consumptions' ? 'active' : '' }}">
-                                    <a href="{{ route('consumptions.index') }}" class="menu-link">
-                                        <div>Расходы</div>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <!-- Работы -->
-                        <li class="menu-item {{ Request::segment(2) === 'works' || Request::segment(2) === 'work-plans' || Request::segment(2) === 'work-stages' ? 'active open' : '' }}">
-                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <li class="menu-item  {{ Request::segment(2) === 'works' ? 'active' : '' }}">
+                            <a href="{{ route('works.index') }}" class="menu-link">
                                 <div>Работы</div>
                             </a>
-                            <ul class="menu-sub">
-                                <!-- Работы -->
-                                <li class="menu-item {{ Request::segment(2) === 'works' ? 'active' : '' }}">
-                                    <a href="{{ route('works.index') }}" class="menu-link">
-                                        <div>Работы</div>
-                                    </a>
-                                </li>
-                                <!-- План работ -->
-                                <li class="menu-item {{ Request::segment(2) === 'work-plans' ? 'active' : '' }}">
-                                    <a href="{{ route('workPlans.index') }}" class="menu-link">
-                                        <div>План работ</div>
-                                    </a>
-                                </li>
-                                <!-- Этап работ -->
-                                <li class="menu-item {{ Request::segment(2) === 'work-stages' ? 'active' : '' }}">
-                                    <a href="{{ route('workStages.index') }}" class="menu-link">
-                                        <div>Этап работ</div>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                     </ul>
@@ -221,97 +173,51 @@
                     </a>
                 </li>
 
-                <li class="menu-item {{ Request::segment(2) === 'stocks' ? 'active' : '' }}">
-                    <a href="{{ route('stocks.index') }}" class="menu-link">
-                        <i class='menu-icon tf-icons bx bx-archive-in'></i>
-                        <div>Склад</div>
-                    </a>
-                </li>
-
                 <!-- Переработки -->
-                <li class="menu-item fields-submenu {{ Request::segment(2) === 'conversions' ||
-                            Request::segment(2) === 'conversion-categories' ||
-                            Request::segment(2) === 'conversion-quantities' ||
-                            Request::segment(2) === 'conversion-types' ||
-                            Request::segment(2) === 'conversion-incomes' ||
-                            Request::segment(2) === 'conversion-namings' ||
-                            Request::segment(2) === 'conversion-operations' ||
-                            Request::segment(2) === 'conversion-production-means' ||
-                            Request::segment(2) === 'conversion-consumptions' ? 'active open' : '' }}">
+                <li class="menu-item fields-submenu {{
+                        Request::segment(2) === 'conversion-categories' ||
+                        Request::segment(2) === 'conversion-types' ||
+                        Request::segment(2) === 'conversion-namings' ||
+                        Request::segment(2) === 'conversion-operations' ||
+                        Request::segment(2) === 'conversion-production-means' ? 'active open' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class='menu-icon tf-icons bx bx-recycle'></i>
                         <div>Переработки</div>
                     </a>
                     <ul class="menu-sub">
-                        <!-- Поля -->
-                        <li class="menu-item {{ Request::segment(2) === 'conversions' ? 'active' : '' }}">
-                            <a href="{{ route('conversions.index') }}" class="menu-link">
-                                <div>Переработки</div>
+                        <!-- Категории переработок -->
+                        <li class="menu-item {{ Request::segment(2) === 'conversion-categories' ? 'active' : '' }}">
+                            <a href="{{ route('conversionCategories.index') }}" class="menu-link">
+                                <div>Категории переработок</div>
                             </a>
                         </li>
-                        <li class="menu-item {{ Request::segment(2) === 'conversion-quantities' ? 'active' : '' }}">
-                            <a href="{{ route('conversionQuantities.index') }}" class="menu-link">
-                                <div>Количество переработок</div>
+                        <!-- Типы -->
+                        <li class="menu-item {{ Request::segment(2) === 'conversion-types' ? 'active' : '' }}">
+                            <a href="{{ route('conversionTypes.index') }}" class="menu-link">
+                                <div>Типы</div>
                             </a>
                         </li>
-                        <li class="menu-item {{ Request::segment(2) === 'conversion-incomes' ? 'active' : '' }}">
-                            <a href="{{ route('conversionIncomes.index') }}" class="menu-link">
-                                <div>Доходы</div>
+                        <!-- Наименования -->
+                        <li class="menu-item {{ Request::segment(2) === 'conversion-namings' ? 'active' : '' }}">
+                            <a href="{{ route('conversionNamings.index') }}" class="menu-link">
+                                <div>Наименования</div>
                             </a>
                         </li>
-                        <!-- Расходы -->
-                        <li class="menu-item consumption-submenu {{ Request::segment(2) === 'conversion-categories' ||
-                                        Request::segment(2) === 'conversion-namings' ||
-                                        Request::segment(2) === 'conversion-consumptions' ||
-                                        Request::segment(2) === 'conversion-operations' ||
-                                        Request::segment(2) === 'conversion-types' ||
-                                        Request::segment(2) === 'conversion-production-means' ||
-                                        Request::segment(2) === 'conversion' ? 'active open' : '' }}">
-                            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                <div>Расходы</div>
+                        <!-- Операции -->
+                        <li class="menu-item {{ Request::segment(2) === 'conversion-operations' ? 'active' : '' }}">
+                            <a href="{{ route('conversionOperations.index') }}" class="menu-link">
+                                <div>Операции</div>
                             </a>
-                            <ul class="menu-sub">
-                                <!-- Категории расходов -->
-                                <li class="menu-item {{ Request::segment(2) === 'conversion-categories' ? 'active' : '' }}">
-                                    <a href="{{ route('conversionCategories.index') }}" class="menu-link">
-                                        <div>Категории расходов</div>
-                                    </a>
-                                </li>
-                                <!-- Наименование расходов -->
-                                <li class="menu-item {{ Request::segment(2) === 'conversion-namings' ? 'active' : '' }}">
-                                    <a href="{{ route('conversionNamings.index') }}" class="menu-link">
-                                        <div>Наименование расходов</div>
-                                    </a>
-                                </li>
-                                <!-- Операции расходов -->
-                                <li class="menu-item {{ Request::segment(2) === 'conversion-operations' ? 'active' : '' }}">
-                                    <a href="{{ route('conversionOperations.index') }}" class="menu-link">
-                                        <div>Операции расходов</div>
-                                    </a>
-                                </li>
-                                <!-- Средства производства -->
-                                <li class="menu-item {{ Request::segment(2) === 'conversion-production-means' ? 'active' : '' }}">
-                                    <a href="{{ route('conversionProductionMeans.index') }}" class="menu-link">
-                                        <div>Средства производства</div>
-                                    </a>
-                                </li>
-                                <!-- Типы -->
-                                <li class="menu-item {{ Request::segment(2) === 'conversion-types' ? 'active' : '' }}">
-                                    <a href="{{ route('conversionTypes.index') }}" class="menu-link">
-                                        <div>Типы</div>
-                                    </a>
-                                </li>
-                                <!-- Расходы -->
-                                <li class="menu-item {{ Request::segment(2) === 'conversion-consumptions' ? 'active' : '' }}">
-                                    <a href="{{ route('conversionConsumptions.index') }}" class="menu-link">
-                                        <div>Расходы</div>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
+                        <!-- Средства производства -->
+                        <li class="menu-item {{ Request::segment(2) === 'conversion-production-means' ? 'active' : '' }}">
+                            <a href="{{ route('conversionProductionMeans.index') }}" class="menu-link">
+                                <div>Средства производства</div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
+
             </ul>
 
         </aside>

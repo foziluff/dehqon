@@ -15,7 +15,16 @@ class WorkStageRepository extends CoreRepository
     {
         return $this->startConditions()
             ->orderBy('id', 'desc')
-            ->with('work')
+            ->with('work', 'workPlan')
+            ->paginate($quantity);
+    }
+
+    public function getByWorkPlanIdPaginate($work_plan_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('work_plan_id', $work_plan_id)
+            ->with('work', 'workPlan')
             ->paginate($quantity);
     }
 
@@ -27,7 +36,8 @@ class WorkStageRepository extends CoreRepository
 
     public function getEditOrFail($id)
     {
-        return $this->startConditions()->findOrFail($id);
+        return $this->startConditions()
+            ->with('work', 'workPlan')->findOrFail($id);
     }
 
 

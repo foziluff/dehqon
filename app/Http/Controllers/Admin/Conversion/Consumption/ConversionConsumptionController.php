@@ -47,6 +47,15 @@ class ConversionConsumptionController extends Controller
         return view('admin.conversion.consumption.index', compact('records'));
     }
 
+    /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByConversion($id)
+    {
+        $records = $this->conversionConsumptionRepository->getByWorkConversionIdPaginate($id, 20);
+        return view('admin.conversion.consumption.index', compact('records'));
+    }
+
     public function create()
     {
         $conversionCategories = $this->conversionCategoryRepository->getAll();

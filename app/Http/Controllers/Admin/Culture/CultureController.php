@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Culture;
 
-use App\Actions\CultureImageAction;
+use App\Actions\ImageAction;
 use App\Http\Controllers\Base\Controller;
-use App\Http\Requests\Admin\Culture\StoreCultureRequest;
-use App\Http\Requests\Admin\Culture\UpdateCultureRequest;
+use App\Http\Requests\Admin\Culture\StoreUsersRequest;
+use App\Http\Requests\Admin\Culture\UpdateUsersRequest;
 use App\Repositories\Culture\CultureRepository;
 
 class CultureController extends Controller
@@ -37,9 +37,9 @@ class CultureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCultureRequest $request)
+    public function store(StoreUsersRequest $request)
     {
-        $request = (new CultureImageAction())->handle($request);
+        $request = (new ImageAction())->handle($request);
         $record = $this->user->cultures()->create($request->only(['title', 'image_path']));
         return redirect()->route('cultures.edit', $record->id)->with(['success' => 'Успешно добавлен!']);
     }
@@ -65,9 +65,9 @@ class CultureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCultureRequest $request, int $id)
+    public function update(UpdateUsersRequest $request, int $id)
     {
-        $request = (new CultureImageAction())->handle($request);
+        $request = (new ImageAction())->handle($request);
         $this->cultureRepository->update($id, $request->only(['title', 'image_path']));
         return redirect()->back()->with(['success' => 'Успешно обновлен!']);
     }

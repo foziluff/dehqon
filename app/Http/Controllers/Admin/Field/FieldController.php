@@ -32,6 +32,15 @@ class FieldController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByUser($id)
+    {
+        $records = $this->fieldRepository->getByUserIdPaginate($id, 20);
+        return view('admin.field.index', compact('records'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

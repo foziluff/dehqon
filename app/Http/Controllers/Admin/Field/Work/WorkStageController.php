@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Admin\Field\Work;
 use App\Http\Controllers\Base\Controller;
 use App\Http\Requests\Admin\Field\WorkStage\StoreWorkStageRequest;
 use App\Http\Requests\Admin\Field\WorkStage\UpdateWorkStageRequest;
+use App\Repositories\Field\Work\WorkPlanRepository;
 use App\Repositories\Field\Work\WorkRepository;
 use App\Repositories\Field\Work\WorkStageRepository;
 
 class WorkStageController extends Controller
 {
     private $workStageRepository;
+    private $workPlanRepository;
     private $workRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->workStageRepository = app(WorkStageRepository::class);
+        $this->workPlanRepository = app(WorkPlanRepository::class);
         $this->workRepository = app(WorkRepository ::class);
     }
 
@@ -30,12 +33,22 @@ class WorkStageController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByWorkPlan($id)
+    {
+        $records = $this->workStageRepository->getByWorkPlanIdPaginate($id, 20);
+        return view('admin.field.work.workStage.index', compact('records'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         $works = $this->workRepository->getAll();
-        return view('admin.field.work.workStage.create', compact('works'));
+        $workPlans = $this->workPlanRepository->getAllMine($this->user->id);
+        return view('admin.field.work.workStage.create', compact('works', 'workPlans'));
     }
 
     /**
@@ -61,9 +74,10 @@ class WorkStageController extends Controller
      */
     public function edit($id)
     {
+        $workPlans = $this->workPlanRepository->getAllMine($this->user->id);
         $works = $this->workRepository->getAll();
         $record = $this->workStageRepository->getEditOrFail($id);
-        return view('admin.field.work.workStage.edit', compact('record', 'works'));
+        return view('admin.field.work.workStage.edit', compact('record', 'works', 'workPlans'));
     }
 
     /**

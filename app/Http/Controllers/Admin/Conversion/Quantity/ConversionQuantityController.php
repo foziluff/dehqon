@@ -36,6 +36,15 @@ class ConversionQuantityController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByConversion($id)
+    {
+        $records = $this->conversionQuantityRepository->getByWorkConversionIdPaginate($id, 20);
+        return view('admin.conversion.conversionQuantity.index', compact('records'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

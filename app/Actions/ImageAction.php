@@ -3,7 +3,7 @@
 namespace App\Actions;
 
 
-class CultureImageAction
+class ImageAction
 {
     public function handle($request)
     {

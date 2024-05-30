@@ -19,6 +19,15 @@ class NoteRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getByFieldIdPaginate($field_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('field_id', $field_id)
+            ->with('field', 'problem')
+            ->paginate($quantity);
+    }
+
 
     public function search($value)
     {

@@ -37,6 +37,15 @@ class NoteController extends Controller
     }
 
     /**
+     * Display a filterByUser of the resource.
+     */
+    public function filterByField($id)
+    {
+        $records = $this->noteRepository->getByFieldIdPaginate($id, 20);
+        return view('admin.field.note.index', compact('records'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
