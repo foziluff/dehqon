@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\Conversion\ConversionController;
 use App\Http\Controllers\Admin\Conversion\Income\ConversionIncomeController;
 use App\Http\Controllers\Admin\Conversion\Quantity\ConversionQuantityController;
 use App\Http\Controllers\Admin\Culture\CultureController;
+use App\Http\Controllers\Admin\Culture\CultureSeasonController;
+use App\Http\Controllers\Admin\Culture\CultureSeasonImageController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionCategoryController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionNamingController;
@@ -77,6 +79,10 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
 
 
     Route::resource('/cultures', CultureController::class)->names('cultures');
+    Route::get('/cultures/{id}/seasons', [CultureSeasonController::class, 'filterByCulture'])->name('cultures.cultureSeasons');
+    Route::resource('/culture-seasons', CultureSeasonController::class)->names('cultureSeasons');
+    Route::delete('/culture-season-images/{id}', [CultureSeasonImageController::class, 'destroy'])->name('cultureSeasonImages.destroy');
+
     Route::resource('/problems', ProblemController::class)->names('problems');
     Route::resource('/notes', NoteController::class)->names('notes');
     Route::delete('/notes-images/{id}', [NoteImageController::class, 'destroy'])->name('noteImages.destroy');

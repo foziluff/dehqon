@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Field\Field;
 use Database\Seeders\Auth\UserSeeder;
+use Database\Seeders\Culture\CultureSeasonSeeder;
 use Database\Seeders\Culture\CultureSeeder;
 use Database\Seeders\Field\Consumption\ConsumptionCategorySeeder;
 use Database\Seeders\Field\Consumption\ConsumptionNamingSeeder;
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(FuelTypeSeeder::class);
         $this->call(CultureSeeder::class);
+        $this->call(CultureSeasonSeeder::class);
         Field::factory(10)->create();
         $this->call(ProblemSeeder::class);
         $this->call(NoteSeeder::class);
