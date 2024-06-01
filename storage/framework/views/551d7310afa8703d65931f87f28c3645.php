@@ -26,6 +26,11 @@
                         </select>
                     </div>
 
+                    <div class="mt-3">
+                        <label class="form-label">Изображения</label>
+                        <input type="file" name="images[]" class="form-control" multiple>
+                    </div>
+
                     <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                 </form>
             </div>

@@ -9,6 +9,7 @@
         <div class="card mb-4">
             <h5 class="card-header"><?php echo e($title); ?></h5>
             <div class="card-body">
+                <a href="<?php echo e(route('cultureSeasons.works', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Работы</a>
                 <div class="mt-3">
                     <label class="form-label">Название</label>
                     <div class="form-control"><?php echo e($record->title); ?></div>

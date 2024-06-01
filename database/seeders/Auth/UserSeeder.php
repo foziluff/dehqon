@@ -13,8 +13,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $user = [
-            'phone' =>  '123123',
-            'password' => bcrypt('123123'),
+            'phone' =>  '992002887717',
+            'password' => bcrypt('992002887717'),
             'name'  =>  'Abdurazzoq',
             'surname' => 'Fozilov',
             'currency' => 'somoni',

@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Conversion\Quantity\ConversionQuantityController;
 use App\Http\Controllers\Admin\Culture\CultureController;
 use App\Http\Controllers\Admin\Culture\CultureSeasonController;
 use App\Http\Controllers\Admin\Culture\CultureSeasonImageController;
+use App\Http\Controllers\Admin\Culture\CultureSeasonWorkController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionCategoryController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionNamingController;
@@ -48,7 +49,8 @@ Route::post('/login', [LoginController::class, 'login'])->name('login')
 Route::get('/send-code', [LoginController::class, 'sendCodeView'])->name('reset');
 Route::get('/verify-code', [LoginController::class, 'verifyView'])->name('verify');
 
-Route::post('/send-code', [SendCodeController::class, 'sendCode'])->name('sendCode')->middleware('throttle:1,1');
+Route::post('/send-code', [SendCodeController::class, 'sendCode'])->name('sendCode')
+    ->middleware('throttle:1,1');
 Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->name('verifyCode')->middleware('throttle:3,3');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -82,6 +84,8 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::get('/cultures/{id}/seasons', [CultureSeasonController::class, 'filterByCulture'])->name('cultures.cultureSeasons');
     Route::resource('/culture-seasons', CultureSeasonController::class)->names('cultureSeasons');
     Route::delete('/culture-season-images/{id}', [CultureSeasonImageController::class, 'destroy'])->name('cultureSeasonImages.destroy');
+    Route::resource('/culture-season-works', CultureSeasonWorkController::class)->names('cultureSeasonWorks');
+    Route::get('/culture-seasons/{id}/works', [CultureSeasonWorkController::class, 'filterByCultureSeason'])->name('cultureSeasons.works');
 
     Route::resource('/problems', ProblemController::class)->names('problems');
     Route::resource('/notes', NoteController::class)->names('notes');
