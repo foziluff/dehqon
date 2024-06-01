@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Culture;
 
 use App\Actions\ImageAction;
 use App\Http\Controllers\Base\Controller;
-use App\Http\Requests\Admin\Culture\StoreUsersRequest;
-use App\Http\Requests\Admin\Culture\UpdateUsersRequest;
+use App\Http\Requests\Admin\Culture\StoreCultureRequest;
+use App\Http\Requests\Admin\Culture\UpdateCultureRequest;
 use App\Repositories\Culture\CultureRepository;
 
 class CultureController extends Controller
@@ -37,7 +37,7 @@ class CultureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUsersRequest $request)
+    public function store(StoreCultureRequest $request)
     {
         $request = (new ImageAction())->handle($request);
         $record = $this->user->cultures()->create($request->only(['title', 'image_path']));
@@ -65,7 +65,7 @@ class CultureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUsersRequest $request, int $id)
+    public function update(UpdateCultureRequest $request, int $id)
     {
         $request = (new ImageAction())->handle($request);
         $this->cultureRepository->update($id, $request->only(['title', 'image_path']));

@@ -49,7 +49,7 @@ class CultureSeasonWorkController extends Controller
     public function store(StoreCultureSeasonWorkRequest $request)
     {
         $record = $this->cultureSeasonWorkRepository->create($request->validated());
-        return redirect()->route('cultureSeasonWorks.edit', $record->id)->with(['success' => 'Успешно добавлена!']);
+        return redirect()->route('cultureSeasons.works', $record->culture_season_id)->with(['success' => 'Успешно добавлена!']);
     }
 
     /**

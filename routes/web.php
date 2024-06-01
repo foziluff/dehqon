@@ -34,6 +34,9 @@ use App\Http\Controllers\Admin\Field\RotationController;
 use App\Http\Controllers\Admin\Field\Work\WorkController;
 use App\Http\Controllers\Admin\Field\Work\WorkPlanController;
 use App\Http\Controllers\Admin\Field\Work\WorkStageController;
+use App\Http\Controllers\Admin\Irrigation\IrrigationController;
+use App\Http\Controllers\Admin\Irrigation\IrrigationTypeController;
+use App\Http\Controllers\Admin\Irrigation\IrrigationTypeImageController;
 use App\Http\Controllers\Admin\News\NewsController;
 use App\Http\Controllers\Admin\News\NewsImageController;
 use App\Http\Controllers\Admin\Question\QuestionController;
@@ -122,4 +125,10 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::delete('/news-images/{id}', [NewsImageController::class, 'destroy'])->name('newsImages.destroy');
 
     Route::resource('/questions', QuestionController::class)->names('questions');
+
+    Route::resource('/irrigations', IrrigationController::class)->names('irrigations');
+    Route::resource('/irrigation-types', IrrigationTypeController::class)->names('irrigationTypes');
+    Route::delete('/irrigation-type-images/{id}', [IrrigationTypeImageController::class, 'destroy'])->name('irrigationTypeImages.destroy');
+    Route::get('/irrigations/{id}/types', [IrrigationTypeController::class, 'filterByIrrigation'])->name('irrigations.irrigationTypes');
+
 });

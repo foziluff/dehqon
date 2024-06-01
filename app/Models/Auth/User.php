@@ -18,6 +18,7 @@ use App\Models\Field\Rotation;
 use App\Models\Field\Work\Work;
 use App\Models\Field\Work\WorkPlan;
 use App\Models\Field\Work\WorkStage;
+use App\Models\Irrigation\Irrigation;
 use App\Models\News\News;
 use App\Models\Question\Question;
 use App\Models\Stock\Stock;
@@ -176,6 +177,11 @@ class User extends Authenticatable
     public function questions()
     {
         return $this->hasMany(Question::class);
+    }
+
+    public function irrigations()
+    {
+        return $this->hasMany(Irrigation::class);
     }
 
 

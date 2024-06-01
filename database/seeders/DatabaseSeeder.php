@@ -22,6 +22,7 @@ use Database\Seeders\Field\Work\WorkPlanSeeder;
 use Database\Seeders\Field\Work\WorkSeeder;
 use Database\Seeders\Field\Work\WorkStageSeeder;
 use Database\Seeders\FuelType\FuelTypeSeeder;
+use Database\Seeders\Irrigation\IrrigationSeeder;
 use Database\Seeders\Stock\StockSeeder;
 use Illuminate\Database\Seeder;
 
@@ -57,5 +58,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IncomeSeeder::class);
         $this->call(ProductQuantitySeeder::class);
         $this->call(StockSeeder::class);
+        $this->call(IrrigationSeeder::class);
     }
 }

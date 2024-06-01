@@ -87,6 +87,13 @@
                         <div>Культуры</div>
                     </a>
                 </li>
+                <!-- Ирригации -->
+                <li class="menu-item <?php echo e(Request::segment(2) === 'irrigations' ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('irrigations.index')); ?>" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-leaf'></i>
+                        <div>Орошении</div>
+                    </a>
+                </li>
 
                 <!-- Поля -->
                 <li class="menu-item fields-submenu <?php echo e(Request::segment(2) === 'fields' ||
