@@ -3,6 +3,7 @@
 namespace App\Models\Auth;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\AgroMarket\AgroMarket;
 use App\Models\Conversion\Consumption\ConversionConsumption;
 use App\Models\Conversion\Conversion;
 use App\Models\Conversion\Income\ConversionIncome;
@@ -182,6 +183,11 @@ class User extends Authenticatable
     public function irrigations()
     {
         return $this->hasMany(Irrigation::class);
+    }
+
+    public function agroMarkets()
+    {
+        return $this->hasMany(AgroMarket::class);
     }
 
 

@@ -91,7 +91,14 @@
                 <li class="menu-item <?php echo e(Request::segment(2) === 'irrigations' ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('irrigations.index')); ?>" class="menu-link">
                         <i class='menu-icon tf-icons bx bx-leaf'></i>
-                        <div>Орошении</div>
+                        <div>Ирригации</div>
+                    </a>
+                </li>
+                <!-- Агромаркеты -->
+                <li class="menu-item <?php echo e(Request::segment(2) === 'agro-markets' ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('agroMarkets.index')); ?>" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-lemon'></i>
+                        <div>Агромаркеты</div>
                     </a>
                 </li>
 

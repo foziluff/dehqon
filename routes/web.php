@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AgroMarket\AgroMarketController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\SendCodeController;
 use App\Http\Controllers\Admin\Auth\Users\UsersController;
@@ -130,5 +131,7 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/irrigation-types', IrrigationTypeController::class)->names('irrigationTypes');
     Route::delete('/irrigation-type-images/{id}', [IrrigationTypeImageController::class, 'destroy'])->name('irrigationTypeImages.destroy');
     Route::get('/irrigations/{id}/types', [IrrigationTypeController::class, 'filterByIrrigation'])->name('irrigations.irrigationTypes');
+
+    Route::resource('/agro-markets', AgroMarketController::class)->names('agroMarkets');
 
 });

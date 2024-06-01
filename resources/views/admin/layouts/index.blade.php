@@ -94,6 +94,13 @@
                         <div>Ирригации</div>
                     </a>
                 </li>
+                <!-- Агромаркеты -->
+                <li class="menu-item {{ Request::segment(2) === 'agro-markets' ? 'active' : '' }}">
+                    <a href="{{ route('agroMarkets.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-lemon'></i>
+                        <div>Агромаркеты</div>
+                    </a>
+                </li>
 
                 <!-- Поля -->
                 <li class="menu-item fields-submenu {{ Request::segment(2) === 'fields' ||
