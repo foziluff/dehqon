@@ -101,6 +101,13 @@
                         <div>Агромаркеты</div>
                     </a>
                 </li>
+                <!-- Агрокредиты -->
+                <li class="menu-item <?php echo e(Request::segment(2) === 'agro-credits' ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('agroCredits.index')); ?>" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-money'></i>
+                        <div>Агрокредиты</div>
+                    </a>
+                </li>
 
                 <!-- Поля -->
                 <li class="menu-item fields-submenu <?php echo e(Request::segment(2) === 'fields' ||

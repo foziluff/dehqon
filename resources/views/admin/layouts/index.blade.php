@@ -101,6 +101,13 @@
                         <div>Агромаркеты</div>
                     </a>
                 </li>
+                <!-- Агрокредиты -->
+                <li class="menu-item {{ Request::segment(2) === 'agro-credits' ? 'active' : '' }}">
+                    <a href="{{ route('agroCredits.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-money'></i>
+                        <div>Агрокредиты</div>
+                    </a>
+                </li>
 
                 <!-- Поля -->
                 <li class="menu-item fields-submenu {{ Request::segment(2) === 'fields' ||
