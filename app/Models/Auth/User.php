@@ -22,6 +22,7 @@ use App\Models\Field\Work\WorkPlan;
 use App\Models\Field\Work\WorkStage;
 use App\Models\Irrigation\Irrigation;
 use App\Models\News\News;
+use App\Models\Organization\Organization;
 use App\Models\Question\Question;
 use App\Models\Stock\Stock;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -194,6 +195,11 @@ class User extends Authenticatable
     public function agroCredits()
     {
         return $this->hasMany(AgroCredit::class);
+    }
+
+    public function organizations()
+    {
+        return $this->hasMany(Organization::class);
     }
 
 

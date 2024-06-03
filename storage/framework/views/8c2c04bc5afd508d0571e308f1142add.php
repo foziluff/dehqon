@@ -108,6 +108,13 @@
                         <div>Агрокредиты</div>
                     </a>
                 </li>
+                <!-- Организации -->
+                <li class="menu-item <?php echo e(Request::segment(2) === 'organizations' ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('organizations.index')); ?>" class="menu-link">
+                        <i class='menu-icon tf-icons bx bxs-bank'></i>
+                        <div>Организации</div>
+                    </a>
+                </li>
 
                 <!-- Поля -->
                 <li class="menu-item fields-submenu <?php echo e(Request::segment(2) === 'fields' ||

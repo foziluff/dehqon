@@ -41,6 +41,7 @@ use App\Http\Controllers\Admin\Irrigation\IrrigationTypeController;
 use App\Http\Controllers\Admin\Irrigation\IrrigationTypeImageController;
 use App\Http\Controllers\Admin\News\NewsController;
 use App\Http\Controllers\Admin\News\NewsImageController;
+use App\Http\Controllers\Admin\Organization\OrganizationController;
 use App\Http\Controllers\Admin\Question\QuestionController;
 use App\Http\Controllers\Admin\Stock\StockController;
 use Illuminate\Support\Facades\Route;
@@ -135,5 +136,6 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
 
     Route::resource('/agro-markets', AgroMarketController::class)->names('agroMarkets');
     Route::resource('/agro-credits', AgroCreditController::class)->names('agroCredits');
+    Route::resource('/organizations', OrganizationController::class)->names('organizations');
 
 });

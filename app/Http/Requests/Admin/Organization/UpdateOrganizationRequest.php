@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\AgroCredit;
+namespace App\Http\Requests\Admin\Organization;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAgroCreditRequest extends FormRequest
+class UpdateOrganizationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

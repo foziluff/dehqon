@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\AgroCredit;
+namespace App\Http\Requests\Admin\Organization;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAgroCreditRequest extends FormRequest
+class StoreOrganizationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class UpdateAgroCreditRequest extends FormRequest
             'phone'     => 'required|string|max:20',
             'email'     => 'required|email|max:255',
             'site'      => 'required|url|max:255',
-            'image'     => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image'     => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }
