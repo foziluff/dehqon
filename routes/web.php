@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Auth\SendCodeController;
 use App\Http\Controllers\Admin\Auth\Users\UsersController;
 use App\Http\Controllers\Admin\Auth\VerifyCodeController;
 use App\Http\Controllers\Admin\Auth2\AuthController;
+use App\Http\Controllers\Admin\Chat\ChatController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionCategoryController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionConsumptionController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionNamingController;
@@ -39,6 +40,7 @@ use App\Http\Controllers\Admin\Field\Work\WorkStageController;
 use App\Http\Controllers\Admin\Irrigation\IrrigationController;
 use App\Http\Controllers\Admin\Irrigation\IrrigationTypeController;
 use App\Http\Controllers\Admin\Irrigation\IrrigationTypeImageController;
+use App\Http\Controllers\Admin\Message\MessageController;
 use App\Http\Controllers\Admin\News\NewsController;
 use App\Http\Controllers\Admin\News\NewsImageController;
 use App\Http\Controllers\Admin\Organization\OrganizationController;
@@ -137,5 +139,8 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/agro-markets', AgroMarketController::class)->names('agroMarkets');
     Route::resource('/agro-credits', AgroCreditController::class)->names('agroCredits');
     Route::resource('/organizations', OrganizationController::class)->names('organizations');
+
+    Route::resource('/chats', ChatController::class)->names('chats');
+    Route::resource('/messages',    MessageController::class)->names('messages');
 
 });

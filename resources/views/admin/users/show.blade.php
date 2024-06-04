@@ -51,6 +51,10 @@
                     </div>
                 </div>
                 <div class="mt-3">
+                    <label for="currency" class="form-label">Органиция</label>
+                    <div class="form-control"> {{ optional($record->organization)->title ?? 'Без организации' }}</div>
+                </div>
+                <div class="mt-3">
                     <label for="currency" class="form-label">Валюта</label>
                     <div class="form-control">{{ $record->currency }}</div>
                 </div>

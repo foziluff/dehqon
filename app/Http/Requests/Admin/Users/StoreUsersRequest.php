@@ -26,6 +26,7 @@ class StoreUsersRequest extends FormRequest
             'surname'               => 'required|string|max:255',
             'phone'                 => ['required', 'string', 'regex:/^992\s?\d{9}$/','unique:users,phone'],
             'born_in'               => 'required|date',
+            'organization_id'       => 'sometimes|nullable|integer',
             'password'              => 'required|string|min:8',
             'gender'                => 'required|integer|in:0,1',
             'currency'              => 'required|string|max:255',

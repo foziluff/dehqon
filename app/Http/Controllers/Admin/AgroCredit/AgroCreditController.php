@@ -6,7 +6,7 @@ use App\Actions\ImageAction;
 use App\Http\Controllers\Base\Controller;
 use App\Http\Requests\Admin\AgroCredit\StoreAgroCreditRequest;
 use App\Http\Requests\Admin\AgroCredit\UpdateAgroCreditRequest;
-use App\Repositories\AgroCredit\AgroCreditRepository;
+use App\Repositories\AgroCredit\MessageRepository;
 
 class AgroCreditController extends Controller
 {
@@ -15,7 +15,7 @@ class AgroCreditController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->agroCreditRepository = app(AgroCreditRepository::class);
+        $this->agroCreditRepository = app(MessageRepository::class);
     }
 
     /**

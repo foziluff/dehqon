@@ -21,6 +21,7 @@ use App\Models\Field\Work\Work;
 use App\Models\Field\Work\WorkPlan;
 use App\Models\Field\Work\WorkStage;
 use App\Models\Irrigation\Irrigation;
+use App\Models\Message\Message;
 use App\Models\News\News;
 use App\Models\Organization\Organization;
 use App\Models\Question\Question;
@@ -47,6 +48,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'organization_id',
         'surname',
         'phone',
         'born_in',
@@ -90,6 +92,16 @@ class User extends Authenticatable
             'password' => 'hashed',
             'born_in' => 'datetime'
         ];
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 
     public function fields()
@@ -195,11 +207,6 @@ class User extends Authenticatable
     public function agroCredits()
     {
         return $this->hasMany(AgroCredit::class);
-    }
-
-    public function organizations()
-    {
-        return $this->hasMany(Organization::class);
     }
 
 

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('description');
             $table->double('defeated_area');
 
+            $table->unsignedBigInteger('organization_id')->nullable();
+
             $table->foreign('problem_id')->references('id')->on('problems')->onDelete('cascade');
             $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

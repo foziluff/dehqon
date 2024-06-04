@@ -41,7 +41,7 @@ class OrganizationController extends Controller
     public function store(StoreOrganizationRequest $request)
     {
         $request = (new ImageAction())->handle($request);
-        $record = $this->user->organizations()->create($request->all());
+        $record = $this->organizationRepository->create($request->all());
         return redirect()->route('organizations.edit', $record->id)->with(['success' => 'Успешно добавлен!']);
     }
 

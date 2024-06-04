@@ -26,6 +26,7 @@ class UpdateUsersRequest extends FormRequest
             'surname'               => 'required|string|max:255',
             'phone'                 => ['sometimes', 'string', 'regex:/^992\s?\d{9}$/'],
             'born_in'               => 'required|date',
+            'organization_id'       => 'sometimes|nullable|integer',
             'password'              => 'sometimes|nullable|min:9|max:20',
             'gender'                => 'required|integer|in:0,1',
             'currency'              => 'required|string|max:255',

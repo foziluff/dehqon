@@ -26,6 +26,7 @@ class StoreNoteRequest extends FormRequest
             'date'          => 'required|date',
             'problem_id'    => 'required|exists:problems,id',
             'description'   => 'required|string|max:1000',
+            'organization_id'       => 'sometimes|nullable|integer',
             'defeated_area' => 'required|numeric|min:0',
             'images.*'      => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];

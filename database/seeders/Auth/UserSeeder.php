@@ -22,7 +22,19 @@ class UserSeeder extends Seeder
             'gender' => 1,
             'role' => 1,
         ];
+        $user2 = [
+            'phone' =>  '992002887718',
+            'password' => bcrypt('992002887718'),
+            'name'  =>  'Abdurazzoq',
+            'organization_id'  =>  1,
+            'surname' => 'Fozilov',
+            'currency' => 'somoni',
+            'born_in' => '2001-08-24',
+            'gender' => 1,
+            'role' => 1,
+        ];
 
         DB::table('users')->insert($user);
+        DB::table('users')->insert($user2);
     }
 }

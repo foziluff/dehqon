@@ -60,6 +60,16 @@
                         <input value="<?php echo e($record->currency); ?>" name="currency" placeholder="Валюта" type="text" class="form-control" required>
                     </div>
                     <div class="mt-3">
+                        <label for="organization_id" class="form-label">Организация*</label>
+                        <select id="organization_id" class="form-select" name="organization_id" required>
+                            <option value="0" <?php echo e(old('organization_id', $record->organization_id) == 0 ? 'selected' : ''); ?>>Без организации</option>
+                            <?php $__currentLoopData = $organizations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $organization): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($organization->id); ?>" <?php echo e(old('organization_id', $record->organization_id) == $organization->id ? 'selected' : ''); ?>><?php echo e($organization->title); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                    </div>
+
+                    <div class="mt-3">
                         <label for="image" class="form-label">Фото профиля*</label>
                         <input type="file" name="image" class="form-control">
                     </div>

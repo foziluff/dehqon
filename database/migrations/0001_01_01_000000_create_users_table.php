@@ -29,6 +29,8 @@ return new class extends Migration
 
             $table->integer('role')->nullable();
 
+            $table->unsignedBigInteger('organization_id')->nullable();
+
             $table->timestamps();
         });
 

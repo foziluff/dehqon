@@ -4,6 +4,7 @@ namespace App\Models\Field\Note;
 
 use App\Models\Auth\User;
 use App\Models\Field\Field;
+use App\Models\Message\Message;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,7 @@ class Note extends Model
 
     protected $fillable = [
         'field_id',
+        'organization_id',
         'date',
         'problem_id',
         'description',
@@ -26,6 +28,10 @@ class Note extends Model
     public function images()
     {
         return $this->hasMany(NoteImage::class);
+    }
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 
     public function field()

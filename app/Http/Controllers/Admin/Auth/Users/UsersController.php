@@ -6,15 +6,18 @@ use App\Actions\ImageAction;
 use App\Http\Controllers\Base\Controller;
 use App\Http\Requests\Admin\Users\StoreUsersRequest;
 use App\Http\Requests\Admin\Users\UpdateUsersRequest;
+use App\Repositories\Organization\OrganizationRepository;
 use App\Repositories\Users\UsersRepository;
 
 class UsersController extends Controller
 {
     private $usersRepository;
+    private $organizationRepository;
 
     public function __construct()
     {
         parent::__construct();
+        $this->organizationRepository = app(OrganizationRepository::class);
         $this->usersRepository = app(UsersRepository::class);
     }
     /**
@@ -31,7 +34,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $organizations = $this->organizationRepository->getAll();
+        return view('admin.users.create', compact('organizations'));
     }
 
     /**
@@ -58,8 +62,9 @@ class UsersController extends Controller
      */
     public function edit(int $id)
     {
+        $organizations = $this->organizationRepository->getAll();
         $record = $this->usersRepository->getEditOrFail($id);
-        return view('admin.users.edit', compact('record'));
+        return view('admin.users.edit', compact('record', 'organizations'));
     }
 
     /**

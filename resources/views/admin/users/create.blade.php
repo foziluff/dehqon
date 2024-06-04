@@ -52,6 +52,17 @@
                         <label for="currency" class="form-label">Валюта*</label>
                         <input value="{{ old('currency') }}" name="currency" placeholder="Валюта" type="text" class="form-control" required>
                     </div>
+
+                    <div class="mt-3">
+                        <label for="organization_id" class="form-label">Организация*</label>
+                        <select id="organization_id" class="form-select" name="organization_id" required>
+                            <option selected value="0">Без организации</option>
+                            @foreach($organizations as $organization)
+                                <option value="{{ $organization->id }}" {{ old('organization_id') == $organization->id ? 'selected' : '' }}>{{ $organization->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="mt-3">
                         <label for="image" class="form-label">Фото профиля*</label>
                         <input type="file" name="image" class="form-control" required>

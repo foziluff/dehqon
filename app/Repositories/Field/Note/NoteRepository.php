@@ -19,6 +19,15 @@ class NoteRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getAllMyChatsWithPaginate($organization_id, $quantity)
+    {
+        return $this->startConditions()
+            ->where('organization_id', $organization_id)
+            ->orderBy('id', 'desc')
+            ->with('field', 'problem')
+            ->paginate($quantity);
+    }
+
     public function getByFieldIdPaginate($field_id, $quantity)
     {
         return $this->startConditions()
