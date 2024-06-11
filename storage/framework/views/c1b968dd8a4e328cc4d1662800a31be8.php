@@ -44,13 +44,24 @@
 
                     </div>
                 </div>
-                <div class="mt-3">
-                    <label for="role" class="form-label">Роль</label>
-                    <div class="form-control">
-                        <?php echo e($record->role == 1 ? 'Администратор' : 'Пользователь'); ?>
-
+                <?php if(Auth::user()->role == 1): ?>
+                    <div class="mt-3">
+                        <label for="role" class="form-label">Роль</label><div class="form-control">
+                            <?php switch($record->role):
+                                case (1): ?>
+                                    Администратор
+                                    <?php break; ?>
+                                <?php case (0): ?>
+                                    Пользователь
+                                    <?php break; ?>
+                                <?php case (2): ?>
+                                    Агроном
+                                    <?php break; ?>
+                            <?php endswitch; ?>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
+
                 <div class="mt-3">
                     <label for="currency" class="form-label">Органиция</label>
                     <div class="form-control"> <?php echo e(optional($record->organization)->title ?? 'Без организации'); ?></div>
@@ -59,8 +70,9 @@
                     <label for="currency" class="form-label">Валюта</label>
                     <div class="form-control"><?php echo e($record->currency); ?></div>
                 </div>
-
-                <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>
+                <?php if(Auth::user()->role == 1): ?>
+                    <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

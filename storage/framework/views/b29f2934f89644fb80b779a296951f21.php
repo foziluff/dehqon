@@ -52,8 +52,10 @@
                         <label for="role" class="form-label">Роль*</label>
                         <select name="role" class="form-control" required>
                             <option value="1" <?php echo e($record->role == 1 ? 'selected' : ''); ?>>Администратор</option>
-                            <option value="0" <?php echo e($record->role != 1 ? 'selected' : ''); ?>>Пользователь</option>
+                            <option value="2" <?php echo e($record->role == 2 ? 'selected' : ''); ?>>Агроном</option>
+                            <option value="0" <?php echo e($record->role == 0 ? 'selected' : ''); ?>>Пользователь</option>
                         </select>
+
                     </div>
                     <div class="mt-3">
                         <label for="currency" class="form-label">Валюта*</label>

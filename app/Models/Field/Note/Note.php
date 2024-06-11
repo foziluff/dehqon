@@ -5,6 +5,7 @@ namespace App\Models\Field\Note;
 use App\Models\Auth\User;
 use App\Models\Field\Field;
 use App\Models\Message\Message;
+use App\Models\Organization\Organization;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,5 +43,10 @@ class Note extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
     }
 }

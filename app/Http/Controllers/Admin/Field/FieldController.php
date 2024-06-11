@@ -63,7 +63,7 @@ class FieldController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(int $id)
     {
         $record = $this->fieldRepository->getEditOrFail($id);
         return view('admin.field.show', compact('record'));

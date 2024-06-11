@@ -44,8 +44,10 @@
                         <label for="role" class="form-label">Роль*</label>
                         <select name="role" class="form-control" required>
                             <option value="1" {{ old('role') == 1 ? 'selected' : '' }}>Администратор</option>
-                            <option value="0" {{ old('role') != 1 ? 'selected' : '' }}>Пользователь</option>
+                            <option value="2" {{ old('role') == 2 ? 'selected' : '' }}>Агроном</option>
+                            <option value="0" {{ old('role') == 0 ? 'selected' : '' }}>Пользователь</option>
                         </select>
+
                     </div>
 
                     <div class="mt-3">

@@ -12,9 +12,11 @@
                 <a href="<?php echo e(route('fields.notes', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Заметки</a>
                 <a href="<?php echo e(route('fields.rotations', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Севооборот</a>
                 <a href="<?php echo e(route('fields.productQuantities', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Количество продукции</a>
+                <?php if(Auth::user()->role == 1): ?>
                 <a href="<?php echo e(route('fields.incomes', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Доходы</a>
                 <a href="<?php echo e(route('fields.consumptions', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Расходы</a>
                 <a href="<?php echo e(route('fields.workPlans', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">План работ</a>
+                <?php endif; ?>
                 <div class="mt-3">
                     <label class="form-label">Название</label>
                     <div class="form-control"><?php echo e($record->title); ?></div>
@@ -95,9 +97,9 @@
                     </script>
                 </div>
 
-
+                <?php if(Auth::user()->role == 1): ?>
                 <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>
-
+                <?php endif; ?>
             </div>
         </div>
     </div>

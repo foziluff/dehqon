@@ -10,9 +10,12 @@
     <div class="card">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-header">{{ $title }}</h5>
-            <div style="padding-right: 1.25rem;">
-                <a class="btn btn-primary" href="{{ route($module . '.create') }}">Добавить</a>
-            </div>
+            @if(Auth::user()->role == 1)
+                <div style="padding-right: 1.25rem;">
+                    <a class="btn btn-primary" href="{{ route($module . '.create') }}">Добавить</a>
+                </div>
+            @endif
+
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover mb-2">

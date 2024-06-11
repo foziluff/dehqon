@@ -45,8 +45,9 @@
                     <input type="text" class="form-control" value="{{ $record->average_yield_unit }}" readonly>
                 </div>
 
-                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
-
+                @if(Auth::user()->role == 1)
+                    <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                @endif
             </div>
         </div>
     </div>

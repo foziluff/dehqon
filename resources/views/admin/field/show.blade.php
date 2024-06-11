@@ -13,9 +13,11 @@
                 <a href="{{ route('fields.notes', $record->id) }}" type="button" class="btn btn-outline-secondary mr-1">Заметки</a>
                 <a href="{{ route('fields.rotations', $record->id) }}" type="button" class="btn btn-outline-secondary mr-1">Севооборот</a>
                 <a href="{{ route('fields.productQuantities', $record->id) }}" type="button" class="btn btn-outline-secondary mr-1">Количество продукции</a>
+                @if(Auth::user()->role == 1)
                 <a href="{{ route('fields.incomes', $record->id) }}" type="button" class="btn btn-outline-secondary mr-1">Доходы</a>
                 <a href="{{ route('fields.consumptions', $record->id) }}" type="button" class="btn btn-outline-secondary mr-1">Расходы</a>
                 <a href="{{ route('fields.workPlans', $record->id) }}" type="button" class="btn btn-outline-secondary mr-1">План работ</a>
+                @endif
                 <div class="mt-3">
                     <label class="form-label">Название</label>
                     <div class="form-control">{{ $record->title }}</div>
@@ -96,9 +98,9 @@
                     </script>
                 </div>
 
-
+                @if(Auth::user()->role == 1)
                 <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
-
+                @endif
             </div>
         </div>
     </div>

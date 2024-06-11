@@ -23,7 +23,6 @@ class StoreMessageRequest extends FormRequest
     {
         return [
             'message' => 'required|string',
-            'user_id' => 'required|exists:users,id',
             'note_id' => 'required|exists:notes,id',
         ];
     }

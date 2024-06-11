@@ -9,9 +9,11 @@
     <div class="card">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-header"><?php echo e($title); ?></h5>
-            <div style="padding-right: 1.25rem;">
-                <a class="btn btn-primary" href="<?php echo e(route($module . '.create')); ?>">Добавить</a>
-            </div>
+            <?php if(Auth::user()->role == 1): ?>
+                <div style="padding-right: 1.25rem;">
+                    <a class="btn btn-primary" href="<?php echo e(route($module . '.create')); ?>">Добавить</a>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover mb-2">
@@ -20,7 +22,9 @@
                     <th style="width:6%">№</th>
                     <th style="width: 0%">Фото</th>
                     <th>Название</th>
-                    <th class="text-right">Действия</th>
+                    <?php if(Auth::user()->role == 1): ?>
+                        <th class="text-right">Действия</th>
+                    <?php endif; ?>
                 </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -39,9 +43,11 @@
                                 <span class="fw-medium"><?php echo e($record->name); ?> <?php echo e($record->surname); ?></span>
                             </a>
                         </td>
-                        <td class="text-right">
-                            <?php echo $__env->make('admin.layouts.components.actions', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                        </td>
+                            <?php if(Auth::user()->role == 1): ?>
+                                <td class="text-right">
+                                    <?php echo $__env->make('admin.layouts.components.actions', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                </td>
+                            <?php endif; ?>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>

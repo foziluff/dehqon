@@ -9,9 +9,11 @@
     <div class="card">
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="card-header"><?php echo e($title); ?></h5>
+            <?php if(Auth::user()->role == 1): ?>
             <div style="padding-right: 1.25rem;">
                 <a class="btn btn-primary" href="<?php echo e(route($module . '.create')); ?>">Добавить</a>
             </div>
+            <?php endif; ?>
         </div>
         <div class="table-responsive text-nowrap">
             <table class="table table-hover mb-2">

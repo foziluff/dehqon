@@ -24,7 +24,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->where('organization_id', $organization_id)
             ->orderBy('id', 'desc')
-            ->with('field', 'problem')
+            ->with('field', 'problem', 'organization')
             ->paginate($quantity);
     }
 
@@ -33,7 +33,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
-            ->with('field', 'problem')
+            ->with('field', 'problem', 'organization')
             ->paginate($quantity);
     }
 
@@ -48,10 +48,18 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()->all()->toBase();
     }
 
+    public function getEditOrFail2($id, $organization_id)
+    {
+        return $this->startConditions()
+            ->where('organization_id', $organization_id)
+            ->with('problem', 'field', 'images', 'organization')
+            ->findOrFail($id);
+    }
+
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('problem', 'field', 'images')
+            ->with('problem', 'field', 'images', 'organization')
             ->findOrFail($id);
     }
 

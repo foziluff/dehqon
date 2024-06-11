@@ -73,6 +73,17 @@
             <div class="menu-inner-shadow"></div>
 
             <ul class="menu-inner py-1 overflow-auto">
+
+                <!-- Организации -->
+                <li class="menu-item {{ Request::segment(2) === 'chats' ? 'active' : '' }}">
+                    <a href="{{ route('chats.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-message'></i>
+                        <div>Чаты</div>
+                    </a>
+                </li>
+
+                @if(Auth::user()->role == 1)
+
                 <!-- Пользователи -->
                 <li class="menu-item {{ Request::segment(2) === 'users' ? 'active' : '' }}">
                     <a href="{{ route('users.index') }}" class="menu-link">
@@ -245,7 +256,15 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
+                <!-- Организации -->
+                <li class="menu-item">
+                    <a href="{{ route('logout') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-log-out'></i>
+                        <div>Выйти</div>
+                    </a>
+                </li>
             </ul>
 
         </aside>

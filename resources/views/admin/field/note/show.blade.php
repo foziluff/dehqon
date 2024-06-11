@@ -47,8 +47,9 @@
                         </div>
                     </div>
                 </div>
-
+                @if(Auth::user()->role == 1)
                 <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                @endif
             </div>
         </div>
     </div>

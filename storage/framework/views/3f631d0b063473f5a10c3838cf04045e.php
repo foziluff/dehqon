@@ -44,8 +44,9 @@
                     <input type="text" class="form-control" value="<?php echo e($record->average_yield_unit); ?>" readonly>
                 </div>
 
-                <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>
-
+                <?php if(Auth::user()->role == 1): ?>
+                    <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

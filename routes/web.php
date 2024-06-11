@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\SendCodeController;
 use App\Http\Controllers\Admin\Auth\Users\UsersController;
 use App\Http\Controllers\Admin\Auth\VerifyCodeController;
-use App\Http\Controllers\Admin\Auth2\AuthController;
 use App\Http\Controllers\Admin\Chat\ChatController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionCategoryController;
 use App\Http\Controllers\Admin\Conversion\Consumption\ConversionConsumptionController;
@@ -30,6 +29,7 @@ use App\Http\Controllers\Admin\Field\FieldController;
 use App\Http\Controllers\Admin\Field\Income\IncomeController;
 use App\Http\Controllers\Admin\Field\Note\NoteController;
 use App\Http\Controllers\Admin\Field\Note\NoteImageController;
+use App\Http\Controllers\Admin\Field\Note\NoteShowController;
 use App\Http\Controllers\Admin\Field\Note\ProblemController;
 use App\Http\Controllers\Admin\Field\ProductQuantity\ProductQuantityController;
 use App\Http\Controllers\Admin\Field\ProductTypeController;
@@ -64,19 +64,16 @@ Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->name('
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.layouts.main');
-    })->name('main');
 
     Route::resource('/users', UsersController::class)->names('users');
-    Route::get('/users/{id}/fields', [FieldController::class, 'filterByUser'])->name('users.fields');
+//    Route::get('/users/{id}/fields', [FieldController::class, 'filterByUser'])->name('users.fields');
     Route::get('/users/{id}/conversions', [ConversionController::class, 'filterByUser'])->name('users.conversions');
     Route::get('/users/{id}/stocks', [StockController::class, 'filterByUser'])->name('users.stocks');
 
-    Route::resource('/fields', FieldController::class)->names('fields');
-    Route::get('/fields/{id}/notes', [NoteController::class, 'filterByField'])->name('fields.notes');
-    Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField'])->name('fields.rotations');
-    Route::get('/fields/{id}/product-quantities', [ProductQuantityController::class, 'filterByField'])->name('fields.productQuantities');
+    Route::resource('/fields', FieldController::class)->except('show')->names('fields');
+//    Route::get('/fields/{id}/notes', [NoteController::class, 'filterByField'])->name('fields.notes');
+//    Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField'])->name('fields.rotations');
+//    Route::get('/fields/{id}/product-quantities', [ProductQuantityController::class, 'filterByField'])->name('fields.productQuantities');
     Route::get('/fields/{id}/incomes', [IncomeController::class, 'filterByField'])->name('fields.incomes');
     Route::get('/fields/{id}/consumptions', [ConsumptionController::class, 'filterByField'])->name('fields.consumptions');
     Route::get('/fields/{id}/work-plans', [WorkPlanController::class, 'filterByField'])->name('fields.workPlans');
@@ -96,10 +93,10 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::get('/culture-seasons/{id}/works', [CultureSeasonWorkController::class, 'filterByCultureSeason'])->name('cultureSeasons.works');
 
     Route::resource('/problems', ProblemController::class)->names('problems');
-    Route::resource('/notes', NoteController::class)->names('notes');
+    Route::resource('/notes', NoteController::class)->except('show')->names('notes');
     Route::delete('/notes-images/{id}', [NoteImageController::class, 'destroy'])->name('noteImages.destroy');
 
-    Route::resource('/rotations', RotationController::class)->names('rotations');
+    Route::resource('/rotations', RotationController::class)->except('show')->names('rotations');
     Route::resource('/work-plans', WorkPlanController::class)->names('workPlans');
     Route::resource('/work-stages', WorkStageController::class)->names('workStages');
     Route::resource('/works', WorkController::class)->names('works');
@@ -112,7 +109,7 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/consumption-production-means', ConsumptionProductionMeanController::class)->names('consumptionProductionMeans');
     Route::resource('/product-types', ProductTypeController::class)->names('productTypes');
 
-    Route::resource('/product-quantities', ProductQuantityController::class)->names('productQuantities');
+    Route::resource('/product-quantities', ProductQuantityController::class)->except('show')->names('productQuantities');
     Route::resource('/stocks', StockController::class)->names('stocks');
     Route::resource('/conversions', ConversionController::class)->names('conversions');
 
@@ -140,7 +137,33 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/agro-credits', AgroCreditController::class)->names('agroCredits');
     Route::resource('/organizations', OrganizationController::class)->names('organizations');
 
+});
+
+Route::middleware(['auth:sanctum', 'moderator'])->prefix('admin')->group(function () {
+
+    Route::get('/', function () { return view('admin.layouts.main'); })->name('main');
+
     Route::resource('/chats', ChatController::class)->names('chats');
     Route::resource('/messages',    MessageController::class)->names('messages');
+    Route::post('note-access', [NoteShowController::class, 'store'])->name('noteAccess.store');
+
+    Route::middleware(['auth:sanctum', 'moderatorAccessToUser'])->group(function () {
+        Route::resource('users', UsersController::class)->names('users');
+
+        Route::get('/users/{user_id}/fields', [FieldController::class, 'filterByUser'])->name('users.fields');
+        Route::get('/fields/{id}', [FieldController::class, 'show'])->name('fields.show');
+
+        Route::get('/fields/{field_id}/notes', [NoteController::class, 'filterByField'])->name('fields.notes');
+        Route::get('/notes/{id}', [NoteController::class, 'show'])->name('notes.show');
+
+        Route::get('/fields/{field_id}/rotations', [RotationController::class, 'filterByField'])->name('fields.rotations');
+        Route::get('/rotations/{id}', [RotationController::class, 'show'])->name('rotations.show');
+
+        Route::get('/fields/{field_id}/product-quantities', [ProductQuantityController::class, 'filterByField'])->name('fields.productQuantities');
+        Route::get('/product-quantities/{id}', [ProductQuantityController::class, 'show'])->name('productQuantities.show');
+
+    });
 
 });
+
+Route::patch('note-access', [NoteShowController::class, 'update'])->name('noteAccess.update');

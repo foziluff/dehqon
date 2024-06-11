@@ -1,12 +1,14 @@
 <a href="{{ route($module . '.show', $record->id) }}" class="btn btn-icon btn-outline-primary">
     <i class='bx bx-book-open'></i>
 </a>
+@if(Auth::user()->role == 1)
 <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-icon btn-outline-success">
     <i class='bx bx-pencil'></i>
 </a>
 <button data-bs-toggle="modal" data-bs-target="#modalCenter{{ $record->id }}" type="button" class="btn btn-icon btn-outline-danger" >
     <i class='bx bx-basket'></i>
 </button>
+@endif
 <div class="modal fade" id="modalCenter{{ $record->id }}" tabindex="-1" aria-hidden="true">
     <form action="{{ route($module . '.destroy', $record->id) }}" method="POST">
         @method('DELETE') @csrf

@@ -9,9 +9,11 @@
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "laravel/framework": "^11.0",
         "laravel/jetstream": "^5.1",
+        "laravel/reverb": "@beta",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.0"
+        "livewire/livewire": "^3.0",
+        "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

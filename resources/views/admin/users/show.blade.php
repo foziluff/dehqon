@@ -44,12 +44,24 @@
                         {{ $record->gender == 1 ? 'Мужчина' : 'Женщина' }}
                     </div>
                 </div>
-                <div class="mt-3">
-                    <label for="role" class="form-label">Роль</label>
-                    <div class="form-control">
-                        {{ $record->role == 1 ? 'Администратор' : 'Пользователь' }}
+                @if(Auth::user()->role == 1)
+                    <div class="mt-3">
+                        <label for="role" class="form-label">Роль</label><div class="form-control">
+                            @switch($record->role)
+                                @case(1)
+                                    Администратор
+                                    @break
+                                @case(0)
+                                    Пользователь
+                                    @break
+                                @case(2)
+                                    Агроном
+                                    @break
+                            @endswitch
+                        </div>
                     </div>
-                </div>
+                @endif
+
                 <div class="mt-3">
                     <label for="currency" class="form-label">Органиция</label>
                     <div class="form-control"> {{ optional($record->organization)->title ?? 'Без организации' }}</div>
@@ -58,8 +70,9 @@
                     <label for="currency" class="form-label">Валюта</label>
                     <div class="form-control">{{ $record->currency }}</div>
                 </div>
-
-                <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                @if(Auth::user()->role == 1)
+                    <a href="{{ route($module . '.edit', $record->id) }}" class="btn btn-primary mt-3">Редактировать</a>
+                @endif
             </div>
         </div>
     </div>

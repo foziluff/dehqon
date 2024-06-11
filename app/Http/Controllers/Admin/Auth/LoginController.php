@@ -26,7 +26,7 @@ class LoginController extends Controller
         }
 
         if (Auth::attempt($request->only('phone', 'password'))) {
-            if ($user->role != 1) {
+            if ($user->role != 1 && $user->role != 2) {
                 return redirect()->back()->with(['danger' => 'Нет доступа!']);
             }
 

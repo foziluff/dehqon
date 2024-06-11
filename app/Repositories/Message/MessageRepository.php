@@ -16,13 +16,13 @@ class MessageRepository extends CoreRepository
         return $this->startConditions()->orderBy('id', 'asc')->toBase()->paginate($quantity);
     }
 
-    public function getByNoteId($note_id)
+    public function getByNoteIdWithPaginate($note_id, $quantity)
     {
         return $this->startConditions()
             ->where('note_id', $note_id)
             ->orderBy('id', 'asc')
             ->with('user')
-            ->get();
+            ->paginate($quantity);
     }
 
     public function search($value)
