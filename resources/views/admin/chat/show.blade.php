@@ -92,96 +92,13 @@
         </div>
     </div>
 
-    <style>
-        .app-chat-history {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        .chat-history-wrapper {
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-        }
-
-        .chat-history-header {
-            padding: 15px;
-            background: #f8f9fa;
-        }
-
-        .chat-history-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 15px;
-            background: #fff;
-        }
-
-        .chat-message {
-            margin-bottom: 15px;
-        }
-
-        .chat-message-right .chat-message-wrapper {
-            text-align: right;
-        }
-
-        .chat-message .chat-message-text {
-            background: #f1f1f1;
-            padding: 10px;
-            width: fit-content;
-            border-radius: 10px;
-            word-break: break-word;
-            overflow-wrap: break-word;
-            max-width: 400px;
-        }
-
-        .chat-message-right .chat-message-text {
-            background: #d1ecf1;
-            text-align: right;
-        }
-
-        .chat-message .text-muted {
-            font-size: 0.875rem;
-            margin-top: 5px;
-        }
-
-        .chat-message .text-muted small {
-            margin-right: 5px;
-        }
-
-        .chat-history-footer {
-            padding: 15px;
-            background: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-        }
-
-        .form-send-message {
-            display: flex;
-            align-items: center;
-        }
-
-        .form-send-message .message-input {
-            flex: 1;
-            resize: none;
-        }
-
-        .form-send-message .message-actions {
-            display: flex;
-            align-items: center;
-        }
-
-        .form-send-message .message-actions .bx {
-            font-size: 1.25rem;
-        }
-    </style>
-
     <script src="/build/assets/app-cCFabYt-.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var chatBody = document.querySelector('.chat-history-body');
-            chatBody.scrollTop = chatBody.scrollHeight;
+            // chatBody.scrollTop = chatBody.scrollHeight;
 
             $('#send-message-form').on('submit', function(event) {
                 event.preventDefault();
