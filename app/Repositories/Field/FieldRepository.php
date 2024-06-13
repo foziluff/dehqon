@@ -32,7 +32,14 @@ class FieldRepository extends CoreRepository
             ->toBase()
             ->get();
     }
-
+    public function getOnlyMineWithChildrenOrFail($id)
+    {
+        return $this->startConditions()
+            ->where('id', $id)
+            ->where('user_id', '=', $this->user->id)
+            ->orderBy('id', 'desc')
+            ->firstOrFail();
+    }
     public function search($value)
     {
         return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
@@ -68,6 +75,15 @@ class FieldRepository extends CoreRepository
     {
         $record = $this->getEditOrFail($id);
         return $record->delete();
+    }
+
+    public function deleteIfMine($id, $user_id)
+    {
+        $record = $this->getEditOrFail($id);
+        if ($record->user_id == $user_id){
+            return $record->delete();
+        }
+        return false;
     }
 
 }

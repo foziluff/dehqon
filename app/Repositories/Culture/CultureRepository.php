@@ -34,6 +34,13 @@ class CultureRepository extends CoreRepository
         return $this->startConditions()->all()->toBase();
     }
 
+    public function getAllWithChildren()
+    {
+        return $this->startConditions()
+            ->with('seasons', 'seasons.images', 'seasons.works')
+            ->get();
+    }
+
     public function getEditOrFail($id)
     {
         return $this->startConditions()->findOrFail($id);

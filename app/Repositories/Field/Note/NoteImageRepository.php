@@ -33,4 +33,14 @@ class NoteImageRepository extends CoreRepository
         return $record->delete();
     }
 
+
+    public function deleteIfMine($id, $user_id, $note_user_id)
+    {
+        $record = $this->getEditOrFail($id);
+        if ($user_id == $note_user_id){
+            return $record->delete();
+        }
+        return false;
+    }
+
 }

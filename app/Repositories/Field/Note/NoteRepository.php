@@ -37,6 +37,16 @@ class NoteRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getByFieldIdMine($field_id, $user_id)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('field_id', $field_id)
+            ->where('user_id', $user_id)
+//            ->with('problem', 'organization')
+            ->get();
+    }
+
 
     public function search($value)
     {
@@ -63,6 +73,14 @@ class NoteRepository extends CoreRepository
             ->findOrFail($id);
     }
 
+    public function getMineEditOrFail($id, $user_id)
+    {
+        return $this->startConditions()
+            ->where('user_id', $user_id)
+            ->with('images')
+            ->findOrFail($id);
+    }
+
 
 
     public function update($id, $data)
@@ -83,4 +101,13 @@ class NoteRepository extends CoreRepository
         return $record->delete();
     }
 
+
+    public function deleteIfMine($id, $user_id)
+    {
+        $record = $this->getEditOrFail($id);
+        if ($record->user_id == $user_id){
+            return $record->delete();
+        }
+        return false;
+    }
 }

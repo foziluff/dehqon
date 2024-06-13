@@ -23,4 +23,9 @@ class CultureSeason extends Model
     {
         return $this->hasMany(CultureSeasonImage::class);
     }
+
+    public function works()
+    {
+        return $this->hasMany(CultureSeasonWork::class);
+    }
 }

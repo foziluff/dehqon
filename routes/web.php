@@ -51,15 +51,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login'])->name('login')
-    ->middleware('throttle:3,2');
+    ->middleware('throttleRedirect:3,2');
 
 
 Route::get('/send-code', [LoginController::class, 'sendCodeView'])->name('reset');
 Route::get('/verify-code', [LoginController::class, 'verifyView'])->name('verify');
 
 Route::post('/send-code', [SendCodeController::class, 'sendCode'])->name('sendCode')
-    ->middleware('throttle:1,1');
-Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->name('verifyCode')->middleware('throttle:3,3');
+    ->middleware('throttleRedirect:1,1');
+Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->name('verifyCode')->middleware('throttleRedirect:3,3');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

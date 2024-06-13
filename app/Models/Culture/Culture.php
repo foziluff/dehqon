@@ -13,4 +13,9 @@ class Culture extends Model
         'title',
         'image_path',
     ];
+
+    public function seasons()
+    {
+        return $this->hasMany(CultureSeason::class);
+    }
 }
