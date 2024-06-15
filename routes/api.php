@@ -39,6 +39,5 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField']);
     Route::resource('/rotations', RotationController::class);
 
-s
 });
 
