@@ -11,6 +11,32 @@ class WorkPlanRepository extends CoreRepository
         return Model::class;
     }
 
+    public function getByFieldIdMine($field_id, $user_id)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('field_id', $field_id)
+            ->where('user_id', $user_id)
+            ->get();
+    }
+
+
+    public function getMineEditOrFail($id, $user_id)
+    {
+        return $this->startConditions()
+            ->where('user_id', $user_id)
+            ->findOrFail($id);
+    }
+
+    public function deleteIfMine($id, $user_id)
+    {
+        $record = $this->getEditOrFail($id);
+        if ($record->user_id == $user_id){
+            return $record->delete();
+        }
+        return false;
+    }
+
     public function getAllWithPaginate($quantity)
     {
         return $this->startConditions()

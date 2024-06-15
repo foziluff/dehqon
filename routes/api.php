@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\Field\Consumption\ConsumptionController;
 use App\Http\Controllers\Api\Field\FieldController;
 use App\Http\Controllers\Api\Field\Income\IncomeController;
 use App\Http\Controllers\Api\Field\Note\NoteController;
+use App\Http\Controllers\Api\Field\Rotation\RotationController;
+use App\Http\Controllers\Api\Field\WorkPlan\WorkPlanController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/send-code', [SendCodeController::class, 'sendCode'])->middleware('throttle:1,1');
@@ -30,6 +32,12 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::get('/fields/{id}/incomes', [IncomeController::class, 'filterByField']);
     Route::resource('/incomes', IncomeController::class);
+
+    Route::get('/fields/{id}/work-plans', [WorkPlanController::class, 'filterByField']);
+    Route::resource('/work-plans', WorkPlanController::class);
+
+    Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField']);
+    Route::resource('/rotations', RotationController::class);
 
 
 });
