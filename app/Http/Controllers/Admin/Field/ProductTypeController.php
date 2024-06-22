@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Field;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\ProductType\StoreProductTypeRequest;
 use App\Http\Requests\Admin\Field\ProductType\UpdateProductTypeRequest;
 use App\Repositories\Field\ProductTypeRepository;

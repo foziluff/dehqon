@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Irrigation;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Repositories\Irrigation\IrrigationTypeImageRepository;
 
 class IrrigationTypeImageController extends Controller

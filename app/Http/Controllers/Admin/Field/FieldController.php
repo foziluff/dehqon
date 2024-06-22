@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Field;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\StoreFieldRequest;
 use App\Http\Requests\Admin\Field\UpdateFieldRequest;
 use App\Repositories\Culture\CultureRepository;

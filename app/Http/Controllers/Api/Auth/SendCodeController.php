@@ -2,14 +2,43 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\SendCodeRequest;
 use App\Models\Auth\PhoneVerifyCode;
+use App\Models\Auth\User;
 use Illuminate\Support\Facades\Http;
 
 class SendCodeController extends Controller
 {
-
+    /**
+     * @OA\Post(
+     *     path="/api/send-code",
+     *     operationId="sendCode",
+     *     tags={"Auth"},
+     *     summary="Send code to phone number",
+     *     description="This endpoint sends a code to the specified phone number for authentication purposes.",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="phone", type="string", description="Phone number in the format 992 XXXXXXXXX")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Code sent successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Code sent successfully")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation error",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="errors", type="object", description="Validation errors")
+     *         )
+     *     )
+     * )
+     */
     public function sendCode(SendCodeRequest $request)
     {
         $request->phone = substr($request->phone, 3);
@@ -57,5 +86,56 @@ class SendCodeController extends Controller
             return ['error' => true, 'msg' => $e->getMessage()];
         }
     }
+    /**
+     * @OA\Get(
+     *     path="/api/check-phone/{phone}",
+     *     summary="Check if a phone number exists in the database",
+     *     description="Returns a message indicating whether the phone number exists in the database.",
+     *     operationId="checkPhoneNumber",
+     *     tags={"Auth"},
+     *     @OA\Parameter(
+     *         name="phone",
+     *         in="path",
+     *         description="Phone number to check",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="string",
+     *             example="992XXXXXXXXX"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Phone number exists in the database",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Phone number exists in the database.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Phone number does not exist in the database",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Phone number does not exist in the database.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid phone number format",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Invalid phone number format.")
+     *         )
+     *     )
+     * )
+     */
+
+    public function check($phone)
+    {
+        $exists = User::where('phone', $phone)->exists();
+        if ($exists) {
+            return response()->json(['message' => 'Exists'], 200);
+        } else {
+            return response()->json(['message' => 'Not exists'], 404);
+        }
+    }
+
 
 }

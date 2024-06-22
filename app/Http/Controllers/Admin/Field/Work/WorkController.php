@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Field\Work;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\Work\StoreWorkRequest;
 use App\Http\Requests\Admin\Field\Work\UpdateWorkRequest;
 use App\Repositories\Field\Work\WorkRepository;

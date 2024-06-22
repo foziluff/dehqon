@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Field\ProductQuantity;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\ProductQuantity\StoreProductQuantityRequest;
 use App\Http\Requests\Admin\Field\ProductQuantity\UpdateProductQuantityRequest;
 use App\Repositories\Culture\CultureRepository;

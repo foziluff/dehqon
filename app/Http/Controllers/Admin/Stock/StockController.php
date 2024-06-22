@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Stock;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Stock\StoreStockRequest;
 use App\Http\Requests\Admin\Stock\UpdateStockRequest;
 use App\Repositories\Field\Consumption\ConsumptionProductionMeanRepository;

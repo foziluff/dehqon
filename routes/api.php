@@ -13,8 +13,9 @@ use App\Http\Controllers\Api\Field\Rotation\RotationController;
 use App\Http\Controllers\Api\Field\WorkPlan\WorkPlanController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/check-phone/{phone}', [SendCodeController::class, 'check']);
 Route::post('/send-code', [SendCodeController::class, 'sendCode'])->middleware('throttle:1,1');
-Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->middleware('throttle:3,3');
+Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->middleware('throttle:3,2');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:4,1');
 

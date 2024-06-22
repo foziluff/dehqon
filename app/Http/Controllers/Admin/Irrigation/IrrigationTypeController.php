@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Irrigation;
 
 use App\Actions\IrrigationTypeImagesAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Irrigation\Type\StoreIrrigationTypeRequest;
 use App\Http\Requests\Admin\Irrigation\Type\UpdateIrrigationTypeRequest;
 use App\Repositories\Irrigation\IrrigationRepository;
-use App\Repositories\Irrigation\IrrigationTypeRepository;
 use App\Repositories\Irrigation\IrrigationTypeImageRepository;
+use App\Repositories\Irrigation\IrrigationTypeRepository;
 
 class IrrigationTypeController extends Controller
 {

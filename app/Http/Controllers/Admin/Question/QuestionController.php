@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Question;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Question\StoreQuestionRequest;
 use App\Http\Requests\Admin\Question\UpdateQuestionRequest;
 use App\Repositories\Question\QuestionRepository;

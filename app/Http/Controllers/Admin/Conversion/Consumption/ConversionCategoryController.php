@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Conversion\Consumption;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Conversion\Consumption\Category\StoreConversionCategoryRequest;
 use App\Http\Requests\Admin\Conversion\Consumption\Category\UpdateConversionCategoryRequest;
 use App\Repositories\Conversion\Consumption\ConversionCategoryRepository;

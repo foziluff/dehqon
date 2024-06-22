@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Irrigation;
 
 use App\Actions\ImageAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Irrigation\StoreIrrigationRequest;
 use App\Http\Requests\Admin\Irrigation\UpdateIrrigationRequest;
 use App\Repositories\Irrigation\IrrigationRepository;

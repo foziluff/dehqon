@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Field\Note;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\Note\Problem\StoreProblemRequest;
 use App\Http\Requests\Admin\Field\Note\Problem\UpdateProblemRequest;
 use App\Repositories\Field\Note\ProblemRepository;

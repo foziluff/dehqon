@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\AgroMarket;
 
 use App\Actions\ImageAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AgroMarket\StoreAgroMarketRequest;
 use App\Http\Requests\Admin\AgroMarket\UpdateAgroMarketRequest;
 use App\Repositories\AgroMarket\AgroMarketRepository;

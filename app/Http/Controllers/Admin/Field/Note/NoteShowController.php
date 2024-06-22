@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Field\Note;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\Note\NoteShow\StoreNoteShowRequest;
 use App\Http\Requests\Admin\Field\Note\NoteShow\UpdateNoteShowRequest;
 use App\Repositories\Field\Note\NoteShowRepository;

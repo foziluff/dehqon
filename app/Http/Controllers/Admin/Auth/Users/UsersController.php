@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Auth\Users;
 
 use App\Actions\ImageAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\StoreUsersRequest;
 use App\Http\Requests\Admin\Users\UpdateUsersRequest;
 use App\Repositories\Organization\OrganizationRepository;

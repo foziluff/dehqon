@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Conversion\Consumption;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Conversion\Consumption\StoreConversionConsumptionRequest;
 use App\Http\Requests\Admin\Conversion\Consumption\UpdateConversionConsumptionRequest;
+use App\Repositories\Conversion\Consumption\ConversionCategoryRepository;
 use App\Repositories\Conversion\Consumption\ConversionConsumptionRepository;
+use App\Repositories\Conversion\Consumption\ConversionNamingRepository;
+use App\Repositories\Conversion\Consumption\ConversionOperationRepository;
 use App\Repositories\Conversion\Consumption\ConversionProductionMeanRepository;
 use App\Repositories\Conversion\Consumption\ConversionTypeRepository;
-use App\Repositories\Conversion\Consumption\ConversionCategoryRepository;
-use App\Repositories\Conversion\Consumption\ConversionOperationRepository;
-use App\Repositories\Conversion\Consumption\ConversionNamingRepository;
 use App\Repositories\Conversion\ConversionRepository;
-use App\Repositories\Field\ProductTypeRepository;
 use App\Repositories\Culture\CultureRepository;
+use App\Repositories\Field\ProductTypeRepository;
 
 class ConversionConsumptionController extends Controller
 {

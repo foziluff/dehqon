@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Organization;
 
 use App\Actions\ImageAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Organization\StoreOrganizationRequest;
 use App\Http\Requests\Admin\Organization\UpdateOrganizationRequest;
 use App\Repositories\Organization\OrganizationRepository;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\SendCodeRequest;
 use App\Models\Auth\PhoneVerifyCode;
 use Illuminate\Support\Facades\Http;

@@ -28,7 +28,7 @@ class RegisterNewUserRequest extends FormRequest
             'surname'   => 'required|string|max:255',
             'phone'     => ['required', 'string', 'regex:/^992\s?\d{9}$/', 'unique:users'],
             'born_in'   => 'required|date',
-            'password'  => 'required|string|min:6',
+            'password'  => 'required|string|min:4',
             'gender'    => 'required|integer',
             'currency'  => 'required|string',
             'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',

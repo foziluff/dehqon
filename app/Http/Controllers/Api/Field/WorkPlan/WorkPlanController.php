@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Field\WorkPlan;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\WorkPlan\StoreWorkPlanRequest;
 use App\Http\Requests\Admin\Field\WorkPlan\UpdateWorkPlanRequest;
 use App\Repositories\Field\Work\WorkPlanRepository;

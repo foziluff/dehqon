@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Field\Consumption;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\Consumption\Naming\StoreConsumptionNamingRequest;
 use App\Http\Requests\Admin\Field\Consumption\Naming\UpdateConsumptionNamingRequest;
 use App\Repositories\Field\Consumption\ConsumptionNamingRepository;

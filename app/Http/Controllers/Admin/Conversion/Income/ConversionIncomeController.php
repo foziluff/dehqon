@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Conversion\Income;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Conversion\Income\StoreConversionIncomeRequest;
 use App\Http\Requests\Admin\Conversion\Income\UpdateConversionIncomeRequest;
-use App\Repositories\Conversion\ConversionRepository;
-use App\Repositories\Conversion\Income\ConversionIncomeRepository;
 use App\Repositories\Conversion\Consumption\ConversionNamingRepository;
 use App\Repositories\Conversion\Consumption\ConversionTypeRepository;
+use App\Repositories\Conversion\ConversionRepository;
+use App\Repositories\Conversion\Income\ConversionIncomeRepository;
 
 class ConversionIncomeController extends Controller
 {

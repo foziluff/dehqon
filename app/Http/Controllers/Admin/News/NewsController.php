@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\News;
 
 use App\Actions\NewsImagesAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\News\StoreNewsRequest;
 use App\Http\Requests\Admin\News\UpdateNewsRequest;
 use App\Repositories\News\NewsImageRepository;

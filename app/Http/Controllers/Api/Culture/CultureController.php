@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Culture;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Repositories\Culture\CultureRepository;
 
 class CultureController extends Controller

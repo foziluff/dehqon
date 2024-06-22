@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Culture;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Repositories\Culture\CultureSeasonImageRepository;
 
 class CultureSeasonImageController extends Controller

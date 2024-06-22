@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Field\Note;
 
 use App\Actions\NoteImagesAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\Note\StoreNoteRequest;
 use App\Http\Requests\Admin\Field\Note\UpdateNoteRequest;
 use App\Repositories\Field\FieldRepository;

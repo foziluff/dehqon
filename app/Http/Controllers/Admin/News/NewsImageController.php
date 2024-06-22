@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\News;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Repositories\News\NewsImageRepository;
 
 class NewsImageController extends Controller

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Field\Income;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\Income\StoreIncomeRequest;
 use App\Http\Requests\Admin\Field\Income\UpdateIncomeRequest;
 use App\Repositories\Field\Income\IncomeRepository;

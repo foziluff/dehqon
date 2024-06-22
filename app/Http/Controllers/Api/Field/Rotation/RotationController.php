@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Field\Rotation;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\Rotation\StoreRotationRequest;
 use App\Http\Requests\Admin\Field\Rotation\UpdateRotationRequest;
 use App\Repositories\Field\RotationRepository;

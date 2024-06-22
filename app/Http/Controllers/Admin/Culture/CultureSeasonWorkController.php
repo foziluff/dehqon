@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Culture;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Culture\Season\Work\StoreCultureSeasonWorkRequest;
 use App\Http\Requests\Admin\Culture\Season\Work\UpdateCultureSeasonWorkRequest;
 use App\Repositories\Culture\CultureSeasonWorkRepository;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Chat;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Repositories\Field\Note\NoteRepository;
 use App\Repositories\Field\Note\NoteShowRepository;
 use App\Repositories\Message\MessageRepository;

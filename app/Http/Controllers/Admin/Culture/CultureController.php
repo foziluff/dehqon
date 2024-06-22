@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Culture;
 
 use App\Actions\ImageAction;
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Culture\StoreCultureRequest;
 use App\Http\Requests\Admin\Culture\UpdateCultureRequest;
 use App\Repositories\Culture\CultureRepository;

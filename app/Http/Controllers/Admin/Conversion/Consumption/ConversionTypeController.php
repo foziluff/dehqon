@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Conversion\Consumption;
 
-use App\Http\Controllers\Base\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Conversion\Consumption\Type\StoreConversionTypeRequest;
 use App\Http\Requests\Admin\Conversion\Consumption\Type\UpdateConversionTypeRequest;
 use App\Repositories\Conversion\Consumption\ConversionTypeRepository;
