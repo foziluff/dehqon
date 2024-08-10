@@ -29,12 +29,12 @@
                         <td><?php echo e($records->firstItem() + $key); ?></td>
                         <td>
                             <div>
-                                <img src="<?php echo e($record->image_path); ?>" alt="" class="img-fluid rounded-circle" style="min-width: 50px; height: 50px;">
+                                <img src="<?php echo e(asset($record->image_path)); ?>" alt="" class="img-fluid rounded-circle" style="min-width: 50px; height: 50px;">
                             </div>
                         </td>
                         <td>
                             <a class="td-title" href="<?php echo e(route($module . '.show', $record->id)); ?>">
-                                <span class="fw-medium"><?php echo e($record->title); ?></span>
+                                <span class="fw-medium"><?php echo e($record->title_ru); ?></span>
                             </a>
                         </td>
                         <td class="text-right">

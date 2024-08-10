@@ -10,9 +10,18 @@ class AgroCredit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'description',
-        'address',
+
+        'title_ru',
+        'title_uz',
+        'title_tj',
+
+        'description_ru',
+        'description_uz',
+        'description_tj',
+
+        'address_ru',
+        'address_uz',
+        'address_tj',
         'phone',
         'email',
         'site',

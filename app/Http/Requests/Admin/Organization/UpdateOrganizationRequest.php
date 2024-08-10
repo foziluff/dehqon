@@ -22,9 +22,17 @@ class UpdateOrganizationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'     => 'required|string|max:255',
-            'description' => 'required|string',
-            'address'   => 'required|string|max:255',
+            'title_ru'       => 'required|string|max:255',
+            'title_uz'       => 'required|string|max:255',
+            'title_tj'       => 'required|string|max:255',
+
+            'description_ru' => 'required|string',
+            'description_uz' => 'required|string',
+            'description_tj' => 'required|string',
+
+            'address_ru'     => 'required|string|max:255',
+            'address_uz'     => 'required|string|max:255',
+            'address_tj'     => 'required|string|max:255',
             'phone'     => 'required|string|max:20',
             'email'     => 'required|email|max:255',
             'site'      => 'required|url|max:255',

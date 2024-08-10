@@ -10,8 +10,13 @@ class AgroMarket extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'address',
+        'title_ru',
+        'title_uz',
+        'title_tj',
+
+        'address_ru',
+        'address_uz',
+        'address_tj',
         'phone',
         'email',
         'site',

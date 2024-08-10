@@ -23,7 +23,9 @@ class StoreCultureSeasonWorkRequest extends FormRequest
     {
         return [
             'time'              => 'required|string|max:255',
-            'work'              => 'required|string|max:255',
+            'work_ru'              => 'required|string|max:255',
+            'work_uz'              => 'required|string|max:255',
+            'work_tj'              => 'required|string|max:255',
             'culture_season_id' => 'required|exists:culture_seasons,id',
         ];
     }

@@ -27,9 +27,14 @@ class LoginController extends Controller
                 ], 201);
             }
 
-            return response()->json(['message' => 'Invalid password',], 422);
+            return response()->json(['message' => 'Invalid password',], 406);
         }
 
-        return response()->json(['message' => 'Not registered',], 401);
+        return response()->json(['message' => 'Not registered',], 400);
+    }
+
+    public function getUser()
+    {
+        return response()->json(User::find(Auth::user()->id));
     }
 }

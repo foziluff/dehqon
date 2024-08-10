@@ -29,7 +29,7 @@
                         <td>{{ $records->firstItem() + $key }}</td>
                         <td>
                             <a class="td-title" href="{{ route($module . '.show', $record->id) }}">
-                                <span class="fw-medium">{{ $record->time }} - {{ $record->work }}</span>
+                                <span class="fw-medium">{{ $record->time }} - {{ $record->work_ru }}</span>
                             </a>
                         </td>
                         <td class="text-right">

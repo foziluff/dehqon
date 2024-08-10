@@ -13,7 +13,7 @@ class CultureRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
+        return $this->startConditions()->orderBy('title_ru', 'asc')->toBase()->paginate($quantity);
     }
 
     public function getAllWithPaginateCatId($quantity, $catId)
@@ -36,10 +36,27 @@ class CultureRepository extends CoreRepository
 
     public function getAllWithChildren()
     {
-        return $this->startConditions()
+        $langItems = ['title'];
+
+        $records = $this->startConditions()
             ->with('seasons', 'seasons.images', 'seasons.works')
             ->get();
+
+        foreach ($records as $record) {
+            foreach ($record->seasons as $season){
+                if($season->works) {
+                    $this->transformLang($season->works, ['work']);
+                }
+            }
+            if ($record->seasons) {
+                $this->transformLang($record->seasons, $langItems);
+            }
+        }
+
+        return $this->transformLang($records, $langItems);
     }
+
+
 
     public function getEditOrFail($id)
     {

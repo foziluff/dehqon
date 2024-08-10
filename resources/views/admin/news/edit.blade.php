@@ -19,7 +19,7 @@
                                     <form action="{{ route($module . 'Images.destroy', $image->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <img src="{{ $image->image_path }}" alt="Изображение" class="img-fluid">
+                                        <img src="{{ asset($image->image_path) }}" alt="Изображение" class="img-fluid">
                                         <button type="submit" class="btn btn-icon btn-outline-danger">
                                             <span class="tf-icons bx bx-trash"></span>
                                         </button>

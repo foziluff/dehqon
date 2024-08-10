@@ -23,12 +23,12 @@ class UserSeeder extends Seeder
             'role' => 1,
         ];
         $user2 = [
-            'phone' =>  '992002887718',
-            'password' => bcrypt('992002887718'),
-            'name'  =>  'Abdurazzoq',
+            'phone' =>  '992929380088',
+            'password' => bcrypt('1234'),
+            'name'  =>  'test',
             'organization_id'  =>  1,
-            'surname' => 'Fozilov',
-            'currency' => 'somoni',
+            'surname' => 'test',
+            'currency' => 'smn',
             'born_in' => '2001-08-24',
             'gender' => 1,
             'role' => 1,

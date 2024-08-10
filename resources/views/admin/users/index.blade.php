@@ -34,7 +34,7 @@
                         <td>{{ $records->firstItem() + $key }}</td>
                         <td>
                             <div>
-                                <img src="{{ $record->image_path ? $record->image_path : asset('assets/img/no-image.png') }}"
+                                <img src="{{ $record->image_path ? asset($record->image_path) : asset('assets/img/no-image.png') }}"
                                      alt="{{ $record->image_path ? '' : 'Default Image' }}" class="img-fluid rounded-circle"
                                      style="min-width: 50px; height: 50px;object-fit: cover">
                             </div>

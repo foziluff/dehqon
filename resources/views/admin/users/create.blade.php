@@ -21,7 +21,7 @@
                         <input value="{{ old('surname') }}" name="surname" placeholder="Фамилия" type="text" class="form-control" required>
                     </div>
                     <div class="mt-3">
-                        <label for="phone" class="form-label">Телефон*</label>
+                        <label for="phone" class="form-label">Телефон* (992XXXXXXXXX)</label>
                         <input value="{{ old('phone') }}" name="phone" placeholder="Телефон" type="text" class="form-control" required>
                     </div>
                     <div class="mt-3">
@@ -56,8 +56,8 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="organization_id" class="form-label">Организация*</label>
-                        <select id="organization_id" class="form-select" name="organization_id" required>
+                        <label for="organization_id" class="form-label">Организация</label>
+                        <select id="organization_id" class="form-select" name="organization_id">
                             <option selected value="0">Без организации</option>
                             @foreach($organizations as $organization)
                                 <option value="{{ $organization->id }}" {{ old('organization_id') == $organization->id ? 'selected' : '' }}>{{ $organization->title }}</option>
@@ -66,8 +66,8 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="image" class="form-label">Фото профиля*</label>
-                        <input type="file" name="image" class="form-control" required>
+                        <label for="image" class="form-label">Фото профиля</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                 </form>

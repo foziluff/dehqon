@@ -32,6 +32,14 @@ class FieldRepository extends CoreRepository
             ->toBase()
             ->get();
     }
+
+    public function getAllMineWithPaginate($user_id, $quantity)
+    {
+        return $this->startConditions()
+            ->where('user_id', $user_id)
+            ->toBase()
+            ->paginate($quantity);
+    }
     public function getOnlyMineWithChildrenOrFail($id)
     {
         return $this->startConditions()

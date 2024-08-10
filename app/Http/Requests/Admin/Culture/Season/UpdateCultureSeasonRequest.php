@@ -22,8 +22,10 @@ class UpdateCultureSeasonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'         => 'required|string|max:255',
-            'culture_id'    => 'required|exists:cultures,id|integer',
+            'title_ru' => 'sometimes|string|max:100',
+            'title_uz' => 'sometimes|string|max:100',
+            'title_tj' => 'sometimes|string|max:100',
+            'culture_id'    => 'sometimes|exists:cultures,id|integer',
             'images.*'      => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }

@@ -13,19 +13,24 @@ class AgroCreditRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
+        return $this->startConditions()->orderBy('title_ru', 'asc')->toBase()->paginate($quantity);
     }
 
     public function search($value)
     {
-        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
+        return $this->startConditions()->where('title_ru', 'like', "%$value%")->toBase()->get();
     }
 
     public function getAll()
     {
         return $this->startConditions()->all()->toBase();
     }
-
+    public function getAllForFront()
+    {
+        $langItems = ['title', 'address', 'description'];
+        $records = $this->startConditions()->all();
+        return $this->transformLang($records, $langItems);
+    }
     public function getEditOrFail($id)
     {
         return $this->startConditions()->findOrFail($id);

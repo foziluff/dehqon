@@ -22,8 +22,10 @@ class StoreCultureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:100',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'title_ru' => 'required|string|max:100',
+            'title_uz' => 'required|string|max:100',
+            'title_tj' => 'required|string|max:100',
+            'image'    => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

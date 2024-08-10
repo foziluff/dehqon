@@ -16,7 +16,7 @@
                     <div class="mt-3 form-control">
                         <div class="mt-3">
                             <div class="image-container">
-                                <img src="{{ $record->image_path ? $record->image_path : asset('assets/img/no-image.png') }}"
+                                <img src="{{ $record->image_path ? asset($record->image_path) : asset('assets/img/no-image.png') }}"
                                      alt="{{ $record->image_path ? '' : 'Default Image' }}" class="img-fluid"
                                      style="min-width: 50px; height: 50px;object-fit: cover">
                             </div>

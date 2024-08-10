@@ -22,7 +22,9 @@ class UpdateCultureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:100',
+            'title_ru' => 'sometimes|string|max:100',
+            'title_uz' => 'sometimes|string|max:100',
+            'title_tj' => 'sometimes|string|max:100',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }

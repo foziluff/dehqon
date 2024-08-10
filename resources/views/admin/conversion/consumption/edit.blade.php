@@ -56,7 +56,7 @@
                         <select name="culture_id" class="form-select" required>
                             <option disabled selected>Select Culture</option>
                             @foreach($cultures as $culture)
-                                <option value="{{ $culture->id }}" {{ $record->culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title }}</option>
+                                <option value="{{ $culture->id }}" {{ $record->culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title_ru }}</option>
                             @endforeach
                         </select>
                     </div>

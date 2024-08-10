@@ -13,13 +13,31 @@
                 <form action="{{ route($module . '.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Название</label>
-                        <input value="{{ old('title') }}" name="title" placeholder="Название" type="text" class="form-control">
+                        <label class="form-label">Название (RU)</label>
+                        <input value="{{ old('title_ru') }}" name="title_ru" placeholder="Название (RU)" type="text" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Адрес</label>
-                        <input value="{{ old('address') }}" name="address" placeholder="Адрес" type="text" class="form-control">
+                        <label class="form-label">Название (UZ)</label>
+                        <input value="{{ old('title_uz') }}" name="title_uz" placeholder="Название (UZ)" type="text" class="form-control">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Название (TJ)</label>
+                        <input value="{{ old('title_tj') }}" name="title_tj" placeholder="Название (TJ)" type="text" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Адрес (RU)</label>
+                        <input value="{{ old('address_ru') }}" name="address_ru" placeholder="Адрес (RU)" type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Адрес (UZ)</label>
+                        <input value="{{ old('address_uz') }}" name="address_uz" placeholder="Адрес (UZ)" type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Адрес (TJ)</label>
+                        <input value="{{ old('address_tj') }}" name="address_tj" placeholder="Адрес (TJ)" type="text" class="form-control">
+                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Телефон</label>
                         <input value="{{ old('phone') }}" name="phone" placeholder="Телефон" type="text" class="form-control">

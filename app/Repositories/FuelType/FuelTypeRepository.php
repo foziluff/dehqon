@@ -29,9 +29,17 @@ class FuelTypeRepository extends CoreRepository
         return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
     }
 
+
     public function getAll()
     {
-        return $this->startConditions()->all()->toBase();
+        return  $this->startConditions()->all()->toBase();
+    }
+
+    public function getAllForFront()
+    {
+        $langItems = ['title'];
+        $records = $this->startConditions()->all()->toBase();
+        return $this->transformLang($records, $langItems);
     }
 
     public function getEditOrFail($id)

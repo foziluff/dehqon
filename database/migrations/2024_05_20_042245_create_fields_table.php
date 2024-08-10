@@ -17,11 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('culture_id');
             $table->string('sort');
             $table->double('area');
-            $table->unsignedBigInteger('fuel_type_id');
-            $table->year('sowing_year');
-            $table->unsignedBigInteger('prev_culture_id');
-            $table->string('prev_sort');
-            $table->year('prev_sowing_year');
+            $table->unsignedBigInteger('fuel_type_id')->nullable();
+            $table->year('sowing_year')->nullable();
+            $table->unsignedBigInteger('prev_culture_id')->nullable();
+            $table->string('prev_sort')->nullable();
+            $table->year('prev_sowing_year')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->text('coordinates');
 

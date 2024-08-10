@@ -28,11 +28,10 @@ class StoreFieldRequest extends FormRequest
             'area'                      => 'required|numeric|min:0',
             'fuel_type_id'              => 'required|exists:fuel_types,id',
             'sowing_year'               => 'required|integer|min:1900|max:'.(date('Y')),
-            'prev_culture_id'           => 'nullable|exists:cultures,id',
-            'prev_sort'                 => 'nullable|string|max:255',
-            'prev_sowing_year'          => 'nullable|integer|min:1900|max:'.(date('Y')),
-            'coordinates'               => 'required|array|min:1',
-            'coordinates.0'             => 'required|string',
+            'prev_culture_id'           => 'sometimes|nullable|exists:cultures,id',
+            'prev_sort'                 => 'sometimes|nullable|string|max:255',
+            'prev_sowing_year'          => 'sometimes|nullable|integer|min:1900|max:'.(date('Y')),
+            'coordinates'               => 'required|string',
         ];
     }
 }

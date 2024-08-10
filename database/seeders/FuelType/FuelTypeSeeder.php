@@ -13,14 +13,18 @@ class FuelTypeSeeder extends Seeder
     public function run()
     {
         $fuelTypes = [
-            'Бензин',
-            'Дизель',
-            'Электричество',
-            'Природный газ',
+            ['ru' => 'Бензин', 'uz' => 'Бензин', 'tj' => 'Бензин'],
+            ['ru' => 'Дизель', 'uz' => 'Дизел', 'tj' => 'Дизел'],
+            ['ru' => 'Электричество', 'uz' => 'Электр энергия', 'tj' => 'Барқ'],
+            ['ru' => 'Природный газ', 'uz' => 'Табиий газ', 'tj' => 'Гази табии'],
         ];
 
         foreach ($fuelTypes as $fuelType) {
-            FuelType::create(['title' => $fuelType]);
+            FuelType::create([
+                'title_ru' => $fuelType['ru'],
+                'title_uz' => $fuelType['uz'],
+                'title_tj' => $fuelType['tj'],
+            ]);
         }
     }
 }

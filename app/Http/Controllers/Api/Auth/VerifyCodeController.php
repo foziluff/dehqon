@@ -77,7 +77,7 @@ class VerifyCodeController extends Controller
             'code' => $request->code,
         ])
             ->where('created_at', '>', Carbon::now()
-                ->subMinutes(2)
+                ->subMinutes(1)
                 ->toDateTimeString())
             ->orderBy('created_at', 'desc')->first();
 

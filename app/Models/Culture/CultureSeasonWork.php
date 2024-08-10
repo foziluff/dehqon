@@ -11,7 +11,9 @@ class CultureSeasonWork extends Model
 
     protected $fillable = [
         'time',
-        'work',
+        'work_ru',
+        'work_uz',
+        'work_tj',
         'culture_season_id',
     ];
 

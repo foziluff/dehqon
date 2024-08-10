@@ -13,9 +13,17 @@ return new class extends Migration
     {
         Schema::create('agro_credits', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('address');
-            $table->text('description');
+            $table->string('title_ru');
+            $table->string('title_uz');
+            $table->string('title_tj');
+
+            $table->text('description_ru');
+            $table->text('description_uz');
+            $table->text('description_tj');
+
+            $table->string('address_ru');
+            $table->string('address_uz');
+            $table->string('address_tj');
             $table->string('phone');
             $table->string('email');
             $table->string('site');

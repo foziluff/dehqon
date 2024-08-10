@@ -28,7 +28,7 @@
                         <td><?php echo e($records->firstItem() + $key); ?></td>
                         <td>
                             <a class="td-title" href="<?php echo e(route($module . '.show', $record->id)); ?>">
-                                <span class="fw-medium"><?php echo e($record->time); ?> - <?php echo e($record->work); ?></span>
+                                <span class="fw-medium"><?php echo e($record->time); ?> - <?php echo e($record->work_ru); ?></span>
                             </a>
                         </td>
                         <td class="text-right">

@@ -41,7 +41,7 @@
                         <div class="mt-3">
                             @foreach($record->images as $image)
                                 <div class="image-container">
-                                    <img src="{{ $image->image_path }}" alt="Изображение" class="img-fluid">
+                                    <img src="{{ asset($image->image_path) }}" alt="Изображение" class="img-fluid">
                                 </div>
                             @endforeach
                         </div>

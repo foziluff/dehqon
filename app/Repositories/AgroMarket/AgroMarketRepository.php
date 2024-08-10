@@ -13,12 +13,19 @@ class AgroMarketRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
+        return $this->startConditions()->orderBy('title_ru', 'asc')->toBase()->paginate($quantity);
+    }
+
+    public function getAllForFront()
+    {
+        $langItems = ['title', 'address'];
+        $records = $this->startConditions()->all();
+        return $this->transformLang($records, $langItems);
     }
 
     public function search($value)
     {
-        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
+        return $this->startConditions()->where('title_ru', 'like', "%$value%")->toBase()->get();
     }
 
     public function getAll()

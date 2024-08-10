@@ -30,12 +30,12 @@
                         <td>{{ $records->firstItem() + $key }}</td>
                         <td>
                             <div>
-                                <img src="{{ $record->image_path }}" alt="" class="img-fluid rounded-circle" style="min-width: 50px; height: 50px;">
+                                <img src="{{ asset($record->image_path) }}" alt="" class="img-fluid rounded-circle" style="min-width: 50px; height: 50px;">
                             </div>
                         </td>
                         <td>
                             <a class="td-title" href="{{ route($module . '.show', $record->id) }}">
-                                <span class="fw-medium">{{ $record->title }}</span>
+                                <span class="fw-medium">{{ $record->title_ru }}</span>
                             </a>
                         </td>
                         <td class="text-right">

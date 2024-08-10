@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('irrigations', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title_ru');
+            $table->string('title_uz');
+            $table->string('title_tj');
             $table->string('image_path');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

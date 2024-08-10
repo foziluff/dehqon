@@ -22,8 +22,12 @@ class StoreIrrigationTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'         => 'required|string|max:255',
-            'description'   => 'required|string',
+            'title_ru'         => 'required|string|max:255',
+            'title_uz'         => 'required|string|max:255',
+            'title_tj'         => 'required|string|max:255',
+            'description_ru'   => 'required|string',
+            'description_uz'   => 'required|string',
+            'description_tj'   => 'required|string',
             'irrigation_id' => 'required|exists:irrigations,id|integer',
             'images.*'      => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];

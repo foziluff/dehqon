@@ -22,8 +22,13 @@ class UpdateAgroMarketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'     => 'required|string|max:255',
-            'address'   => 'required|string|max:255',
+            'title_ru'   => 'required|string|max:255',
+            'title_uz'   => 'required|string|max:255',
+            'title_tj'   => 'required|string|max:255',
+
+            'address_ru' => 'required|string|max:255',
+            'address_uz' => 'required|string|max:255',
+            'address_tj' => 'required|string|max:255',
             'phone'     => 'required|string|max:20',
             'email'     => 'required|email|max:255',
             'site'      => 'required|url|max:255',

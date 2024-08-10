@@ -240,3 +240,6 @@ table th:nth-child(2),table td:nth-child(2) {
     scroll-snap-align: start;
 }
 
+.avatar img {
+    object-fit: cover;
+}

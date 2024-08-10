@@ -9,9 +9,13 @@ class IrrigationType extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
         'irrigation_id',
-        'description',
+        'title_ru',
+        'title_uz',
+        'title_tj',
+        'description_ru',
+        'description_uz',
+        'description_tj',
     ];
 
     public function irrigation()

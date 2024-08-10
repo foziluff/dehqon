@@ -40,7 +40,7 @@ class CultureController extends Controller
     public function store(StoreCultureRequest $request)
     {
         $request = (new ImageAction())->handle($request);
-        $record = $this->user->cultures()->create($request->only(['title', 'image_path']));
+        $record = $this->user->cultures()->create($request->only(['title_ru','title_uz','title_tj', 'image_path']));
         return redirect()->route('cultures.edit', $record->id)->with(['success' => 'Успешно добавлен!']);
     }
 
@@ -68,7 +68,7 @@ class CultureController extends Controller
     public function update(UpdateCultureRequest $request, int $id)
     {
         $request = (new ImageAction())->handle($request);
-        $this->cultureRepository->update($id, $request->only(['title', 'image_path']));
+        $this->cultureRepository->update($id, $request->only(['title_ru','title_uz','title_tj', 'image_path']));
         return redirect()->back()->with(['success' => 'Успешно обновлен!']);
     }
 

@@ -13,8 +13,18 @@
                 <form action="{{ route($module . '.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mt-3">
-                        <label class="form-label">Название</label>
-                        <input value="{{ old('title') }}" name="title" placeholder="Название" type="text" class="form-control">
+                        <label class="form-label">Название (RU)</label>
+                        <input value="{{ old('title_ru') }}" name="title_ru" placeholder="Название" type="text" class="form-control">
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Название (UZ)</label>
+                        <input value="{{ old('title_uz') }}" name="title_uz" placeholder="Название" type="text" class="form-control">
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Название (TJ)</label>
+                        <input value="{{ old('title_tj') }}" name="title_tj" placeholder="Название" type="text" class="form-control">
                     </div>
 
                     <div class="mt-3">
@@ -22,7 +32,7 @@
                         <select id="culture_id" class="form-select" name="culture_id" required>
                             <option disabled selected>Выбрать культуру</option>
                             @foreach($cultures as $culture)
-                                <option value="{{ $culture->id }}" {{ old('culture_id') == $culture->id ? 'selected' : '' }}>{{ $culture->title }}</option>
+                                <option value="{{ $culture->id }}" {{ old('culture_id') == $culture->id ? 'selected' : '' }}>{{ $culture->title_ru }}</option>
                             @endforeach
                         </select>
                     </div>

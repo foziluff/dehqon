@@ -13,7 +13,7 @@ class IrrigationRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
+        return $this->startConditions()->orderBy('title_ru', 'asc')->toBase()->paginate($quantity);
     }
 
     public function search($value)

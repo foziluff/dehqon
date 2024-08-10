@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\AgroCredit\AgroCreditController;
+use App\Http\Controllers\Api\AgroMarket\AgroMarketController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\SendCodeController;
@@ -11,17 +13,27 @@ use App\Http\Controllers\Api\Field\Income\IncomeController;
 use App\Http\Controllers\Api\Field\Note\NoteController;
 use App\Http\Controllers\Api\Field\Rotation\RotationController;
 use App\Http\Controllers\Api\Field\WorkPlan\WorkPlanController;
+use App\Http\Controllers\Api\FuelType\FuelTypeController;
+use App\Http\Controllers\Api\Organization\OrganizationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/check-phone/{phone}', [SendCodeController::class, 'check']);
 Route::post('/send-code', [SendCodeController::class, 'sendCode'])->middleware('throttle:1,1');
-Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->middleware('throttle:3,2');
+Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->middleware('throttle:3,1');
 Route::post('/register', [RegisterController::class, 'register']);
-Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:4,1');
+Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:3,1');
 
 Route::middleware('auth:sanctum')->group(function (){
 
+    Route::get('/user', [LoginController::class, 'getUser']);
+
     Route::get('/cultures', [CultureController::class, 'index']);
+    Route::get('/fuel-types', [FuelTypeController::class, 'index']);
+    Route::get('/agro-markets', [AgroMarketController::class, 'index']);
+    Route::get('/agro-credits', [AgroCreditController::class, 'index']);
+    Route::get('/organizations', [OrganizationController::class, 'index']);
+
+
     Route::resource('/fields', FieldController::class);
 
     Route::get('/fields/{id}/notes', [NoteController::class, 'filterByField']);
@@ -39,6 +51,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField']);
     Route::resource('/rotations', RotationController::class);
+
 
 });
 

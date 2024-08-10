@@ -102,7 +102,7 @@
                 <li class="menu-item {{ Request::segment(2) === 'irrigations' ? 'active' : '' }}">
                     <a href="{{ route('irrigations.index') }}" class="menu-link">
                         <i class='menu-icon tf-icons bx bx-leaf'></i>
-                        <div>Ирригации</div>
+                        <div>Ирригация</div>
                     </a>
                 </li>
                 <!-- Агромаркеты -->

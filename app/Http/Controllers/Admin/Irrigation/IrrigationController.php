@@ -40,7 +40,7 @@ class IrrigationController extends Controller
     public function store(StoreIrrigationRequest $request)
     {
         $request = (new ImageAction())->handle($request);
-        $record = $this->user->irrigations()->create($request->only(['title', 'image_path']));
+        $record = $this->user->irrigations()->create($request->only(['title_ru', 'title_uz', 'title_tj', 'image_path']));
         return redirect()->route('irrigations.edit', $record->id)->with(['success' => 'Успешно добавлен!']);
     }
 
@@ -68,7 +68,7 @@ class IrrigationController extends Controller
     public function update(UpdateIrrigationRequest $request, int $id)
     {
         $request = (new ImageAction())->handle($request);
-        $this->irrigationRepository->update($id, $request->only(['title', 'image_path']));
+        $this->irrigationRepository->update($id, $request->only(['title_ru', 'title_uz', 'title_tj', 'image_path']));
         return redirect()->back()->with(['success' => 'Успешно обновлен!']);
     }
 

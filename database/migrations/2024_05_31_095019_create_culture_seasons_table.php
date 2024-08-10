@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('culture_seasons', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title_ru');
+            $table->string('title_uz');
+            $table->string('title_tj');
             $table->unsignedBigInteger('culture_id');
             $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
             $table->timestamps();

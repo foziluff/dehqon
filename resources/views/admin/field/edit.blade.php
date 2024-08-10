@@ -23,7 +23,7 @@
                         <select id="culture_id" class="form-select" name="culture_id" required>
                             <option disabled selected>Выбрать культуру</option>
                             @foreach($cultures as $culture)
-                                <option value="{{ $culture->id }}" {{ $record->culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title }}</option>
+                                <option value="{{ $culture->id }}" {{ $record->culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title_ru }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -43,7 +43,7 @@
                         <select id="fuel_type_id" class="form-select" name="fuel_type_id" required>
                             <option disabled selected>Выбрать тип топлива</option>
                             @foreach($fuelTypes as $fuelType)
-                                <option value="{{ $fuelType->id }}" {{ $record->fuel_type_id == $fuelType->id ? 'selected' : '' }}>{{ $fuelType->title }}</option>
+                                <option value="{{ $fuelType->id }}" {{ $record->fuel_type_id == $fuelType->id ? 'selected' : '' }}>{{ $fuelType->title_ru }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -58,7 +58,7 @@
                         <select id="prev_culture_id" class="form-select" name="prev_culture_id">
                             <option disabled selected>Выбрать предыдущую культуру</option>
                             @foreach($cultures as $culture)
-                                <option value="{{ $culture->id }}" {{ $record->prev_culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title }}</option>
+                                <option value="{{ $culture->id }}" {{ $record->prev_culture_id == $culture->id ? 'selected' : '' }}>{{ $culture->title_ru }}</option>
                             @endforeach
                         </select>
                     </div>
