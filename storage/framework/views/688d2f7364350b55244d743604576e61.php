@@ -37,11 +37,11 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="fuel_type_id" class="form-label">Тип топлива*</label>
-                        <select id="fuel_type_id" class="form-select" name="fuel_type_id" required>
-                            <option disabled selected>Выбрать тип топлива</option>
-                            <?php $__currentLoopData = $fuelTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fuelType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($fuelType->id); ?>" <?php echo e(old('fuel_type_id') == $fuelType->id ? 'selected' : ''); ?>><?php echo e($fuelType->title_ru); ?></option>
+                        <label for="irrigation_id" class="form-label">Тип полива*</label>
+                        <select id="irrigation_id" class="form-select" name="irrigation_id" required>
+                            <option disabled selected>Выбрать Тип полива</option>
+                            <?php $__currentLoopData = $irrigations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $irrigation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($irrigation->id); ?>" <?php echo e(old('irrigation_id') == $irrigation->id ? 'selected' : ''); ?>><?php echo e($irrigation->title_ru); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>

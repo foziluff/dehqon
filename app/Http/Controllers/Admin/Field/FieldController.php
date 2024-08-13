@@ -8,19 +8,20 @@ use App\Http\Requests\Admin\Field\UpdateFieldRequest;
 use App\Repositories\Culture\CultureRepository;
 use App\Repositories\Field\FieldRepository;
 use App\Repositories\FuelType\FuelTypeRepository;
+use App\Repositories\Irrigation\IrrigationRepository;
 
 class FieldController extends Controller
 {
     private $fieldRepository;
     private $cultureRepository;
-    private $fuelTypeRepository;
+    private $irrigationRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->fieldRepository = app(FieldRepository::class);
         $this->cultureRepository = app(CultureRepository::class);
-        $this->fuelTypeRepository = app(FuelTypeRepository::class);
+        $this->irrigationRepository = app(IrrigationRepository::class);
     }
     /**
      * Display a listing of the resource.
@@ -46,8 +47,8 @@ class FieldController extends Controller
     public function create()
     {
         $cultures = $this->cultureRepository->getAll();
-        $fuelTypes = $this->fuelTypeRepository->getAll();
-        return view('admin.field.create', compact('cultures', 'fuelTypes'));
+        $irrigations = $this->irrigationRepository->getAll();
+        return view('admin.field.create', compact('cultures', 'irrigations'));
     }
 
     /**
@@ -75,9 +76,9 @@ class FieldController extends Controller
     public function edit(int $id)
     {
         $cultures = $this->cultureRepository->getAll();
-        $fuelTypes = $this->fuelTypeRepository->getAll();
+        $irrigations = $this->irrigationRepository->getAll();
         $record = $this->fieldRepository->getEditOrFail($id);
-        return view('admin.field.edit', compact('record', 'cultures', 'fuelTypes'));
+        return view('admin.field.edit', compact('record', 'cultures', 'irrigations'));
     }
 
     /**

@@ -21,7 +21,6 @@ class CultureController extends Controller
     public function index()
     {
         $records = $this->cultureRepository->getAllWithChildren();
-        if ($records->isEmpty()) return response()->json(['message' => 'No content'], 204);
 
         return response()->json($records, 200);
     }

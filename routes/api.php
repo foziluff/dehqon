@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\Field\Note\NoteController;
 use App\Http\Controllers\Api\Field\Rotation\RotationController;
 use App\Http\Controllers\Api\Field\WorkPlan\WorkPlanController;
 use App\Http\Controllers\Api\FuelType\FuelTypeController;
+use App\Http\Controllers\Api\Irrigation\IrrigationController;
 use App\Http\Controllers\Api\Organization\OrganizationController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/agro-markets', [AgroMarketController::class, 'index']);
     Route::get('/agro-credits', [AgroCreditController::class, 'index']);
     Route::get('/organizations', [OrganizationController::class, 'index']);
+    Route::get('/irrigations', [IrrigationController::class, 'index']);
 
 
     Route::resource('/fields', FieldController::class);
@@ -51,7 +53,6 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField']);
     Route::resource('/rotations', RotationController::class);
-
 
 });
 

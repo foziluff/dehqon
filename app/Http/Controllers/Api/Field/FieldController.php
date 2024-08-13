@@ -23,7 +23,6 @@ class FieldController extends Controller
     public function index()
     {
         $records = $this->fieldRepository->getAllMineWithPaginate($this->user->id, 20);
-        if ($records->isEmpty()) return response()->json(['message' => 'No content'], 204);
         return response()->json($records, 200);
     }
 

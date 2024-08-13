@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FuelTypeSeeder::class);
         $this->call(CultureSeeder::class);
         $this->call(CultureSeasonSeeder::class);
+        $this->call(IrrigationSeeder::class);
         Field::factory(10)->create();
         $this->call(ProblemSeeder::class);
         $this->call(NoteSeeder::class);
@@ -58,6 +59,5 @@ class DatabaseSeeder extends Seeder
         $this->call(IncomeSeeder::class);
         $this->call(ProductQuantitySeeder::class);
         $this->call(StockSeeder::class);
-        $this->call(IrrigationSeeder::class);
     }
 }

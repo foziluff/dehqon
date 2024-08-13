@@ -39,11 +39,11 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="fuel_type_id" class="form-label">Тип топлива*</label>
-                        <select id="fuel_type_id" class="form-select" name="fuel_type_id" required>
-                            <option disabled selected>Выбрать тип топлива</option>
-                            @foreach($fuelTypes as $fuelType)
-                                <option value="{{ $fuelType->id }}" {{ $record->fuel_type_id == $fuelType->id ? 'selected' : '' }}>{{ $fuelType->title_ru }}</option>
+                        <label for="irrigation_id" class="form-label">Тип полива*</label>
+                        <select id="irrigation_id" class="form-select" name="irrigation_id" required>
+                            <option disabled selected>Выбрать Тип полива</option>
+                            @foreach($irrigations as $irrigation)
+                                <option value="{{ $irrigation->id }}" {{ $record->irrigation_id == $irrigation->id ? 'selected' : '' }}>{{ $irrigation->title_ru }}</option>
                             @endforeach
                         </select>
                     </div>

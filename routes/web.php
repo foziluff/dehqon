@@ -46,6 +46,7 @@ use App\Http\Controllers\Admin\News\NewsImageController;
 use App\Http\Controllers\Admin\Organization\OrganizationController;
 use App\Http\Controllers\Admin\Question\QuestionController;
 use App\Http\Controllers\Admin\Stock\StockController;
+use App\Http\Controllers\Api\Auth\DeleteAccountController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -62,6 +63,11 @@ Route::post('/send-code', [SendCodeController::class, 'sendCode'])->name('sendCo
 Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->name('verifyCode')->middleware('throttleRedirect:3,3');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+Route::get('/delete-account', [DeleteAccountController::class, 'show'])->name('deleteAccount.show');
+Route::post('/delete-account', [DeleteAccountController::class, 'destroy'])->name('deleteAccount.destroy')
+    ->middleware('throttle:3,3');
 
 Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
 

@@ -4,6 +4,7 @@ namespace App\Models\Field;
 
 use App\Models\Culture\Culture;
 use App\Models\FuelType\FuelType;
+use App\Models\Irrigation\Irrigation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +17,7 @@ class Field extends Model
         'culture_id',
         'sort',
         'area',
-        'fuel_type_id',
+        'irrigation_id',
         'sowing_year',
         'prev_culture_id',
         'prev_sort',
@@ -25,9 +26,9 @@ class Field extends Model
         'coordinates',
     ];
 
-    protected $casts = [
-        'coordinates' => 'array',
-    ];
+//    protected $casts = [
+//        'coordinates' => 'array',
+//    ];
 
     public function culture()
     {
@@ -37,6 +38,11 @@ class Field extends Model
     public function fuelType()
     {
         return $this->belongsTo(FuelType::class);
+    }
+
+    public function irrigation()
+    {
+        return $this->belongsTo(Irrigation::class);
     }
     public function prevCulture()
     {

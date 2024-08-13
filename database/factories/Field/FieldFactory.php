@@ -26,17 +26,17 @@ class FieldFactory extends Factory
             'culture_id' => $cultureId,
             'sort' => $this->faker->word,
             'area' => $this->faker->randomFloat(2, 1, 20),
-            'fuel_type_id' => $fuelTypeId,
+            'irrigation_id' => 1,
             'sowing_year' => $this->faker->year,
             'prev_culture_id' => $prevCultureId,
             'prev_sort' => $this->faker->word,
             'prev_sowing_year' => $this->faker->year,
             'user_id' => $userId,
-            'coordinates' => json_encode([
-                ['latitude' => $this->faker->latitude, 'longitude' => $this->faker->longitude],
-                ['latitude' => $this->faker->latitude, 'longitude' => $this->faker->longitude],
-                ['latitude' => $this->faker->latitude, 'longitude' => $this->faker->longitude],
-            ]),
+            'coordinates' => "[
+                ['latitude' => this->faker->latitude, 'longitude' => this->faker->longitude],
+                ['latitude' => this->faker->latitude, 'longitude' => this->faker->longitude],
+                ['latitude' => this->faker->latitude, 'longitude' => this->faker->longitude],
+            ]",
         ];
     }
 }

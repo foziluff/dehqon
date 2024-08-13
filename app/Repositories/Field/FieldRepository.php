@@ -37,9 +37,11 @@ class FieldRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
+            ->orderBy('id', 'desc')
             ->toBase()
             ->paginate($quantity);
     }
+
     public function getOnlyMineWithChildrenOrFail($id)
     {
         return $this->startConditions()
@@ -61,7 +63,7 @@ class FieldRepository extends CoreRepository
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('culture', 'prevCulture', 'fuelType')
+            ->with('culture', 'prevCulture', 'irrigation')
             ->findOrFail($id);
     }
 

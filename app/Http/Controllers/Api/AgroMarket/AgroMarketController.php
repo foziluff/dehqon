@@ -21,7 +21,6 @@ class AgroMarketController extends Controller
     public function index()
     {
         $records = $this->agroMarketRepository->getAllForFront();
-        if ($records->isEmpty()) return response()->json(['message' => 'No content'], 204);
         return response()->json($records, 200);
     }
 }

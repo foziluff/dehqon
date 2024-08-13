@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('culture_id');
             $table->string('sort');
             $table->double('area');
-            $table->unsignedBigInteger('fuel_type_id')->nullable();
+            $table->unsignedBigInteger('irrigation_id')->nullable();
             $table->year('sowing_year')->nullable();
             $table->unsignedBigInteger('prev_culture_id')->nullable();
             $table->string('prev_sort')->nullable();
@@ -27,8 +27,8 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->foreign('fuel_type_id')->references('id')->on('fuel_types');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('irrigation_id')->references('id')->on('irrigations');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('culture_id')->references('id')->on('cultures');
         });
     }
