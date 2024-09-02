@@ -20,6 +20,8 @@ class Note extends Model
         'problem_id',
         'description',
         'defeated_area',
+        'status',
+        'user_seen',
     ];
 
     public function problem()

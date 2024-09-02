@@ -38,8 +38,8 @@
                 </div>
 
                 <div class="mt-3">
-                    <label class="form-label">Тип топлива</label>
-                    <div class="form-control"><?php echo e($record->fuelType->title); ?></div>
+                    <label class="form-label">Тип полива</label>
+                    <div class="form-control"><?php echo e($record->irrigation->title); ?></div>
                 </div>
 
                 <div class="mt-3">

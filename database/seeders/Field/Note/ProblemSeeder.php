@@ -13,14 +13,30 @@ class ProblemSeeder extends Seeder
     public function run()
     {
         $problems = [
-            'Вредители',
-            'Сорняки',
-            'Болезнь',
-            'Другое',
+            [
+                'title_ru' => 'Вредители',
+                'title_uz' => 'Zararkunandalar',
+                'title_tj' => 'Зараррасонҳо',
+            ],
+            [
+                'title_ru' => 'Сорняки',
+                'title_uz' => 'Begona otlar',
+                'title_tj' => 'Аловпарастҳо',
+            ],
+            [
+                'title_ru' => 'Болезнь',
+                'title_uz' => 'Kasallik',
+                'title_tj' => 'Бемори',
+            ],
+            [
+                'title_ru' => 'Другое',
+                'title_uz' => 'Boshqa',
+                'title_tj' => 'Дигарон',
+            ],
         ];
 
         foreach ($problems as $problem) {
-            Problem::factory()->create(['title' => $problem, 'user_id' => 1]);
+            Problem::factory()->create(array_merge($problem, ['user_id' => 1]));
         }
     }
 }

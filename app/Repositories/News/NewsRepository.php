@@ -21,7 +21,7 @@ class NewsRepository extends CoreRepository
 
     public function search($value)
     {
-        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
+        return $this->startConditions()->where('title_ru', 'like', "%$value%")->toBase()->get();
     }
 
     public function getAll()

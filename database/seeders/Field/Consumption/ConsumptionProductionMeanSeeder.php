@@ -15,22 +15,30 @@ class ConsumptionProductionMeanSeeder extends Seeder
     {
         DB::table('consumption_production_means')->insert([
             [
-                'title' => 'Трактор',
+                'title_ru' => 'Трактор',
+                'title_uz' => 'Traktor',
+                'title_tj' => 'Трактор',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Комбайн',
+                'title_ru' => 'Комбайн',
+                'title_uz' => 'Kombayn',
+                'title_tj' => 'Комбайн',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Ручная работа',
+                'title_ru' => 'Ручная работа',
+                'title_uz' => 'Qo‘l mehnati',
+                'title_tj' => 'Коргарии дастӣ',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Самоходная техника',
+                'title_ru' => 'Самоходная техника',
+                'title_uz' => 'O‘z-o‘zini harakatga keltiruvchi texnika',
+                'title_tj' => 'Техникаи худрав',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

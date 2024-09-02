@@ -24,9 +24,27 @@ class NoteController extends Controller
     /**
      * Display a filterByUser of the resource.
      */
+    public function index()
+    {
+        $records = $this->noteRepository->getAllMineWithPaginate($this->user->id, 20);
+        return response()->json($records, 200);
+    }
+
+    /**
+     * Display a filterByUser of the resource.
+     */
     public function filterByField($id)
     {
-        $records = $this->noteRepository->getByFieldIdMine($id, $this->user->id);
+        $records = $this->noteRepository->getByFieldIdMineFront($id, $this->user->id, 20);
+        return response()->json($records, 200);
+    }
+
+    /**
+     * Display a filterByUser of the resource.
+     */
+    public function getByStatus($status)
+    {
+        $records = $this->noteRepository->getByStatusMine($status, $this->user->id, 20);
         return response()->json($records, 200);
     }
 
@@ -58,6 +76,7 @@ class NoteController extends Controller
     public function update(UpdateNoteRequest $request, $id)
     {
         $record = $this->noteRepository->update($id, $request);
+        app(NoteImagesAction::class)->handle($request, $record->id);
         return response()->json($record, 200);
     }
 

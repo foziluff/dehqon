@@ -16,10 +16,12 @@ use App\Http\Controllers\Api\Field\WorkPlan\WorkPlanController;
 use App\Http\Controllers\Api\FuelType\FuelTypeController;
 use App\Http\Controllers\Api\Irrigation\IrrigationController;
 use App\Http\Controllers\Api\Organization\OrganizationController;
+use App\Http\Controllers\Api\Problem\ProblemController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/check-phone/{phone}', [SendCodeController::class, 'check']);
-Route::post('/send-code', [SendCodeController::class, 'sendCode'])->middleware('throttle:1,1');
+Route::get('/check-user/{phone}', [SendCodeController::class, 'check']);
+Route::post('/send-code', [SendCodeController::class, 'sendCode']);
+//    ->middleware('throttle:1,1');
 Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->middleware('throttle:3,1');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:3,1');
@@ -34,11 +36,13 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/agro-credits', [AgroCreditController::class, 'index']);
     Route::get('/organizations', [OrganizationController::class, 'index']);
     Route::get('/irrigations', [IrrigationController::class, 'index']);
+    Route::get('/problems', [ProblemController::class, 'index']);
 
 
     Route::resource('/fields', FieldController::class);
 
     Route::get('/fields/{id}/notes', [NoteController::class, 'filterByField']);
+    Route::get('/notes/status/{status}', [NoteController::class, 'getByStatus']);
     Route::resource('/notes', NoteController::class);
     Route::delete('/notes-images/{id}', [NoteController::class, 'destroyImage']);
 

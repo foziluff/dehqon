@@ -29,6 +29,8 @@ class UpdateNoteRequest extends FormRequest
             'organization_id'       => 'sometimes|nullable|integer',
             'defeated_area' => 'required|numeric|min:0',
             'images.*'      => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status'        => 'sometimes|integer',
+            'user_seen'     => 'sometimes|integer',
         ];
     }
 }

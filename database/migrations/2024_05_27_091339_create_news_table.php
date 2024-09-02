@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
+            $table->string('title_ru');
+            $table->string('title_uz');
+            $table->string('title_tj');
+            $table->text('description_ru');
+            $table->text('description_uz');
+            $table->text('description_tj');
             $table->string('url');
             $table->dateTime('date');
             $table->unsignedBigInteger('user_id');

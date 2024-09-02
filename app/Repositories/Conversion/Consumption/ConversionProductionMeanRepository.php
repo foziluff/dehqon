@@ -13,7 +13,7 @@ class ConversionProductionMeanRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
+        return $this->startConditions()->toBase()->paginate($quantity);
     }
 
 

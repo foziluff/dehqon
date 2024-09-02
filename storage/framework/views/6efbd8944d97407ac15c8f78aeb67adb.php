@@ -28,7 +28,7 @@
                         <td><?php echo e($records->firstItem() + $key); ?></td>
                         <td>
                             <a class="td-title" href="<?php echo e(route($module . '.show', $record->id)); ?>">
-                                <span class="fw-medium"><?php echo e($record->title); ?></span>
+                                <span class="fw-medium"><?php echo e($record->title_ru); ?></span>
                             </a>
                         </td>
                         <td class="text-right">

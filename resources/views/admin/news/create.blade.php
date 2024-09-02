@@ -17,13 +17,33 @@
                     @csrf
 
                     <div class="mt-3">
-                        <label class="form-label">Заголовок*</label>
-                        <input value="{{ old('title') }}" name="title" type="text" class="form-control" required>
+                        <label class="form-label">Заголовок (Русский)*</label>
+                        <input value="{{ old('title_ru') }}" name="title_ru" placeholder="Заголовок на русском" type="text" class="form-control" required>
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Описание*</label>
-                        <textarea name="description" class="form-control" rows="3" required>{{ old('description') }}</textarea>
+                        <label class="form-label">Заголовок (Узбекский)*</label>
+                        <input value="{{ old('title_uz') }}" name="title_uz" placeholder="Заголовок на узбекском" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Заголовок (Таджикский)*</label>
+                        <input value="{{ old('title_tj') }}" name="title_tj" placeholder="Заголовок на таджикском" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Описание (Русский)*</label>
+                        <textarea name="description_ru" class="form-control" rows="3" required>{{ old('description_ru') }}</textarea>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Описание (Узбекский)*</label>
+                        <textarea name="description_uz" class="form-control" rows="3" required>{{ old('description_uz') }}</textarea>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Описание (Таджикский)*</label>
+                        <textarea name="description_tj" class="form-control" rows="3" required>{{ old('description_tj') }}</textarea>
                     </div>
 
                     <div class="mt-3">

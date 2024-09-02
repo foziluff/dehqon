@@ -19,6 +19,15 @@ class NoteRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getAllMineWithPaginate($user_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('user_id', $user_id)
+            ->with('field', 'problem')
+            ->paginate($quantity);
+    }
+
     public function getAllMyChatsWithPaginate($organization_id, $quantity)
     {
         return $this->startConditions()
@@ -44,7 +53,28 @@ class NoteRepository extends CoreRepository
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
 //            ->with('problem', 'organization')
+            ->with('field')
             ->get();
+    }
+
+    public function getByFieldIdMineFront($field_id, $user_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('field_id', $field_id)
+            ->where('user_id', $user_id)
+            ->with('problem', 'organization', 'field')
+            ->paginate($quantity);
+    }
+
+    public function getByStatusMine($status, $user_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('status', $status)
+            ->where('user_id', $user_id)
+            ->with('problem', 'organization', 'field')
+            ->paginate($quantity);
     }
 
 
@@ -77,7 +107,7 @@ class NoteRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->with('images')
+            ->with('images', 'field')
             ->findOrFail($id);
     }
 

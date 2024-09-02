@@ -18,7 +18,7 @@ class QuestionRepository extends CoreRepository
 
     public function search($value)
     {
-        return $this->startConditions()->where('question', 'like', "%$value%")->toBase()->get();
+        return $this->startConditions()->where('question_ru', 'like', "%$value%")->toBase()->get();
     }
 
     public function getAll()

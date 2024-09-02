@@ -22,7 +22,9 @@ class UpdateWorkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:100',
+            'title_ru' => 'sometimes|string|max:100',
+            'title_uz' => 'sometimes|string|max:100',
+            'title_tj' => 'sometimes|string|max:100',
         ];
     }
 }

@@ -10,6 +10,8 @@ class ConsumptionNaming extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'title_ru',
+        'title_uz',
+        'title_tj',
     ];
 }

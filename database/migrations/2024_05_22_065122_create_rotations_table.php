@@ -22,9 +22,9 @@ return new class extends Migration
             $table->double('average_yield');
             $table->string('average_yield_unit');
 
-            $table->foreign('field_id')->references('id')->on('fields');
-            $table->foreign('culture_id')->references('id')->on('cultures');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
+            $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

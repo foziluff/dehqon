@@ -22,8 +22,12 @@ class StoreQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'question'  => 'required|string|max:255',
-            'answer'    => 'required|string',
+            'question_ru'  => 'required|string|max:255',
+            'question_uz'  => 'required|string|max:255',
+            'question_tj'  => 'required|string|max:255',
+            'answer_ru'    => 'required|string',
+            'answer_uz'    => 'required|string',
+            'answer_tj'    => 'required|string',
         ];
     }
 }

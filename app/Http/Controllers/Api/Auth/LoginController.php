@@ -15,7 +15,7 @@ class LoginController extends Controller
 
         if ($is_registered){
 
-            if (Auth::attempt($request->all())) {
+            if (Auth::attempt($request->only('phone', 'password'))) {
 
                 $user = Auth::user();
                 $user->tokens()->delete();

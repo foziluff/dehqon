@@ -209,5 +209,10 @@ class User extends Authenticatable
         return $this->hasMany(AgroCredit::class);
     }
 
+    public function problems()
+    {
+        return $this->hasMany(Problem::class);
+    }
+
 
 }

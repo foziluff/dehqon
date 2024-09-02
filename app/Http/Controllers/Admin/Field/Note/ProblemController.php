@@ -39,7 +39,7 @@ class ProblemController extends Controller
      */
     public function store(StoreProblemRequest $request)
     {
-        $record = $this->problemRepository->create($request->validated());
+        $record = $this->user->problems()->create($request->validated());
         return redirect()->route('problems.edit', $record->id)->with(['success' => 'Проблема успешно создана!']);
     }
 

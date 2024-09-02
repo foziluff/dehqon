@@ -28,7 +28,7 @@ abstract class CoreRepository
         foreach ($records as $item) {
             foreach ($langItems as $langItem){
                 $item->{$langItem} = $item->{$langItem . "_" . $this->lang};
-                unset($item->{$langItem."_ru"}, $item->{$langItem."_uz"}, $item->{$langItem."_tj"});
+//                unset($item->{$langItem."_ru"}, $item->{$langItem."_uz"}, $item->{$langItem."_tj"});
             }
         }
         return $records;

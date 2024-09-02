@@ -29,7 +29,6 @@ class FuelTypeRepository extends CoreRepository
         return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
     }
 
-
     public function getAll()
     {
         return  $this->startConditions()->all()->toBase();

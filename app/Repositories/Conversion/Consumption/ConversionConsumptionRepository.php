@@ -13,7 +13,7 @@ class ConversionConsumptionRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('id', 'desc')->with('productType')->paginate($quantity);
+        return $this->startConditions()->with('productType')->paginate($quantity);
     }
 
     public function getByWorkConversionIdPaginate($conversion_id, $quantity)

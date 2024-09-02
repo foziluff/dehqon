@@ -15,22 +15,30 @@ class ConsumptionOperationSeeder extends Seeder
     {
         DB::table('consumption_operations')->insert([
             [
-                'title' => 'Полив',
+                'title_ru' => 'Полив',
+                'title_uz' => 'Sug‘orish',
+                'title_tj' => 'Обсигор',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Внесение удобрений',
+                'title_ru' => 'Внесение удобрений',
+                'title_uz' => 'O‘g‘it qo‘shish',
+                'title_tj' => 'Масҳабу о’згартириш',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Обработка почвы',
+                'title_ru' => 'Обработка почвы',
+                'title_uz' => 'Yer ishlov berish',
+                'title_tj' => 'Забт йиморо',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Уборка урожая',
+                'title_ru' => 'Уборка урожая',
+                'title_uz' => 'Hosil yig‘ish',
+                'title_tj' => 'Ҳосил ҷамъоварӣ',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

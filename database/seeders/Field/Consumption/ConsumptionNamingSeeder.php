@@ -15,26 +15,33 @@ class ConsumptionNamingSeeder extends Seeder
     {
         DB::table('consumption_namings')->insert([
             [
-                'title' => 'Газолин',
+                'title_ru' => 'Газолин',
+                'title_uz' => 'Benzin',
+                'title_tj' => 'Бензин',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Дизельное топливо',
+                'title_ru' => 'Дизельное топливо',
+                'title_uz' => 'Dizel yoqilg‘i',
+                'title_tj' => 'Дизел',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Фосфорные удобрения',
+                'title_ru' => 'Фосфорные удобрения',
+                'title_uz' => 'Fosforli o‘g‘itlar',
+                'title_tj' => 'Фосфор',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Калийные удобрения',
+                'title_ru' => 'Калийные удобрения',
+                'title_uz' => 'Kaliyli o‘g‘itlar',
+                'title_tj' => 'Калий',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-            // Добавьте больше начальных данных, если необходимо
         ]);
     }
 }

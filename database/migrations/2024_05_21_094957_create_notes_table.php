@@ -20,6 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('problem_id');
             $table->text('description');
             $table->double('defeated_area');
+            $table->integer('status')->nullable();
+            $table->integer('user_seen')->nullable();
 
             $table->unsignedBigInteger('organization_id')->nullable();
 

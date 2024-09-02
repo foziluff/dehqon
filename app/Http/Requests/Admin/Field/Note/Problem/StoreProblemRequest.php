@@ -22,7 +22,9 @@ class StoreProblemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
+            'title_ru' => 'required|string|max:100',
+            'title_uz' => 'required|string|max:100',
+            'title_tj' => 'required|string|max:100',
         ];
     }
 }
