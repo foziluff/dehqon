@@ -15,7 +15,7 @@
                     <div class="mt-3 form-control">
                         <div class="mt-3">
                             <div class="image-container">
-                                <img src="<?php echo e($record->image_path ? $record->image_path : asset('assets/img/no-image.png')); ?>"
+                                <img src="<?php echo e($record->image_path ? asset($record->image_path) : asset('assets/img/no-image.png')); ?>"
                                      alt="<?php echo e($record->image_path ? '' : 'Default Image'); ?>" class="img-fluid"
                                      style="min-width: 50px; height: 50px;object-fit: cover">
                             </div>
@@ -52,8 +52,10 @@
                         <label for="role" class="form-label">Роль*</label>
                         <select name="role" class="form-control" required>
                             <option value="1" <?php echo e($record->role == 1 ? 'selected' : ''); ?>>Администратор</option>
-                            <option value="0" <?php echo e($record->role != 1 ? 'selected' : ''); ?>>Пользователь</option>
+                            <option value="2" <?php echo e($record->role == 2 ? 'selected' : ''); ?>>Агроном</option>
+                            <option value="0" <?php echo e($record->role == 0 ? 'selected' : ''); ?>>Пользователь</option>
                         </select>
+
                     </div>
                     <div class="mt-3">
                         <label for="currency" class="form-label">Валюта*</label>

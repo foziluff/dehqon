@@ -22,7 +22,7 @@
                         <select id="culture_id" class="form-select" name="culture_id" required>
                             <option disabled selected>Выбрать культуру</option>
                             <?php $__currentLoopData = $cultures; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $culture): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($culture->id); ?>" <?php echo e($record->culture_id == $culture->id ? 'selected' : ''); ?>><?php echo e($culture->title); ?></option>
+                                <option value="<?php echo e($culture->id); ?>" <?php echo e($record->culture_id == $culture->id ? 'selected' : ''); ?>><?php echo e($culture->title_ru); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
@@ -38,11 +38,11 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="fuel_type_id" class="form-label">Тип топлива*</label>
-                        <select id="fuel_type_id" class="form-select" name="fuel_type_id" required>
-                            <option disabled selected>Выбрать тип топлива</option>
-                            <?php $__currentLoopData = $fuelTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fuelType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($fuelType->id); ?>" <?php echo e($record->fuel_type_id == $fuelType->id ? 'selected' : ''); ?>><?php echo e($fuelType->title); ?></option>
+                        <label for="irrigation_id" class="form-label">Тип полива*</label>
+                        <select id="irrigation_id" class="form-select" name="irrigation_id" required>
+                            <option disabled selected>Выбрать Тип полива</option>
+                            <?php $__currentLoopData = $irrigations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $irrigation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($irrigation->id); ?>" <?php echo e($record->irrigation_id == $irrigation->id ? 'selected' : ''); ?>><?php echo e($irrigation->title_ru); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
@@ -57,7 +57,7 @@
                         <select id="prev_culture_id" class="form-select" name="prev_culture_id">
                             <option disabled selected>Выбрать предыдущую культуру</option>
                             <?php $__currentLoopData = $cultures; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $culture): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($culture->id); ?>" <?php echo e($record->prev_culture_id == $culture->id ? 'selected' : ''); ?>><?php echo e($culture->title); ?></option>
+                                <option value="<?php echo e($culture->id); ?>" <?php echo e($record->prev_culture_id == $culture->id ? 'selected' : ''); ?>><?php echo e($culture->title_ru); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>

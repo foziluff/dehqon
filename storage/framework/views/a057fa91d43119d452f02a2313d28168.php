@@ -99,4 +99,4 @@
 <?php endif; ?>
 
 </body></html>
-<?php /**PATH C:\xampp\htdocs\dehqon\resources\views/delete/index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\dehqon\resources\views\delete\index.blade.php ENDPATH**/ ?>

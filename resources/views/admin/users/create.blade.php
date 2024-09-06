@@ -29,8 +29,8 @@
                         <input value="{{ \Carbon\Carbon::parse(old('born_in'))->format('Y-m-d') }}" name="born_in" placeholder="Дата рождения" type="date" class="form-control" required>
                     </div>
                     <div class="mt-3">
-                        <label for="password" class="form-label">Пароль*</label>
-                        <input name="password" placeholder="Пароль" type="password" class="form-control" required>
+                        <label for="password" class="form-label">Пароль</label>
+                        <input name="password" placeholder="Пароль" type="password" class="form-control">
                     </div>
                     <div class="mt-3">
                         <label for="gender" class="form-label">Пол*</label>

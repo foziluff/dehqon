@@ -15,18 +15,37 @@
                     <div class="mt-3 form-control">
                         <div class="mt-3">
                             <div class="image-container">
-                                <img src="<?php echo e($record->image_path); ?>" alt="Изображение" class="img-fluid">
+                                <img src="<?php echo e(asset($record->image_path)); ?>" alt="Изображение" class="img-fluid">
                             </div>
                         </div>
                     </div>
+
                     <div class="mt-3">
-                        <label class="form-label">Название</label>
-                        <input value="<?php echo e($record->title); ?>" name="title" placeholder="Название" type="text" class="form-control">
+                        <label class="form-label">Название (RU)</label>
+                        <input value="<?php echo e($record->title_ru); ?>" name="title_ru" placeholder="Название (RU)" type="text" class="form-control">
                     </div>
                     <div class="mt-3">
-                        <label class="form-label">Адрес</label>
-                        <input value="<?php echo e($record->address); ?>" name="address" placeholder="Адрес" type="text" class="form-control">
+                        <label class="form-label">Название (UZ)</label>
+                        <input value="<?php echo e($record->title_uz); ?>" name="title_uz" placeholder="Название (UZ)" type="text" class="form-control">
                     </div>
+                    <div class="mt-3">
+                        <label class="form-label">Название (TJ)</label>
+                        <input value="<?php echo e($record->title_tj); ?>" name="title_tj" placeholder="Название (TJ)" type="text" class="form-control">
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Адрес (RU)</label>
+                        <input value="<?php echo e($record->address_ru); ?>" name="address_ru" placeholder="Адрес (RU)" type="text" class="form-control">
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label">Адрес (UZ)</label>
+                        <input value="<?php echo e($record->address_uz); ?>" name="address_uz" placeholder="Адрес (UZ)" type="text" class="form-control">
+                    </div>
+                    <div class="mt-3">
+                        <label class="form-label">Адрес (TJ)</label>
+                        <input value="<?php echo e($record->address_tj); ?>" name="address_tj" placeholder="Адрес (TJ)" type="text" class="form-control">
+                    </div>
+
                     <div class="mt-3">
                         <label class="form-label">Телефон</label>
                         <input value="<?php echo e($record->phone); ?>" name="phone" placeholder="Телефон" type="text" class="form-control">

@@ -1,12 +1,14 @@
 <a href="<?php echo e(route($module . '.show', $record->id)); ?>" class="btn btn-icon btn-outline-primary">
     <i class='bx bx-book-open'></i>
 </a>
+<?php if(Auth::user()->role == 1): ?>
 <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-icon btn-outline-success">
     <i class='bx bx-pencil'></i>
 </a>
 <button data-bs-toggle="modal" data-bs-target="#modalCenter<?php echo e($record->id); ?>" type="button" class="btn btn-icon btn-outline-danger" >
     <i class='bx bx-basket'></i>
 </button>
+<?php endif; ?>
 <div class="modal fade" id="modalCenter<?php echo e($record->id); ?>" tabindex="-1" aria-hidden="true">
     <form action="<?php echo e(route($module . '.destroy', $record->id)); ?>" method="POST">
         <?php echo method_field('DELETE'); ?> <?php echo csrf_field(); ?>

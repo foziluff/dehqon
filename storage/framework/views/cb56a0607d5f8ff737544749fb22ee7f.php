@@ -16,8 +16,18 @@
                 </div>
 
                 <div class="mt-3">
-                    <label class="form-label">Работы</label>
-                    <div class="form-control"><?php echo e($record->work); ?></div>
+                    <label class="form-label">Работа (RU)</label>
+                    <div class="form-control"><?php echo e($record->work_ru); ?></div>
+                </div>
+
+                <div class="mt-3">
+                    <label class="form-label">Работа (UZ)</label>
+                    <div class="form-control"><?php echo e($record->work_uz); ?></div>
+                </div>
+
+                <div class="mt-3">
+                    <label class="form-label">Работа (TJ)</label>
+                    <div class="form-control"><?php echo e($record->work_tj); ?></div>
                 </div>
 
                 <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>

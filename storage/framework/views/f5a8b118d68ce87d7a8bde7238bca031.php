@@ -15,12 +15,22 @@
 
                     <div class="mt-3">
                         <label class="form-label">Время</label>
-                        <input value="<?php echo e($record->time); ?>" name="time" placeholder="Время" type="text" class="form-control">
+                        <input value="<?php echo e(old('time', $record->time)); ?>" name="time" placeholder="Время" type="text" class="form-control">
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Работа</label>
-                        <input value="<?php echo e($record->work); ?>" name="work" placeholder="Работа" type="text" class="form-control">
+                        <label class="form-label">Работа (RU)</label>
+                        <textarea name="work_ru" placeholder="Работа (RU)" class="form-control"><?php echo e(old('work_ru', $record->work_ru)); ?></textarea>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Работа (UZ)</label>
+                        <textarea name="work_uz" placeholder="Работа (UZ)" class="form-control"><?php echo e(old('work_uz', $record->work_uz)); ?></textarea>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Работа (TJ)</label>
+                        <textarea name="work_tj" placeholder="Работа (TJ)" class="form-control"><?php echo e(old('work_tj', $record->work_tj)); ?></textarea>
                     </div>
 
                     <input type="hidden" value="<?php echo e($record->cultureSeason->id); ?>" name="culture_season_id">

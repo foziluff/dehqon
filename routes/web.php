@@ -62,7 +62,7 @@ Route::post('/send-code', [SendCodeController::class, 'sendCode'])->name('sendCo
     ->middleware('throttleRedirect:1,1');
 Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->name('verifyCode')->middleware('throttleRedirect:3,3');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logoutGet');
 
 
 Route::get('/delete-account', [DeleteAccountController::class, 'show'])->name('deleteAccount.show');

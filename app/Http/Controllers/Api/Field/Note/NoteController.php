@@ -75,7 +75,7 @@ class NoteController extends Controller
      */
     public function update(UpdateNoteRequest $request, $id)
     {
-        $record = $this->noteRepository->update($id, $request);
+        $record = $this->noteRepository->update($id, $request->validated());
         app(NoteImagesAction::class)->handle($request, $record->id);
         return response()->json($record, 200);
     }

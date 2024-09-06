@@ -48,27 +48,18 @@ class VerifyCodeController extends Controller
      */
     public function verifyCode(VerifyCodeRequest $request)
     {
-        if (!$this->getIfVerified($request)) {
-            return response()->json(['message' => 'Invalid code'], 422);
-        }
+        if (!$this->getIfVerified($request)) return response()->json(['message' => 'Invalid code'], 422);
 
-        $request->merge(['token' => Str::random(64)]);
-        RegisterToken::create($request->all());
         $user = User::where('phone', $request->phone)->first();
-
         if ($user) {
             $user->tokens()->delete();
             $token = $user->createToken('access_token');
-
-            return response()->json([
-                'message' => 'Verified',
-                'access_token' => $token->plainTextToken,
-            ], 201);
+            return response()->json(['access_token' => $token->plainTextToken], 201);
         }
 
-        return response()->json(['register_token' => $request->token], 201);
+        $registerToken = RegisterToken::create($request->validated() + ['token' => Str::random(64)]);
+        return response()->json(['register_token' => $registerToken->token], 201);
     }
-
 
     public function getIfVerified($request)
     {

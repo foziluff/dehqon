@@ -20,7 +20,7 @@
                         <input value="<?php echo e(old('surname')); ?>" name="surname" placeholder="Фамилия" type="text" class="form-control" required>
                     </div>
                     <div class="mt-3">
-                        <label for="phone" class="form-label">Телефон*</label>
+                        <label for="phone" class="form-label">Телефон* (992XXXXXXXXX)</label>
                         <input value="<?php echo e(old('phone')); ?>" name="phone" placeholder="Телефон" type="text" class="form-control" required>
                     </div>
                     <div class="mt-3">
@@ -28,8 +28,8 @@
                         <input value="<?php echo e(\Carbon\Carbon::parse(old('born_in'))->format('Y-m-d')); ?>" name="born_in" placeholder="Дата рождения" type="date" class="form-control" required>
                     </div>
                     <div class="mt-3">
-                        <label for="password" class="form-label">Пароль*</label>
-                        <input name="password" placeholder="Пароль" type="password" class="form-control" required>
+                        <label for="password" class="form-label">Пароль</label>
+                        <input name="password" placeholder="Пароль" type="password" class="form-control">
                     </div>
                     <div class="mt-3">
                         <label for="gender" class="form-label">Пол*</label>
@@ -43,8 +43,10 @@
                         <label for="role" class="form-label">Роль*</label>
                         <select name="role" class="form-control" required>
                             <option value="1" <?php echo e(old('role') == 1 ? 'selected' : ''); ?>>Администратор</option>
-                            <option value="0" <?php echo e(old('role') != 1 ? 'selected' : ''); ?>>Пользователь</option>
+                            <option value="2" <?php echo e(old('role') == 2 ? 'selected' : ''); ?>>Агроном</option>
+                            <option value="0" <?php echo e(old('role') == 0 ? 'selected' : ''); ?>>Пользователь</option>
                         </select>
+
                     </div>
 
                     <div class="mt-3">
@@ -53,8 +55,8 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="organization_id" class="form-label">Организация*</label>
-                        <select id="organization_id" class="form-select" name="organization_id" required>
+                        <label for="organization_id" class="form-label">Организация</label>
+                        <select id="organization_id" class="form-select" name="organization_id">
                             <option selected value="0">Без организации</option>
                             <?php $__currentLoopData = $organizations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $organization): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($organization->id); ?>" <?php echo e(old('organization_id') == $organization->id ? 'selected' : ''); ?>><?php echo e($organization->title); ?></option>
@@ -63,8 +65,8 @@
                     </div>
 
                     <div class="mt-3">
-                        <label for="image" class="form-label">Фото профиля*</label>
-                        <input type="file" name="image" class="form-control" required>
+                        <label for="image" class="form-label">Фото профиля</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                 </form>

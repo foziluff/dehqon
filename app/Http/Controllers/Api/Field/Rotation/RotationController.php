@@ -24,7 +24,7 @@ class RotationController extends Controller
      */
     public function filterByField($id)
     {
-        $records = $this->rotationRepository->getByFieldIdMine($id, $this->user->id);
+        $records = $this->rotationRepository->getByFieldIdMine($id, $this->user->id, 20);
         return response()->json($records, 200);
     }
 

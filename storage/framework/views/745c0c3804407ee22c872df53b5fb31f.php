@@ -73,6 +73,17 @@
             <div class="menu-inner-shadow"></div>
 
             <ul class="menu-inner py-1 overflow-auto">
+
+                <!-- Организации -->
+                <li class="menu-item <?php echo e(Request::segment(2) === 'chats' ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('chats.index')); ?>" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-message'></i>
+                        <div>Чаты</div>
+                    </a>
+                </li>
+
+                <?php if(Auth::user()->role == 1): ?>
+
                 <!-- Пользователи -->
                 <li class="menu-item <?php echo e(Request::segment(2) === 'users' ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('users.index')); ?>" class="menu-link">
@@ -91,7 +102,7 @@
                 <li class="menu-item <?php echo e(Request::segment(2) === 'irrigations' ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('irrigations.index')); ?>" class="menu-link">
                         <i class='menu-icon tf-icons bx bx-leaf'></i>
-                        <div>Ирригации</div>
+                        <div>Ирригация</div>
                     </a>
                 </li>
                 <!-- Агромаркеты -->
@@ -113,13 +124,6 @@
                     <a href="<?php echo e(route('organizations.index')); ?>" class="menu-link">
                         <i class='menu-icon tf-icons bx bxs-bank'></i>
                         <div>Организации</div>
-                    </a>
-                </li>
-                <!-- Организации -->
-                <li class="menu-item <?php echo e(Request::segment(2) === 'chats' ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('chats.index')); ?>" class="menu-link">
-                        <i class='menu-icon tf-icons bx bx-message'></i>
-                        <div>Чаты</div>
                     </a>
                 </li>
 
@@ -251,7 +255,15 @@
                         </li>
                     </ul>
                 </li>
+                <?php endif; ?>
 
+                <!-- Организации -->
+                <li class="menu-item">
+                    <a href="<?php echo e(route('logoutGet')); ?>" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-log-out'></i>
+                        <div>Выйти</div>
+                    </a>
+                </li>
             </ul>
 
         </aside>

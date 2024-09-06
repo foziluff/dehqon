@@ -25,7 +25,7 @@
                         <td><?php echo e($records->firstItem() + $key); ?></td>
                         <td>
                             <div>
-                                <img src="<?php echo e($record->image_path ? $record->image_path : asset('assets/img/no-image.png')); ?>"
+                                <img src="<?php echo e($record->image_path ? asset($record->image_path) : asset('assets/img/no-image.png')); ?>"
                                      alt="<?php echo e($record->image_path ? '' : 'Default Image'); ?>" class="img-fluid rounded-circle"
                                      style="min-width: 50px; height: 50px;object-fit: cover">
                             </div>

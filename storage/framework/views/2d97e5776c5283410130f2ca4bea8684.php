@@ -4,6 +4,7 @@
 ?>
 <?php $__env->startSection('title', $title); ?>
 <?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('admin.layouts.components.messages', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="col app-chat-history">
         <div class="chat-history-wrapper">
             <div class="chat-history-header border-bottom">
@@ -14,7 +15,7 @@
                             <img src="<?php echo e($record->user->image_path ? $record->user->image_path : asset('assets/img/no-image.png')); ?>" alt="Avatar" class="rounded-circle" data-bs-toggle="sidebar" data-overlay="" data-target="#app-chat-sidebar-right">
                         </div>
                         <div class="chat-contact-info flex-grow-1 ms-3">
-                            <h6 class="m-0"><?php echo e($record->user->name); ?> <?php echo e($record->user->surname); ?></h6>
+                            <h6 class="m-0"><?php echo e($record->user->name); ?></h6>
                             <small class="user-status text-muted">Online</small>
                         </div>
                     </div>
@@ -24,7 +25,21 @@
                                 <i class="bx bx-dots-vertical-rounded fs-4"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="chat-header-actions">
-                                <a class="dropdown-item" href="javascript:void(0);">Просмотр страницы</a>
+                                <form action="<?php echo e(route('noteAccess.store')); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
+                                    <input type="hidden" name="asked_for_user_id" value="<?php echo e($record->user->id); ?>">
+                                    <input type="hidden" name="asking_user_id" value="<?php echo e(Auth::user()->id); ?>">
+
+                                    <?php if($recordQuantity == 0): ?>
+                                    <button type="submit" class="dropdown-item">Запросить на просмотр</button>
+                                    <?php endif; ?>
+                                </form>
+                                <?php if($recordAccess > 0): ?>
+                                    <a class="dropdown-item" href="<?php echo e(route('users.show', $record->user->id)); ?>">Просмотр страницы</a>
+                                <?php endif; ?>
+                                <?php if($recordAccess == 0 && $recordQuantity != 0): ?>
+                                    <button type="button" class="dropdown-item">Запрос на ожидании</button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -33,28 +48,21 @@
             <div class="chat-history-body">
                 <ul class="list-unstyled chat-history mb-0" id="chat-messages">
                     <?php $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li class="chat-message <?php if($message->user->id == $record->user->id): ?> chat-message-right <?php endif; ?>">
+                        <li class="chat-message <?php if(Auth::user()->organization_id == $message->user->organization_id): ?> chat-message-right <?php endif; ?>">
                             <div class="d-flex overflow-hidden">
-                                <div class="chat-message-wrapper flex-grow-1 <?php if($message->user->id == $record->user->id): ?> d-flex justify-content-end <?php endif; ?>">
+                                <div class="chat-message-wrapper flex-grow-1 <?php if(Auth::user()->organization_id == $message->user->organization_id): ?> d-flex justify-content-end <?php endif; ?>">
                                     <div>
-                                        <div class="w-100 d-flex <?php if($message->user->id == $record->user->id): ?> justify-content-end <?php endif; ?>">
+                                        <div class="w-100 d-flex <?php if(Auth::user()->organization_id == $message->user->organization_id): ?> justify-content-end <?php endif; ?>">
                                             <div class="chat-message-text">
                                                 <p class="mb-0"><?php echo e($message->message); ?></p>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center mt-1 <?php if($message->user->id == $record->user->id): ?> justify-content-end <?php endif; ?> text-muted">
+                                        <div class="d-flex align-items-center mt-1 <?php if(Auth::user()->organization_id == $message->user->organization_id): ?> justify-content-end <?php endif; ?> text-muted">
                                             <small class="me-1"><?php echo e($message->created_at->format('H:i')); ?></small>
-                                            <?php if($message->user->id == $record->user->id): ?> <i class="bx bx-check text-success"></i> <?php endif; ?>
+                                            <?php if(Auth::user()->organization_id == $message->user->organization_id): ?> <i class="bx bx-check text-success"></i> <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
-                                <?php if($message->user->id == $record->user->id): ?>
-                                    <div class="user-avatar flex-shrink-0 ms-3">
-                                        <div class="avatar avatar-sm">
-                                            <img src="<?php echo e(Auth::user()->image_path ? Auth::user()->image_path : asset('assets/img/no-image.png')); ?>" alt="Avatar" class="rounded-circle">
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
                             </div>
                         </li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -83,96 +91,13 @@
         </div>
     </div>
 
-    <style>
-        .app-chat-history {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        .chat-history-wrapper {
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-        }
-
-        .chat-history-header {
-            padding: 15px;
-            background: #f8f9fa;
-        }
-
-        .chat-history-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 15px;
-            background: #fff;
-        }
-
-        .chat-message {
-            margin-bottom: 15px;
-        }
-
-        .chat-message-right .chat-message-wrapper {
-            text-align: right;
-        }
-
-        .chat-message .chat-message-text {
-            background: #f1f1f1;
-            padding: 10px;
-            width: fit-content;
-            border-radius: 10px;
-            word-break: break-word;
-            overflow-wrap: break-word;
-            max-width: 400px;
-        }
-
-        .chat-message-right .chat-message-text {
-            background: #d1ecf1;
-            text-align: right;
-        }
-
-        .chat-message .text-muted {
-            font-size: 0.875rem;
-            margin-top: 5px;
-        }
-
-        .chat-message .text-muted small {
-            margin-right: 5px;
-        }
-
-        .chat-history-footer {
-            padding: 15px;
-            background: #f8f9fa;
-            border-top: 1px solid #dee2e6;
-        }
-
-        .form-send-message {
-            display: flex;
-            align-items: center;
-        }
-
-        .form-send-message .message-input {
-            flex: 1;
-            resize: none;
-        }
-
-        .form-send-message .message-actions {
-            display: flex;
-            align-items: center;
-        }
-
-        .form-send-message .message-actions .bx {
-            font-size: 1.25rem;
-        }
-    </style>
-
-    <?php echo app('Illuminate\Foundation\Vite')('resources/js/app.js'); ?>
+    <script src="/build/assets/app-cCFabYt-.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var chatBody = document.querySelector('.chat-history-body');
-            chatBody.scrollTop = chatBody.scrollHeight;
+            // chatBody.scrollTop = chatBody.scrollHeight;
 
             $('#send-message-form').on('submit', function(event) {
                 event.preventDefault();
@@ -181,21 +106,23 @@
 
                 var now = new Date();
                 var formattedTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-                var newMessage = '<li class="chat-message chat-message-right">' +
-                    '<div class="d-flex overflow-hidden">' +
-                    '<div class="chat-message-wrapper flex-grow-1 d-flex justify-content-end">' +
-                    '<div>' +
-                    '<div class="w-100 d-flex justify-content-end"><div class="chat-message-text">' +
-                    '<p class="mb-0">' + $('input[name="message"]').val() + '</p>' +
-                    '       </div></div>' +
-                    '<div class="d-flex align-items-center mt-1 justify-content-end text-muted">' +
-                    '<small class="me-1">' + formattedTime + '</small>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="user-avatar flex-shrink-0 ms-3">' +
-                    '       <div class="avatar avatar-sm">' +
-                    '           <img src="<?php echo e(Auth::user()->image_path ? Auth::user()->image_path : asset('assets/img/no-image.png')); ?>" alt="Avatar" class="rounded-circle"></div></div></div></li>';
+                var newMessage = `
+                <li class="chat-message chat-message-right">
+                    <div class="d-flex overflow-hidden">
+                        <div class="chat-message-wrapper flex-grow-1 d-flex justify-content-end">
+                            <div>
+                                <div class="w-100 d-flex justify-content-end">
+                                    <div class="chat-message-text">
+                                        <p class="mb-0">${$('input[name="message"]').val()}</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mt-1 justify-content-end text-muted">
+                                    <small class="me-1">${formattedTime}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>`;
                 $('#chat-messages').append(newMessage);
                 $('input[name="message"]').val('');
                 chatBody.scrollTop = chatBody.scrollHeight;
@@ -215,38 +142,32 @@
                 });
             });
 
-            Echo.channel('chat')
+            Echo.channel('chat.<?php echo e($record->id); ?>')
                 .listen('MessageSent', (e) => {
-                    var newMessage = '<li class="chat-message chat-message-left">' +
-                        '<div class="d-flex overflow-hidden">' +
-                        '<div class="user-avatar flex-shrink-0 me-3">' +
-                        '   <div class="avatar avatar-sm">' +
-                        '       <img src="' + e.user.image_path + '" alt="Avatar" class="rounded-circle"></div></div>' +
-                        '<div class="chat-message-wrapper flex-grow-1 d-flex justify-content-start">' +
-                        '<div>' +
-                        '<div class="w-100 d-flex justify-content-start"><div class="chat-message-text">' +
-                        '<p class="mb-0">' + e.message + '</p>' +
-                        '       </div></div>' +
-                        '<div class="d-flex align-items-center mt-1 justify-content-start text-muted">' +
-                        '<small class="me-1">' + e.time + '</small>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div></li>';
-                    $('#chat-messages').append(newMessage);
-                    chatBody.scrollTop = chatBody.scrollHeight;
-                })
-                .listen('pusher:subscription_succeeded', (event) => {
-                    console.log('Subscription to Pusher channel succeeded:', event);
-                })
-                .listen('pusher:subscription_error', (error) => {
-                    console.error('Subscription to Pusher channel failed:', error);
+                    if (e.message.user_id !== <?php echo e(Auth::user()->id); ?>) {
+                        var receivedMessage = `
+                        <li class="chat-message">
+                            <div class="d-flex overflow-hidden">
+                                <div class="chat-message-wrapper flex-grow-1">
+                                    <div>
+                                        <div class="w-100 d-flex">
+                                            <div class="chat-message-text">
+                                                <p class="mb-0">${e.message.message}</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center mt-1 text-muted">
+                                            <small class="me-1">${e.message.created_at}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>`;
+                        $('#chat-messages').append(receivedMessage);
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                    }
                 });
-
         });
     </script>
-
-
 
 <?php $__env->stopSection(); ?>
 

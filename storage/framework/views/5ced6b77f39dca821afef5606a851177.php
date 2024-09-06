@@ -18,8 +18,18 @@
                     </div>
 
                     <div class="mt-3">
-                        <label class="form-label">Работа*</label>
-                        <input value="<?php echo e(old('work')); ?>" name="work" placeholder="Работа" type="text" class="form-control" required>
+                        <label class="form-label">Работа (RU)*</label>
+                        <textarea name="work_ru" placeholder="Работа (RU)" class="form-control" required><?php echo e(old('work_ru')); ?></textarea>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Работа (UZ)*</label>
+                        <textarea name="work_uz" placeholder="Работа (UZ)" class="form-control" required><?php echo e(old('work_uz')); ?></textarea>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label">Работа (TJ)*</label>
+                        <textarea name="work_tj" placeholder="Работа (TJ)" class="form-control" required><?php echo e(old('work_tj')); ?></textarea>
                     </div>
 
                     <?php if(request()->has('culture_season_id')): ?>

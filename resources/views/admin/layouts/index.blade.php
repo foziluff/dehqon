@@ -260,7 +260,7 @@
 
                 <!-- Организации -->
                 <li class="menu-item">
-                    <a href="{{ route('logout') }}" class="menu-link">
+                    <a href="{{ route('logoutGet') }}" class="menu-link">
                         <i class='menu-icon tf-icons bx bx-log-out'></i>
                         <div>Выйти</div>
                     </a>

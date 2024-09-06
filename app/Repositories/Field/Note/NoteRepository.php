@@ -15,7 +15,7 @@ class NoteRepository extends CoreRepository
     {
         return $this->startConditions()
             ->orderBy('id', 'desc')
-            ->with('field', 'problem')
+            ->with('field', 'problem', 'images')
             ->paginate($quantity);
     }
 
@@ -24,7 +24,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('user_id', $user_id)
-            ->with('field', 'problem')
+            ->with('field', 'problem', 'images')
             ->paginate($quantity);
     }
 
@@ -33,7 +33,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->where('organization_id', $organization_id)
             ->orderBy('id', 'desc')
-            ->with('field', 'problem', 'organization')
+            ->with('field', 'problem', 'organization', 'images')
             ->paginate($quantity);
     }
 
@@ -42,7 +42,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
-            ->with('field', 'problem', 'organization')
+            ->with('field', 'problem', 'organization', 'images')
             ->paginate($quantity);
     }
 
@@ -53,7 +53,7 @@ class NoteRepository extends CoreRepository
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
 //            ->with('problem', 'organization')
-            ->with('field')
+            ->with('field', 'images')
             ->get();
     }
 
@@ -63,7 +63,7 @@ class NoteRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
-            ->with('problem', 'organization', 'field')
+            ->with('problem', 'organization', 'field', 'images')
             ->paginate($quantity);
     }
 
@@ -73,7 +73,7 @@ class NoteRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('status', $status)
             ->where('user_id', $user_id)
-            ->with('problem', 'organization', 'field')
+            ->with('problem', 'organization', 'field', 'images')
             ->paginate($quantity);
     }
 

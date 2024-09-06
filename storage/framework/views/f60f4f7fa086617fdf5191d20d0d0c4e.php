@@ -66,7 +66,7 @@
                     <form id="formAuthentication" class="mb-3" action="<?php echo e(route('login')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Номер телефона</label>
+                            <label for="phone" class="form-label">Номер телефона (992XXXXXXXXX)</label>
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите номер телефона" autofocus>
                         </div>
                         <div class="mb-3 form-password-toggle">

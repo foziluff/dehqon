@@ -23,11 +23,11 @@ class UpdateNoteRequest extends FormRequest
     {
         return [
             'field_id'      => 'sometimes|exists:fields,id',
-            'date'          => 'required|date',
-            'problem_id'    => 'required|exists:problems,id',
-            'description'   => 'required|string|max:1000',
+            'date'          => 'sometimes|date',
+            'problem_id'    => 'sometimes|exists:problems,id',
+            'description'   => 'sometimes|string|max:1000',
             'organization_id'       => 'sometimes|nullable|integer',
-            'defeated_area' => 'required|numeric|min:0',
+            'defeated_area' => 'sometimes|numeric|min:0',
             'images.*'      => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'status'        => 'sometimes|integer',
             'user_seen'     => 'sometimes|integer',

@@ -22,17 +22,17 @@ class UpdateUsersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'                  => 'required|string|max:255',
-            'surname'               => 'required|string|max:255',
+            'name'                  => 'sometimes|string|max:255',
+            'surname'               => 'sometimes|string|max:255',
             'phone'                 => ['sometimes', 'string', 'regex:/^992\s?\d{9}$/'],
-            'born_in'               => 'required|date',
+            'born_in'               => 'sometimes|date',
             'organization_id'       => 'sometimes|nullable|integer',
             'password'              => 'sometimes|nullable|min:9|max:20',
-            'gender'                => 'required|integer|in:0,1',
-            'currency'              => 'required|string|max:255',
-            'image'                 => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'device'                => 'nullable|string|max:255',
-            'role'                  => 'nullable|integer',
+            'gender'                => 'sometimes|integer|in:0,1',
+            'currency'              => 'sometimes|string|max:255',
+            'image'                 => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'device'                => 'sometimes|nullable|string|max:255',
+            'role'                  => 'sometimes|nullable|integer',
         ];
     }
 }

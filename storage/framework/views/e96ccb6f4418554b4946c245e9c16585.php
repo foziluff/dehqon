@@ -9,25 +9,58 @@
         <div class="card mb-4">
             <h5 class="card-header"><?php echo e($title); ?></h5>
             <div class="card-body">
+                <!-- Existing Image -->
                 <div class="mt-3 form-control">
                     <div class="mt-3">
                         <div class="image-container">
-                            <img src="<?php echo e($record->image_path); ?>" alt="Изображение" class="img-fluid">
+                            <img src="<?php echo e(asset($record->image_path)); ?>" alt="Изображение" class="img-fluid">
                         </div>
                     </div>
                 </div>
+
+                <!-- Title Fields -->
                 <div class="mt-3">
-                    <label class="form-label">Название</label>
-                    <div class="form-control"><?php echo e($record->title); ?></div>
+                    <label class="form-label">Название (RU)</label>
+                    <div class="form-control"><?php echo e($record->title_ru); ?></div>
                 </div>
                 <div class="mt-3">
-                    <label class="form-label">Описание</label>
-                    <div class="form-control"><?php echo e($record->description); ?></div>
+                    <label class="form-label">Название (UZ)</label>
+                    <div class="form-control"><?php echo e($record->title_uz); ?></div>
                 </div>
                 <div class="mt-3">
-                    <label class="form-label">Адрес</label>
-                    <div class="form-control"><?php echo e($record->address); ?></div>
+                    <label class="form-label">Название (TJ)</label>
+                    <div class="form-control"><?php echo e($record->title_tj); ?></div>
                 </div>
+
+                <!-- Description Fields -->
+                <div class="mt-3">
+                    <label class="form-label">Описание (RU)</label>
+                    <div class="form-control"><?php echo e($record->description_ru); ?></div>
+                </div>
+                <div class="mt-3">
+                    <label class="form-label">Описание (UZ)</label>
+                    <div class="form-control"><?php echo e($record->description_uz); ?></div>
+                </div>
+                <div class="mt-3">
+                    <label class="form-label">Описание (TJ)</label>
+                    <div class="form-control"><?php echo e($record->description_tj); ?></div>
+                </div>
+
+                <!-- Address Fields -->
+                <div class="mt-3">
+                    <label class="form-label">Адрес (RU)</label>
+                    <div class="form-control"><?php echo e($record->address_ru); ?></div>
+                </div>
+                <div class="mt-3">
+                    <label class="form-label">Адрес (UZ)</label>
+                    <div class="form-control"><?php echo e($record->address_uz); ?></div>
+                </div>
+                <div class="mt-3">
+                    <label class="form-label">Адрес (TJ)</label>
+                    <div class="form-control"><?php echo e($record->address_tj); ?></div>
+                </div>
+
+                <!-- Common Fields -->
                 <div class="mt-3">
                     <label class="form-label">Телефон</label>
                     <div class="form-control"><?php echo e($record->phone); ?></div>

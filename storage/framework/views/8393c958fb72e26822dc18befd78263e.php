@@ -76,4 +76,4 @@
 </script>
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\dehqon\vendor\darkaonline\l5-swagger\src/../resources/views/index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\dehqon\vendor\darkaonline\l5-swagger\resources\views\index.blade.php ENDPATH**/ ?>

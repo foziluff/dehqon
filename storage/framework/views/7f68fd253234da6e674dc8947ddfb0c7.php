@@ -18,7 +18,7 @@
                                     <form action="<?php echo e(route('noteImages.destroy', $image->id)); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
-                                        <img src="<?php echo e($image->image_path); ?>" alt="Изображение" class="img-fluid">
+                                        <img src="<?php echo e(asset($image->image_path)); ?>" alt="Изображение" class="img-fluid">
                                         <button type="submit" class="btn btn-icon btn-outline-danger">
                                             <span class="tf-icons bx bx-trash"></span>
                                         </button>

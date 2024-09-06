@@ -40,9 +40,9 @@
                     <label class="form-label">Единица измерения</label>
                     <div class="form-control"><?php echo e($record->quantity_unit); ?></div>
                 </div>
-
+                <?php if(Auth::user()->role == 1): ?>
                 <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>
-
+                <?php endif; ?>
             </div>
         </div>
     </div>

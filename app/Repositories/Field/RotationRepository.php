@@ -11,13 +11,14 @@ class RotationRepository extends CoreRepository
         return Model::class;
     }
 
-    public function getByFieldIdMine($field_id, $user_id)
+    public function getByFieldIdMine($field_id, $user_id, $quantity)
     {
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
-            ->get();
+            ->with('culture')
+            ->paginate($quantity);
     }
 
 
@@ -25,6 +26,7 @@ class RotationRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
+            ->with('culture')
             ->findOrFail($id);
     }
 
@@ -58,13 +60,13 @@ class RotationRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->toBase()
+            ->with('culture')
             ->get();
     }
 
     public function search($value)
     {
-        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
+        return $this->startConditions()->where('title_ru', 'like', "%$value%")->toBase()->get();
     }
 
     public function getAll()

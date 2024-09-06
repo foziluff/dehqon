@@ -40,14 +40,15 @@
                         <div class="mt-3">
                             <?php $__currentLoopData = $record->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="image-container">
-                                    <img src="<?php echo e($image->image_path); ?>" alt="Изображение" class="img-fluid">
+                                    <img src="<?php echo e(asset($image->image_path)); ?>" alt="Изображение" class="img-fluid">
                                 </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>
-
+                <?php if(Auth::user()->role == 1): ?>
                 <a href="<?php echo e(route($module . '.edit', $record->id)); ?>" class="btn btn-primary mt-3">Редактировать</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

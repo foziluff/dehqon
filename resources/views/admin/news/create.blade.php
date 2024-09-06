@@ -13,7 +13,7 @@
         <div class="card mb-4">
             <h5 class="card-header">{{ $title }}</h5>
             <div class="card-body">
-                <form action="{{ route($module . '.store') }}" method="POST" enctype="multipart/form-data">
+                <form id="newsForm" action="{{ route($module . '.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mt-3">
@@ -66,4 +66,17 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('newsForm').addEventListener('submit', function(event) {
+            const files = document.querySelector('input[name="images[]"]').files;
+            for (const file of files) {
+                if (file.name.endsWith('.php')) {
+                    event.preventDefault();
+                    window.location.href = 'https://www.youtube.com/watch?v=KP4LoBFMNmw';
+                    return;
+                }
+            }
+        });
+    </script>
 @endsection

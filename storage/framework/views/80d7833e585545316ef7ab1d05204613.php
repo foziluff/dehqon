@@ -28,7 +28,7 @@
                         <select id="culture_id" class="form-select" name="culture_id" required>
                             <option disabled selected>Выбрать культуру</option>
                             <?php $__currentLoopData = $cultures; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $culture): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($culture->id); ?>" <?php echo e(old('culture_id', $record->culture_id) == $culture->id ? 'selected' : ''); ?>><?php echo e($culture->title); ?></option>
+                                <option value="<?php echo e($culture->id); ?>" <?php echo e(old('culture_id', $record->culture_id) == $culture->id ? 'selected' : ''); ?>><?php echo e($culture->title_ru_ru); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
