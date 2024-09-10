@@ -3,6 +3,7 @@
 namespace App\Repositories\Field\Work;
 use App\Models\Field\Work\WorkPlan as Model;
 use App\Repositories\CoreRepository;
+use Illuminate\Support\Facades\DB;
 
 class WorkPlanRepository extends CoreRepository
 {
@@ -14,11 +15,18 @@ class WorkPlanRepository extends CoreRepository
     public function getByFieldIdMine($field_id, $user_id)
     {
         return $this->startConditions()
+            ->withCount(['workStages as total_work_stages' => function ($query) {
+                $query->select(DB::raw('count(*)'));
+            }])
+            ->withCount(['workStages as done_work_stages' => function ($query) {
+                $query->where('done', 1)->select(DB::raw('count(*)'));
+            }])
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
             ->get();
     }
+
 
 
     public function getMineEditOrFail($id, $user_id)

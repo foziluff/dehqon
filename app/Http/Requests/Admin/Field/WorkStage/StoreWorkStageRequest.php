@@ -23,9 +23,10 @@ class StoreWorkStageRequest extends FormRequest
     {
         return [
             'date'                      => 'required|date',
-            'work_id'                   => 'required|exists:works,id',
+//            'work_id'                   => 'required|exists:works,id',
             'work_plan_id'              => 'required|exists:work_plans,id',
             'material'                  => 'required|string',
+            'done'                      => 'sometimes|in:0,1',
             'material_quantity'         => 'required|numeric',
             'material_quantity_unit'    => 'required|string',
         ];

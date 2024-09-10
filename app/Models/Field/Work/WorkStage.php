@@ -11,17 +11,18 @@ class WorkStage extends Model
 
     protected $fillable = [
         'date',
-        'work_id',
+//        'work_id',
         'material',
+        'done',
         'work_plan_id',
         'material_quantity',
         'material_quantity_unit',
     ];
 
-    public function work()
-    {
-        return $this->belongsTo(Work::class);
-    }
+//    public function work()
+//    {
+//        return $this->belongsTo(Work::class);
+//    }
 
     public function workPlan()
     {

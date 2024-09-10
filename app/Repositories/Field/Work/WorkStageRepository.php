@@ -19,6 +19,21 @@ class WorkStageRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getMineEditOrFail($id, $user_id)
+    {
+        return $this->startConditions()
+            ->where('user_id', $user_id)
+            ->findOrFail($id);
+    }
+
+    public function getByPlanIdMine($planId, $userId, $quantity)
+    {
+        return $this->startConditions()
+            ->where('user_id', $userId)
+            ->where('work_plan_id', $planId)
+            ->paginate($quantity);
+    }
+
     public function getByWorkPlanIdPaginate($work_plan_id, $quantity)
     {
         return $this->startConditions()
@@ -52,7 +67,14 @@ class WorkStageRepository extends CoreRepository
     {
         return $this->startConditions()->create($data);
     }
-
+    public function deleteIfMine($id, $user_id)
+    {
+        $record = $this->getEditOrFail($id);
+        if ($record->user_id == $user_id){
+            return $record->delete();
+        }
+        return false;
+    }
     public function delete($id)
     {
         $record = $this->getEditOrFail($id);

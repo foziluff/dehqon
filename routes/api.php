@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\Field\Income\IncomeController;
 use App\Http\Controllers\Api\Field\Note\NoteController;
 use App\Http\Controllers\Api\Field\Rotation\RotationController;
 use App\Http\Controllers\Api\Field\WorkPlan\WorkPlanController;
+use App\Http\Controllers\Api\Field\WorkPlan\WorkStageController;
 use App\Http\Controllers\Api\FuelType\FuelTypeController;
 use App\Http\Controllers\Api\Irrigation\IrrigationController;
 use App\Http\Controllers\Api\Organization\OrganizationController;
@@ -58,5 +59,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/fields/{id}/rotations', [RotationController::class, 'filterByField']);
     Route::resource('/rotations', RotationController::class);
 
+    Route::get('/work-plans/{id}/work-stages', [WorkStageController::class, 'filterByPlan']);
+    Route::resource('/work-stages', WorkStageController::class);
 });
 

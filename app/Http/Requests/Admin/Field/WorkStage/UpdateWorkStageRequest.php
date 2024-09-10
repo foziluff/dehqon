@@ -22,12 +22,13 @@ class UpdateWorkStageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date'                      => 'required|date',
-            'work_id'                   => 'required|exists:works,id',
-            'work_plan_id'              => 'required|exists:work_plans,id',
-            'material'                  => 'required|string',
-            'material_quantity'         => 'required|numeric',
-            'material_quantity_unit'    => 'required|string',
+            'date'                      => 'sometimes|date',
+//            'work_id'                   => 'sometimes|exists:works,id',
+            'work_plan_id'              => 'sometimes|exists:work_plans,id',
+            'material'                  => 'sometimes|string',
+            'done'                      => 'sometimes|in:0,1',
+            'material_quantity'         => 'sometimes|numeric',
+            'material_quantity_unit'    => 'sometimes|string',
         ];
     }
 }

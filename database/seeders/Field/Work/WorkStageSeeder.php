@@ -15,7 +15,7 @@ class WorkStageSeeder extends Seeder
         $data = [
             [
                 'date' => now(),
-                'work_id' => 1,
+//                'work_id' => 1,
                 'material' => 'Material Name 1',
                 'material_quantity' => 10,
                 'material_quantity_unit' => 'kg',
@@ -26,7 +26,7 @@ class WorkStageSeeder extends Seeder
             ],
             [
                 'date' => now(),
-                'work_id' => 1,
+//                'work_id' => 1,
                 'material' => 'Material Name 2',
                 'material_quantity' => 20,
                 'material_quantity_unit' => 'lbs',

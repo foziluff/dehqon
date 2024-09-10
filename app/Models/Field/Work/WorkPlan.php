@@ -19,4 +19,9 @@ class WorkPlan extends Model
     {
         return $this->belongsTo(Field::class);
     }
+
+    public function workStages()
+    {
+        return $this->hasMany(WorkStage::class);
+    }
 }
