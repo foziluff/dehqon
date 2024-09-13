@@ -34,7 +34,7 @@ class WorkStageController extends Controller
     public function store(StoreWorkStageRequest $request)
     {
         $record = $this->user->workStages()->create($request->validated());
-        return response()->json($record, 201);
+        return response()->json($record->load('workPlan'), 201);
     }
 
     /**

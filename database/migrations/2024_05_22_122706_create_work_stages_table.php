@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('work_stages', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date');
+            $table->date('date');
 //            $table->unsignedBigInteger('work_id');
             $table->unsignedBigInteger('work_plan_id');
             $table->unsignedBigInteger('user_id');

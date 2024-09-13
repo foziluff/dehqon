@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Field\WorkPlan\StoreWorkPlanRequest;
 use App\Http\Requests\Admin\Field\WorkPlan\UpdateWorkPlanRequest;
 use App\Repositories\Field\Work\WorkPlanRepository;
-use Random\RandomException;
 
 class WorkPlanController extends Controller
 {
@@ -60,7 +59,7 @@ class WorkPlanController extends Controller
      */
     public function update(UpdateWorkPlanRequest $request, $id)
     {
-        $record = $this->workPlanRepository->update($id, $request);
+        $record = $this->workPlanRepository->update($id, $request->validated());
         return response()->json($record, 200);
     }
 
