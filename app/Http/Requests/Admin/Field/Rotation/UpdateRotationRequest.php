@@ -22,13 +22,20 @@ class UpdateRotationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'field_id'              => 'required|exists:fields,id',
+//            'field_id'              => 'required|exists:fields,id',
             'culture_id'            => 'required|exists:cultures,id',
             'culture_sort'          => 'required|string',
             'sowing_date'           => 'required|date',
             'harvesting_date'       => 'required|date|after_or_equal:sowing_date',
             'average_yield'         => 'required|numeric|min:0',
             'average_yield_unit'    => 'required|string',
+            'field_id'              => ['required',
+                function ($attribute, $value, $fail) {
+                    if (!auth()->user()->fields()->where('id', $value)->exists()) {
+                        $fail('Выбранное поле недоступно для этого пользователя.');
+                    }
+                },
+            ],
         ];
     }
 }

@@ -23,7 +23,13 @@ class UpdateWorkPlanRequest extends FormRequest
     {
         return [
             'title'     => 'required|string|max:255',
-            'field_id'  => 'required|exists:fields,id',
+            'field_id'              => ['required',
+                function ($attribute, $value, $fail) {
+                    if (!auth()->user()->fields()->where('id', $value)->exists()) {
+                        $fail('Выбранное поле недоступно для этого пользователя.');
+                    }
+                },
+            ],
         ];
     }
 }

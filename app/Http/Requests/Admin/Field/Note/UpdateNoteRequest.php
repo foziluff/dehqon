@@ -22,7 +22,7 @@ class UpdateNoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'field_id'      => 'sometimes|exists:fields,id',
+//            'field_id'      => 'sometimes|exists:fields,id',
             'date'          => 'sometimes|date',
             'problem_id'    => 'sometimes|exists:problems,id',
             'description'   => 'sometimes|string|max:1000',
@@ -31,6 +31,13 @@ class UpdateNoteRequest extends FormRequest
             'images.*'      => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'status'        => 'sometimes|integer',
             'user_seen'     => 'sometimes|integer',
+            'field_id'              => ['sometimes',
+                function ($attribute, $value, $fail) {
+                    if (!auth()->user()->fields()->where('id', $value)->exists()) {
+                        $fail('Выбранное поле недоступно для этого пользователя.');
+                    }
+                },
+            ],
         ];
     }
 }

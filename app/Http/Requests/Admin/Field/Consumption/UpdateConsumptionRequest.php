@@ -23,7 +23,7 @@ class UpdateConsumptionRequest extends FormRequest
     {
         return [
             'date'                              => 'required|date',
-            'field_id'                          => 'required|exists:fields,id',
+//            'field_id'                          => 'required|exists:fields,id',
             'product_type_id'                   => 'required|exists:product_types,id',
             'culture_id'                        => 'required|exists:cultures,id',
             'consumption_category_id'           => 'required|exists:consumption_categories,id',
@@ -33,6 +33,13 @@ class UpdateConsumptionRequest extends FormRequest
             'quantity'                          => 'required|numeric|min:0',
             'quantity_unit'                     => 'required|string|max:255',
             'price'                             => 'required|numeric|min:0',
+            'field_id'              => ['required',
+                function ($attribute, $value, $fail) {
+                    if (!auth()->user()->fields()->where('id', $value)->exists()) {
+                        $fail('Выбранное поле недоступно для этого пользователя.');
+                    }
+                },
+            ],
         ];
     }
 }

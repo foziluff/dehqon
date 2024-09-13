@@ -42,7 +42,7 @@ class WorkPlanController extends Controller
     public function store(StoreWorkPlanRequest $request)
     {
         $record = $this->user->workPlans()->create($request->validated());
-        return response()->json($record, 201);
+        return response()->json($record->load('field'), 201);
     }
 
     /**
