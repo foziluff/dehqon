@@ -17,14 +17,18 @@
                         <label class="form-label">Дата*</label>
                         <input value="{{ \Carbon\Carbon::parse($record->date)->format('Y-m-d') }}" name="date" placeholder="Дата" type="date" class="form-control" required>
                     </div>
+{{--                    <div class="mt-3">--}}
+{{--                        <label class="form-label">Работа*</label>--}}
+{{--                        <select id="work_id" class="form-select" name="work_id" required>--}}
+{{--                            <option disabled selected>Выбрать работу</option>--}}
+{{--                            @foreach($works as $work)--}}
+{{--                                <option value="{{ $work->id }}" {{ old('work_id', $record->work_id) == $work->id ? 'selected' : '' }}>{{ $work->title }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
                     <div class="mt-3">
                         <label class="form-label">Работа*</label>
-                        <select id="work_id" class="form-select" name="work_id" required>
-                            <option disabled selected>Выбрать работу</option>
-                            @foreach($works as $work)
-                                <option value="{{ $work->id }}" {{ old('work_id', $record->work_id) == $work->id ? 'selected' : '' }}>{{ $work->title }}</option>
-                            @endforeach
-                        </select>
+                        <input value="{{ $record->work }}" name="work" placeholder="Работа" type="text" class="form-control" required>
                     </div>
                     <div class="mt-3">
                         <label class="form-label">План*</label>

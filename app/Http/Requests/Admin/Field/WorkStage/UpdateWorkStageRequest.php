@@ -26,6 +26,7 @@ class UpdateWorkStageRequest extends FormRequest
 //            'work_id'                   => 'sometimes|exists:works,id',
             'work_plan_id'              => 'sometimes|exists:work_plans,id',
             'material'                  => 'sometimes|string',
+            'work'                      => 'sometimes|string',
             'done'                      => 'sometimes|in:0,1',
             'material_quantity'         => 'sometimes|numeric',
             'material_quantity_unit'    => 'sometimes|string',

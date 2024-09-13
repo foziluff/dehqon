@@ -15,7 +15,7 @@ class WorkStageRepository extends CoreRepository
     {
         return $this->startConditions()
             ->orderBy('id', 'desc')
-            ->with('work', 'workPlan')
+            ->with('workPlan')
             ->paginate($quantity);
     }
 
@@ -23,6 +23,7 @@ class WorkStageRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
+            ->with('workPlan')
             ->findOrFail($id);
     }
 
@@ -31,6 +32,7 @@ class WorkStageRepository extends CoreRepository
         return $this->startConditions()
             ->where('user_id', $userId)
             ->where('work_plan_id', $planId)
+            ->with('workPlan')
             ->paginate($quantity);
     }
 
@@ -39,7 +41,7 @@ class WorkStageRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('work_plan_id', $work_plan_id)
-            ->with('work', 'workPlan')
+            ->with('workPlan')
             ->paginate($quantity);
     }
 
@@ -52,7 +54,7 @@ class WorkStageRepository extends CoreRepository
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('work', 'workPlan')->findOrFail($id);
+            ->with('workPlan')->findOrFail($id);
     }
 
 

@@ -24,7 +24,7 @@ class WorkRepository extends CoreRepository
 
     public function getAll()
     {
-        return $this->startConditions()->all()->toBase();
+        return $this->startConditions()->all();
     }
 
     public function getEditOrFail($id)

@@ -22,6 +22,7 @@ class WorkPlanRepository extends CoreRepository
                 $query->where('done', 1)->select(DB::raw('count(*)'));
             }])
             ->orderBy('id', 'desc')
+            ->with('field')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
             ->get();
@@ -33,6 +34,7 @@ class WorkPlanRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
+            ->with('field')
             ->findOrFail($id);
     }
 
@@ -53,6 +55,15 @@ class WorkPlanRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getMineWithPaginate($user_id, $quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('user_id', $user_id)
+            ->with('field')
+            ->paginate($quantity);
+    }
+
     public function getByFieldIdPaginate($field_id, $quantity)
     {
         return $this->startConditions()
@@ -67,14 +78,14 @@ class WorkPlanRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->toBase()
+            ->with('field')
             ->get();
     }
     public function getAllByFieldId($field_id)
     {
         return $this->startConditions()
             ->where('field_id', $field_id)
-            ->toBase()
+            ->with('field')
             ->get();
     }
 
@@ -91,7 +102,7 @@ class WorkPlanRepository extends CoreRepository
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('field',)
+            ->with('field')
             ->findOrFail($id);
     }
 

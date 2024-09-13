@@ -14,6 +14,7 @@ class WorkStage extends Model
 //        'work_id',
         'material',
         'done',
+        'work',
         'work_plan_id',
         'material_quantity',
         'material_quantity_unit',

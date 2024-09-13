@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('material');
             $table->string('done')->nullable();
+            $table->string('work');
             $table->double('material_quantity');
             $table->string('material_quantity_unit');
 //            $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');

@@ -20,7 +20,15 @@ class WorkPlanController extends Controller
 
     /**
      * Display a filterByUser of the resource.
-     * @throws RandomException
+     */
+    public function index()
+    {
+        $records = $this->workPlanRepository->getMineWithPaginate($this->user->id, 20);
+        return response()->json($records, 200);
+    }
+
+    /**
+     * Display a filterByUser of the resource.
      */
     public function filterByField($id)
     {

@@ -15,7 +15,7 @@
                 </div>
                 <div class="mt-3">
                     <label class="form-label">Работа</label>
-                    <div class="form-control">{{ $record->work->title }}</div>
+                    <div class="form-control">{{ $record->work }}</div>
                 </div>
                 <div class="mt-3">
                     <label class="form-label">Материал</label>
