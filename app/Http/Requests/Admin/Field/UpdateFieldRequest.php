@@ -22,17 +22,16 @@ class UpdateFieldRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'                     => 'required|string|max:255',
-            'culture_id'                => 'required|exists:cultures,id',
-            'sort'                      => 'required|string|max:255',
-            'area'                      => 'required|numeric|min:0',
-            'irrigation_id'             => 'required|exists:irrigations,id',
-            'sowing_year'               => 'required|integer|min:1900|max:'.(date('Y')),
-            'prev_culture_id'           => 'required|exists:cultures,id',
-            'prev_sort'                 => 'required|string|max:255',
-            'prev_sowing_year'          => 'required|integer|min:1900|max:'.(date('Y')),
-            'coordinates'               => 'sometimes|array|min:1',
-            'coordinates.0'             => 'sometimes|string',
+            'title'                     => 'sometimes|string|max:255',
+            'culture_id'                => 'sometimes|exists:cultures,id',
+            'sort'                      => 'sometimes|string|max:255',
+            'area'                      => 'sometimes|numeric|min:0',
+            'irrigation_id'             => 'sometimes|exists:irrigations,id',
+            'sowing_year'               => 'sometimes|integer|min:1900|max:'.(date('Y')),
+            'prev_culture_id'           => 'sometimes|exists:cultures,id',
+            'prev_sort'                 => 'sometimes|string|max:255',
+            'prev_sowing_year'          => 'sometimes|integer|min:1900|max:'.(date('Y')),
+            'coordinates'               => 'sometimes|string',
         ];
     }
 }

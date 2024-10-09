@@ -34,7 +34,7 @@ class RotationController extends Controller
     public function store(StoreRotationRequest $request)
     {
         $record = $this->user->rotations()->create($request->validated());
-        return response()->json($record, 201);
+        return response()->json($record->load('culture'), 201);
     }
 
     /**

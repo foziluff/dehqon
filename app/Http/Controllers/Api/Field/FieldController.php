@@ -50,7 +50,7 @@ class FieldController extends Controller
      */
     public function update(UpdateFieldRequest $request, $id)
     {
-        $record = $this->fieldRepository->update($id, $request);
+        $record = $this->fieldRepository->update($id, $request->validated());
         return response()->json($record, 200);
     }
 

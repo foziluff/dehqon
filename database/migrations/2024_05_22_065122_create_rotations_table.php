@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('culture_id');
             $table->string('culture_sort');
             $table->unsignedBigInteger('user_id');
-            $table->dateTime('sowing_date');
-            $table->dateTime('harvesting_date');
+            $table->date('sowing_date');
+            $table->date('harvesting_date');
             $table->double('average_yield');
             $table->string('average_yield_unit');
 
