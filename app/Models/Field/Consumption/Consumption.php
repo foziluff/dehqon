@@ -6,6 +6,7 @@ use App\Models\Auth\User;
 use App\Models\Culture\Culture;
 use App\Models\Field\Field;
 use App\Models\Field\ProductType;
+use App\Models\Stock\StockConsumption;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,10 +19,14 @@ class Consumption extends Model
         'field_id',
         'product_type_id',
         'culture_id',
-        'consumption_category_id',
-        'consumption_operation_id',
+//        'consumption_category_id',
+//        'consumption_operation_id',
+        'consumption_category',
+        'consumption_operation',
         'consumption_production_mean_id',
         'consumption_naming_id',
+        'consumption_naming',
+        'stock_consumption_id',
         'quantity',
         'quantity_unit',
         'price',
@@ -47,15 +52,15 @@ class Consumption extends Model
         return $this->belongsTo(Culture::class);
     }
 
-    public function consumptionCategory()
-    {
-        return $this->belongsTo(ConsumptionCategory::class);
-    }
-
-    public function consumptionOperation()
-    {
-        return $this->belongsTo(ConsumptionOperation::class);
-    }
+//    public function consumptionCategory()
+//    {
+//        return $this->belongsTo(ConsumptionCategory::class);
+//    }
+//
+//    public function consumptionOperation()
+//    {
+//        return $this->belongsTo(ConsumptionOperation::class);
+//    }
 
     public function consumptionProductionMean()
     {
@@ -65,5 +70,10 @@ class Consumption extends Model
     public function consumptionNaming()
     {
         return $this->belongsTo(ConsumptionNaming::class);
+    }
+
+    public function stockConsumption()
+    {
+        return $this->belongsTo(StockConsumption::class);
     }
 }

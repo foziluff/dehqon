@@ -11,6 +11,7 @@ use App\Models\Conversion\Income\ConversionIncome;
 use App\Models\Conversion\Quantity\ConversionQuantity;
 use App\Models\Culture\Culture;
 use App\Models\Field\Consumption\Consumption;
+use App\Models\Field\Consumption\ConsumptionProductionMean;
 use App\Models\Field\Field;
 use App\Models\Field\Income\Income;
 use App\Models\Field\Note\Note;
@@ -26,6 +27,7 @@ use App\Models\News\News;
 use App\Models\Organization\Organization;
 use App\Models\Question\Question;
 use App\Models\Stock\Stock;
+use App\Models\Stock\StockConsumption;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -212,6 +214,18 @@ class User extends Authenticatable
     public function problems()
     {
         return $this->hasMany(Problem::class);
+    }
+
+
+    public function consumptionProductionMean()
+    {
+        return $this->hasMany(ConsumptionProductionMean::class);
+    }
+
+
+    public function stockConsumptions()
+    {
+        return $this->hasMany(StockConsumption::class);
     }
 
 

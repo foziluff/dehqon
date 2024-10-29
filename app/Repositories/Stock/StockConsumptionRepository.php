@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Repositories\Stock;
-use App\Models\Stock\Stock as Model;
+use App\Models\Stock\StockConsumption as Model;
 use App\Repositories\CoreRepository;
 
-class StockRepository extends CoreRepository
+class StockConsumptionRepository extends CoreRepository
 {
     protected function getModelClass()
     {
@@ -13,15 +13,15 @@ class StockRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('id', 'desc')->with('consumptionProductionMean')->paginate($quantity);
+        return $this->startConditions()->orderBy('id', 'desc')->with('field', 'stock')->paginate($quantity);
     }
 
     public function getByUserIdPaginate($user_id, $quantity)
     {
         return $this->startConditions()
+            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean')
             ->where('user_id', $user_id)
-            ->orderBy('title', 'asc')
-            ->with('consumptionProductionMean')
+            ->orderBy('id', 'desc')
             ->paginate($quantity);
     }
 
@@ -29,21 +29,18 @@ class StockRepository extends CoreRepository
 
     public function search($value)
     {
-        return $this->startConditions()->where('title', 'like', "%$value%")
-            ->with('consumptionProductionMean')->get();
+        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
     }
 
     public function getAll()
     {
-        return $this->startConditions()->all();
+        return $this->startConditions()->all()->toBase();
     }
 
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with(
-                'consumptionProductionMean',
-            )
+            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean')
             ->findOrFail($id);
     }
 
@@ -52,7 +49,7 @@ class StockRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $this->user->id)
-            ->with('consumptionProductionMean')
+            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean')
             ->findOrFail($id);
     }
 

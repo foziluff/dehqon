@@ -21,7 +21,7 @@ class FieldRepository extends CoreRepository
         return $this->startConditions()
             ->where('user_id', $user_id)
             ->orderBy('title', 'asc')
-            ->toBase()
+            ->with('culture', 'prevCulture')
             ->paginate($quantity);
     }
 
@@ -29,7 +29,7 @@ class FieldRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->toBase()
+            ->with('culture', 'prevCulture')
             ->get();
     }
 
@@ -38,7 +38,7 @@ class FieldRepository extends CoreRepository
         return $this->startConditions()
             ->where('user_id', $user_id)
             ->orderBy('id', 'desc')
-            ->toBase()
+            ->with('culture', 'prevCulture')
             ->paginate($quantity);
     }
 
@@ -48,11 +48,13 @@ class FieldRepository extends CoreRepository
             ->where('id', $id)
             ->where('user_id', '=', $this->user->id)
             ->orderBy('id', 'desc')
+            ->with('culture', 'prevCulture')
             ->firstOrFail();
     }
     public function search($value)
     {
-        return $this->startConditions()->where('title', 'like', "%$value%")->toBase()->get();
+        return $this->startConditions()->where('title', 'like', "%$value%")
+            ->with('culture', 'prevCulture')->get();
     }
 
     public function getAll()

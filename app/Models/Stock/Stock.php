@@ -12,7 +12,8 @@ class Stock extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date',
+        'date_from',
+        'date_to',
         'title',
         'consumption_production_mean_id',
         'quantity',

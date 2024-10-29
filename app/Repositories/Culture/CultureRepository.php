@@ -56,6 +56,32 @@ class CultureRepository extends CoreRepository
         return $this->transformLang($records, $langItems);
     }
 
+    public function getAllWithChildrenForFront()
+    {
+        $langItems = ['title'];
+
+        $records = $this->startConditions()
+            ->with('seasons', 'seasons.images', 'seasons.works')
+            ->where('user_id', $this->user->id)
+            ->orWhereHas('user', function ($query) {
+                $query->where('role', 1);
+            })
+            ->get();
+
+        foreach ($records as $record) {
+            foreach ($record->seasons as $season){
+                if($season->works) {
+                    $this->transformLang($season->works, ['work']);
+                }
+            }
+            if ($record->seasons) {
+                $this->transformLang($record->seasons, $langItems);
+            }
+        }
+
+        return $this->transformLang($records, $langItems);
+    }
+
 
 
     public function getEditOrFail($id)
@@ -64,9 +90,24 @@ class CultureRepository extends CoreRepository
     }
 
 
+    public function getEditOrFailForFront($id)
+    {
+        return $this->startConditions()->where('user_id', $this->user->id)->findOrFail($id);
+    }
+
+
     public function update($id, $data)
     {
         $record = $this->getEditOrFail($id);
+        $record->update($data);
+        return $record;
+    }
+
+
+    public function updateForFront($id, $data)
+    {
+        $record = $this->getEditOrFail($id);
+        if ($record->user_id != $this->user->id) return null;
         $record->update($data);
         return $record;
     }
@@ -79,6 +120,13 @@ class CultureRepository extends CoreRepository
     public function delete($id)
     {
         $record = $this->getEditOrFail($id);
+        return $record->delete();
+    }
+
+    public function deleteForFront($id)
+    {
+        $record = $this->getEditOrFail($id);
+        if ($record->user_id != $this->user->id) return null;
         return $record->delete();
     }
 

@@ -24,7 +24,7 @@ class StoreFieldRequest extends FormRequest
         return [
             'title'                     => 'required|string|max:255',
             'culture_id'                => 'required|exists:cultures,id',
-            'sort'                      => 'required|string|max:255',
+            'sort'                      => 'sometimes|nullable|string|max:255',
             'area'                      => 'required|numeric|min:0',
             'irrigation_id'             => 'required|exists:irrigations,id',
             'sowing_year'               => 'required|integer|min:1900|max:'.(date('Y')),

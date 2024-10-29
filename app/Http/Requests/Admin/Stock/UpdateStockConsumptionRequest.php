@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Stock;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateStockRequest extends FormRequest
+class UpdateStockConsumptionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,11 @@ class UpdateStockRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date_from'     => 'required|date',
-            'date_to'       => 'required|date',
-            'title'         => 'required|string|max:255',
-            'quantity'      => 'required|numeric|min:0',
+            'stock_id' => 'required|exists:stocks,id',
+            'field_id' => 'required|exists:fields,id',
+            'quantity' => 'required|numeric|min:0',
             'quantity_unit' => 'required|string|max:255',
-            'price'         => 'required|numeric|min:0',
-            'consumption_production_mean_id' => 'required|exists:consumption_production_means,id',
+            'price'    => 'required|numeric|min:0',
         ];
     }
 }

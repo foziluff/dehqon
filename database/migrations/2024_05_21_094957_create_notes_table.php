@@ -16,16 +16,17 @@ return new class extends Migration
             $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->dateTime('date');
-            $table->unsignedBigInteger('problem_id');
-            $table->text('description');
-            $table->double('defeated_area');
+            $table->date('date')->nullable();
+//            $table->unsignedBigInteger('problem_id');
+            $table->string('problem')->nullable();
+            $table->text('description')->nullable();
+            $table->double('defeated_area')->nullable();
             $table->integer('status')->nullable();
             $table->integer('user_seen')->nullable();
 
             $table->unsignedBigInteger('organization_id')->nullable();
 
-            $table->foreign('problem_id')->references('id')->on('problems')->onDelete('cascade');
+//            $table->foreign('problem_id')->references('id')->on('problems')->onDelete('cascade');
             $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

@@ -17,7 +17,7 @@ class RotationRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
-            ->with('culture')
+            ->with('field', 'culture')
             ->paginate($quantity);
     }
 
@@ -26,7 +26,7 @@ class RotationRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->with('culture')
+            ->with('field', 'culture')
             ->findOrFail($id);
     }
 
@@ -60,7 +60,7 @@ class RotationRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->with('culture')
+            ->with('field', 'culture')
             ->get();
     }
 
@@ -77,7 +77,7 @@ class RotationRepository extends CoreRepository
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('culture', 'field',)
+            ->with('field', 'culture')
             ->findOrFail($id);
     }
 

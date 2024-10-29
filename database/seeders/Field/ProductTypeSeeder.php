@@ -15,25 +15,15 @@ class ProductTypeSeeder extends Seeder
     {
         DB::table('product_types')->insert([
             [
-                'title' => 'Электроника',
+                'title' => 'Основная продукция',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'title' => 'Мебель',
+                'title' => 'Побочная продукция',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ],
-            [
-                'title' => 'Одежда',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'title' => 'Продукты питания',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
+            ]
         ]);
     }
 }

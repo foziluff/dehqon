@@ -11,21 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stocks', function (Blueprint $table) {
+        Schema::create('stock_consumptions', function (Blueprint $table) {
             $table->id();
-            $table->date('date_from');
-            $table->date('date_to');
-            $table->string('title');
+            $table->unsignedBigInteger('stock_id');
+            $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('consumption_production_mean_id');
-            $table->integer('quantity');
+            $table->double('quantity');
             $table->string('quantity_unit');
             $table->double('price');
-            $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('consumption_production_mean_id')->references('id')->on('consumption_production_means')->onDelete('cascade');
-
+            $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
+            $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stocks');
+        Schema::dropIfExists('stock_consumptions');
     }
 };

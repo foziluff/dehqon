@@ -22,7 +22,8 @@ class StoreStockRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'date'          => 'required|date',
+            'date_from'     => 'required|date',
+            'date_to'       => 'required|date',
             'title'         => 'required|string|max:255',
             'quantity'      => 'required|numeric|min:0',
             'quantity_unit' => 'required|string|max:255',

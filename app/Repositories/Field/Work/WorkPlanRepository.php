@@ -22,7 +22,7 @@ class WorkPlanRepository extends CoreRepository
                 $query->where('done', 1)->select(DB::raw('count(*)'));
             }])
             ->orderBy('id', 'desc')
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
             ->get();
@@ -34,7 +34,7 @@ class WorkPlanRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->findOrFail($id);
     }
 
@@ -51,7 +51,7 @@ class WorkPlanRepository extends CoreRepository
     {
         return $this->startConditions()
             ->orderBy('id', 'desc')
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->paginate($quantity);
     }
 
@@ -60,7 +60,7 @@ class WorkPlanRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('user_id', $user_id)
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->paginate($quantity);
     }
 
@@ -69,7 +69,7 @@ class WorkPlanRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->paginate($quantity);
     }
 
@@ -78,14 +78,14 @@ class WorkPlanRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->get();
     }
     public function getAllByFieldId($field_id)
     {
         return $this->startConditions()
             ->where('field_id', $field_id)
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->get();
     }
 
@@ -102,7 +102,7 @@ class WorkPlanRepository extends CoreRepository
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('field')
+            ->with('field', 'field.culture', 'field.prevCulture', 'field.irrigation')
             ->findOrFail($id);
     }
 

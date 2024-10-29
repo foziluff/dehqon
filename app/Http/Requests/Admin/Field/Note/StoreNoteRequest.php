@@ -23,12 +23,13 @@ class StoreNoteRequest extends FormRequest
     {
         return [
 //            'field_id'      => 'required|exists:fields,id',
-            'date'          => 'required|date',
-            'problem_id'    => 'required|exists:problems,id',
-            'description'   => 'required|string|max:1000',
+            'date'          => 'sometimes|nullable|date',
+//            'problem_id'    => 'required|exists:problems,id',
+            'problem'       => 'sometimes|nullable|string|max:255',
+            'description'   => 'sometimes|nullable|string|max:1000',
             'organization_id'       => 'sometimes|nullable|integer',
-            'defeated_area' => 'required|numeric|min:0',
-            'images.*'      => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'defeated_area' => 'sometimes|nullable|numeric',
+            'images.*'      => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'status'        => 'sometimes|integer',
             'user_seen'     => 'sometimes|integer',
             'field_id'              => ['required',

@@ -32,7 +32,7 @@ class FieldController extends Controller
     public function store(StoreFieldRequest $request)
     {
         $record = $this->user->fields()->create($request->validated());
-        return response()->json($record, 201);
+        return response()->json($this->show($record->id)->original, 201);
     }
     /**
      * Display the specified resource.

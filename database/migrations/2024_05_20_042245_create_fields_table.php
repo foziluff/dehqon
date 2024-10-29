@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->unsignedBigInteger('culture_id');
-            $table->string('sort');
+            $table->string('sort')->nullable();
             $table->double('area');
             $table->unsignedBigInteger('irrigation_id')->nullable();
             $table->year('sowing_year')->nullable();

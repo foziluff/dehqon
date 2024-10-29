@@ -15,7 +15,8 @@ class StockSeeder extends Seeder
     {
         DB::table('stocks')->insert([
             [
-                'date' => Carbon::now(),
+                'date_from' => Carbon::now(),
+                'date_to' => Carbon::now(),
                 'user_id' => 1,
                 'quantity' => 100,
                 'title' => 'Title',

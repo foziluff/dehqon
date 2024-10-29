@@ -24,7 +24,7 @@ class UpdateFieldRequest extends FormRequest
         return [
             'title'                     => 'sometimes|string|max:255',
             'culture_id'                => 'sometimes|exists:cultures,id',
-            'sort'                      => 'sometimes|string|max:255',
+            'sort'                      => 'sometimes|nullable|string|max:255',
             'area'                      => 'sometimes|numeric|min:0',
             'irrigation_id'             => 'sometimes|exists:irrigations,id',
             'sowing_year'               => 'sometimes|integer|min:1900|max:'.(date('Y')),

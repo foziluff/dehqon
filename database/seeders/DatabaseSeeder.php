@@ -42,8 +42,8 @@ class DatabaseSeeder extends Seeder
         $this->call(IrrigationSeeder::class);
         Field::factory(10)->create();
         $this->call(ProblemSeeder::class);
-        $this->call(NoteSeeder::class);
-        $this->call(NoteImageSeeder::class);
+//        $this->call(NoteSeeder::class);
+//        $this->call(NoteImageSeeder::class);
         $this->call(RotationSeeder::class);
         $this->call(WorkSeeder::class);
         $this->call(WorkPlanSeeder::class);
