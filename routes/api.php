@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Auth\VerifyCodeController;
 use App\Http\Controllers\Api\Conversion\Consumption\ConversionConsumptionController;
 use App\Http\Controllers\Api\Conversion\ConversionController;
 use App\Http\Controllers\Api\Conversion\Income\ConversionIncomeController;
+use App\Http\Controllers\Api\Conversion\Quantity\ConversionQuantityController;
 use App\Http\Controllers\Api\Culture\CultureController;
 use App\Http\Controllers\Api\Field\Consumption\ConsumptionController;
 use App\Http\Controllers\Api\Field\Consumption\ConsumptionProductionMeanController;

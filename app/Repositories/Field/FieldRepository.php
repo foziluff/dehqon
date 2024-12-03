@@ -13,7 +13,10 @@ class FieldRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('title', 'asc')->toBase()->paginate($quantity);
+        return $this->startConditions()
+            ->orderBy('title', 'asc')
+            ->with('culture', 'prevCulture', 'irrigation')
+            ->paginate($quantity);
     }
 
     public function getByUserIdPaginate($user_id, $quantity)
@@ -21,7 +24,7 @@ class FieldRepository extends CoreRepository
         return $this->startConditions()
             ->where('user_id', $user_id)
             ->orderBy('title', 'asc')
-            ->with('culture', 'prevCulture')
+            ->with('culture', 'prevCulture', 'irrigation')
             ->paginate($quantity);
     }
 
@@ -29,7 +32,7 @@ class FieldRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->with('culture', 'prevCulture')
+            ->with('culture', 'prevCulture', 'irrigation')
             ->get();
     }
 
@@ -38,7 +41,7 @@ class FieldRepository extends CoreRepository
         return $this->startConditions()
             ->where('user_id', $user_id)
             ->orderBy('id', 'desc')
-            ->with('culture', 'prevCulture')
+            ->with('culture', 'prevCulture', 'irrigation')
             ->paginate($quantity);
     }
 

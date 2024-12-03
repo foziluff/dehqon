@@ -20,7 +20,7 @@ class StockRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->orderBy('title', 'asc')
+            ->orderBy('id', 'desc')
             ->with('consumptionProductionMean')
             ->paginate($quantity);
     }
