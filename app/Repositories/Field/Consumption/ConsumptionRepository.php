@@ -14,7 +14,7 @@ class ConsumptionRepository extends CoreRepository
     public function getAllWithPaginate($quantity)
     {
         return $this->startConditions()->orderBy('id', 'desc')
-            ->with('culture', 'consumptionProductionMean', 'consumptionNaming', 'stockConsumption', 'stockConsumption.stock')->paginate($quantity);
+            ->with('culture', 'consumptionProductionMean', 'stockConsumption', 'stockConsumption.stock', 'stockConsumption.stock.consumptionProductionMean')->paginate($quantity);
     }
 
     public function getByFieldIdPaginate($field_id, $quantity)
@@ -22,7 +22,7 @@ class ConsumptionRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
-            ->with('culture', 'consumptionProductionMean', 'consumptionNaming', 'stockConsumption', 'stockConsumption.stock')
+            ->with('culture', 'consumptionProductionMean', 'stockConsumption', 'stockConsumption.stock', 'stockConsumption.stock.consumptionProductionMean')
             ->paginate($quantity);
     }
 
@@ -31,7 +31,7 @@ class ConsumptionRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $user_id)
-            ->with('culture', 'consumptionProductionMean', 'consumptionNaming', 'stockConsumption', 'stockConsumption.stock')
+            ->with('culture', 'consumptionProductionMean', 'stockConsumption', 'stockConsumption.stock', 'stockConsumption.stock.consumptionProductionMean')
             ->findOrFail($id);
     }
 
@@ -41,15 +41,15 @@ class ConsumptionRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
-            ->with('culture', 'consumptionProductionMean', 'consumptionNaming', 'stockConsumption', 'stockConsumption.stock')
-            ->get();
+            ->with('culture', 'consumptionProductionMean', 'stockConsumption', 'stockConsumption.stock', 'stockConsumption.stock.consumptionProductionMean')
+            ->paginate(20);
     }
 
 
     public function search($value)
     {
         return $this->startConditions()->where('title', 'like', "%$value%")
-            ->with('culture', 'consumptionProductionMean', 'consumptionNaming', 'stockConsumption', 'stockConsumption.stock')->get();
+            ->with('culture', 'consumptionProductionMean', 'stockConsumption', 'stockConsumption.stock', 'stockConsumption.stock.consumptionProductionMean')->get();
     }
 
     public function getAll()
@@ -60,7 +60,7 @@ class ConsumptionRepository extends CoreRepository
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('culture', 'consumptionProductionMean', 'consumptionNaming', 'stockConsumption', 'stockConsumption.stock')
+            ->with('culture', 'consumptionProductionMean', 'stockConsumption', 'stockConsumption.stock', 'stockConsumption.stock.consumptionProductionMean')
             ->findOrFail($id);
     }
 

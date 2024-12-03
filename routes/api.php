@@ -23,6 +23,8 @@ use App\Http\Controllers\Api\Field\WorkPlan\WorkPlanController;
 use App\Http\Controllers\Api\Field\WorkPlan\WorkStageController;
 use App\Http\Controllers\Api\FuelType\FuelTypeController;
 use App\Http\Controllers\Api\Irrigation\IrrigationController;
+use App\Http\Controllers\Api\Operation\ConsumptionCategoryController;
+use App\Http\Controllers\Api\Operation\ConsumptionOperationController;
 use App\Http\Controllers\Api\Organization\OrganizationController;
 use App\Http\Controllers\Api\Problem\ProblemController;
 use App\Http\Controllers\Api\Stock\StockConsumptionController;
@@ -53,6 +55,8 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/organizations', [OrganizationController::class, 'index']);
     Route::get('/irrigations', [IrrigationController::class, 'index']);
     Route::get('/problems', [ProblemController::class, 'index']);
+    Route::get('/consumption-operations', [ConsumptionOperationController::class, 'index']);
+    Route::get('/consumption-categories', [ConsumptionCategoryController::class, 'index']);
 
 
     Route::resource('/fields', FieldController::class);

@@ -24,8 +24,10 @@ class UpdateConversionQuantityRequest extends FormRequest
         return [
             'date'                  => 'required|date',
             'conversion_id'         => 'required|exists:conversions,id',
-            'conversion_type_id'    => 'required|exists:conversion_types,id',
-            'conversion_naming_id'  => 'required|exists:conversion_namings,id',
+//            'conversion_type_id'    => 'required|exists:conversion_types,id',
+//            'conversion_naming_id'  => 'required|exists:conversion_namings,id',
+            'conversion_type'       => 'required|string|max:255',
+            'conversion_naming'     => 'required|string|max:255',
             'quantity'              => 'required|integer',
             'quantity_unit'         => 'required|string|max:255',
         ];

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('consumptions', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date');
+            $table->date('date');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('product_type_id');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('consumption_production_mean_id');
             $table->unsignedBigInteger('consumption_naming_id')->nullable();
             $table->unsignedBigInteger('stock_consumption_id')->nullable();
-            $table->string('consumption_naming');
+            $table->string('consumption_naming')->nullable();
             $table->integer('quantity');
             $table->string('quantity_unit');
             $table->double('price');

@@ -15,8 +15,10 @@ class ConversionQuantity extends Model
     protected $fillable = [
         'date',
         'conversion_id',
-        'conversion_type_id',
-        'conversion_naming_id',
+        'conversion_type',
+        'conversion_naming',
+//        'conversion_type_id',
+//        'conversion_naming_id',
         'quantity',
         'quantity_unit',
     ];

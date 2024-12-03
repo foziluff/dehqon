@@ -32,7 +32,7 @@ class ConsumptionController extends Controller
     public function store(StoreConsumptionRequest $request)
     {
         $record = $this->user->consumptions()->create($request->validated());
-        return response()->json($record, 201);
+        return response()->json($record->load('culture', 'consumptionProductionMean', 'stockConsumption', 'stockConsumption.stock'), 201);
     }
 
     /**
@@ -51,7 +51,7 @@ class ConsumptionController extends Controller
      */
     public function update(UpdateConsumptionRequest $request, $id)
     {
-        $record = $this->consumptionRepository->update($id, $request);
+        $record = $this->consumptionRepository->update($id, $request->validated());
         return response()->json($record, 200);
     }
 

@@ -39,7 +39,7 @@ class IncomeRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
-            ->get();
+            ->paginate(20);
     }
 
 
