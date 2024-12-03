@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\SendCodeController;
 use App\Http\Controllers\Api\Auth\VerifyCodeController;
+use App\Http\Controllers\Api\Conversion\Consumption\ConversionConsumptionController;
+use App\Http\Controllers\Api\Conversion\ConversionController;
+use App\Http\Controllers\Api\Conversion\Income\ConversionIncomeController;
 use App\Http\Controllers\Api\Culture\CultureController;
 use App\Http\Controllers\Api\Field\Consumption\ConsumptionController;
 use App\Http\Controllers\Api\Field\Consumption\ConsumptionProductionMeanController;
@@ -73,5 +76,17 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::get('/work-plans/{id}/work-stages', [WorkStageController::class, 'filterByPlan']);
     Route::resource('/work-stages', WorkStageController::class);
+
+    Route::resource('/conversions', ConversionController::class);
+
+    Route::resource('/conversion-incomes', ConversionIncomeController::class);
+    Route::resource('/conversion-quantities', ConversionQuantityController::class);
+    Route::resource('/conversion-consumptions', ConversionConsumptionController::class);
+
+    Route::get('/conversions/{id}/incomes', [ConversionIncomeController::class, 'filterByConversion']);
+    Route::get('/conversions/{id}/consumptions', [ConversionConsumptionController::class, 'filterByConversion']);
+    Route::get('/conversions/{id}/quantities', [ConversionQuantityController::class, 'filterByConversion'])->name('conversions.quantities');
+
+
 });
 

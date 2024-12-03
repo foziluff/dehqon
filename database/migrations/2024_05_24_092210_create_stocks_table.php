@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->string('quantity_unit');
             $table->double('price');
+            $table->double('spent')->nullable()->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

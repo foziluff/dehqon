@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('stock_consumptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('stock_id');
-            $table->unsignedBigInteger('field_id');
+            $table->unsignedBigInteger('field_id')->nullable();
+            $table->unsignedBigInteger('conversion_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->double('quantity');
             $table->string('quantity_unit');
             $table->double('price');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('field_id')->references('id')->on('fields')->onDelete('cascade');
+            $table->foreign('conversion_id')->references('id')->on('conversions')->onDelete('cascade');
             $table->foreign('stock_id')->references('id')->on('stocks')->onDelete('cascade');
             $table->timestamps();
         });

@@ -19,7 +19,7 @@ class StockConsumptionRepository extends CoreRepository
     public function getByUserIdPaginate($user_id, $quantity)
     {
         return $this->startConditions()
-            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean')
+            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean', 'conversion')
             ->where('user_id', $user_id)
             ->orderBy('id', 'desc')
             ->paginate($quantity);
@@ -40,7 +40,7 @@ class StockConsumptionRepository extends CoreRepository
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean')
+            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean', 'conversion')
             ->findOrFail($id);
     }
 
@@ -49,7 +49,7 @@ class StockConsumptionRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('user_id', $this->user->id)
-            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean')
+            ->with('field', 'field.irrigation',  'field.culture',  'field.prevCulture',  'stock', 'stock.consumptionProductionMean', 'conversion')
             ->findOrFail($id);
     }
 

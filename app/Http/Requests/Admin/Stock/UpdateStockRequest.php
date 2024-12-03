@@ -28,6 +28,7 @@ class UpdateStockRequest extends FormRequest
             'quantity'      => 'required|numeric|min:0',
             'quantity_unit' => 'required|string|max:255',
             'price'         => 'required|numeric|min:0',
+            'spent'         => 'required|numeric|min:0',
             'consumption_production_mean_id' => 'required|exists:consumption_production_means,id',
         ];
     }

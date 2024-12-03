@@ -13,7 +13,7 @@ class ConversionIncomeRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('id', 'desc')->with('conversionType')->paginate($quantity);
+        return $this->startConditions()->orderBy('id', 'desc')->paginate($quantity);
     }
 
     public function getByWorkConversionIdPaginate($conversion_id, $quantity)
@@ -21,7 +21,6 @@ class ConversionIncomeRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('conversion_id', $conversion_id)
-            ->with('conversionType')
             ->paginate($quantity);
     }
 
@@ -41,9 +40,7 @@ class ConversionIncomeRepository extends CoreRepository
     {
         return $this->startConditions()
             ->with(
-                'conversionType',
                 'conversion',
-                'conversionNaming'
             )
             ->findOrFail($id);
     }

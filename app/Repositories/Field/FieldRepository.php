@@ -48,7 +48,7 @@ class FieldRepository extends CoreRepository
             ->where('id', $id)
             ->where('user_id', '=', $this->user->id)
             ->orderBy('id', 'desc')
-            ->with('culture', 'prevCulture')
+            ->with('culture', 'prevCulture', 'irrigation')
             ->firstOrFail();
     }
     public function search($value)

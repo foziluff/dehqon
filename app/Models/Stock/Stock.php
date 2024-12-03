@@ -19,6 +19,7 @@ class Stock extends Model
         'quantity',
         'quantity_unit',
         'price',
+        'spent',
     ];
 
     /**

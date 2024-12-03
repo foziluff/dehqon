@@ -17,8 +17,10 @@ class ConversionIncome extends Model
     protected $fillable = [
         'date',
         'conversion_id',
-        'conversion_type_id',
-        'conversion_naming_id',
+        'conversion_type',
+        'conversion_naming',
+//        'conversion_type_id',
+//        'conversion_naming_id',
         'quantity',
         'quantity_unit',
         'price',
@@ -34,13 +36,13 @@ class ConversionIncome extends Model
         return $this->belongsTo(Conversion::class);
     }
 
-    public function conversionType()
-    {
-        return $this->belongsTo(ConversionType::class);
-    }
-
-    public function conversionNaming()
-    {
-        return $this->belongsTo(ConversionNaming::class);
-    }
+//    public function conversionType()
+//    {
+//        return $this->belongsTo(ConversionType::class);
+//    }
+//
+//    public function conversionNaming()
+//    {
+//        return $this->belongsTo(ConversionNaming::class);
+//    }
 }
