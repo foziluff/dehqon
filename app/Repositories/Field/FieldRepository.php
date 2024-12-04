@@ -10,7 +10,13 @@ class FieldRepository extends CoreRepository
     {
         return Model::class;
     }
-
+    public function getByFrontId($front_key)
+    {
+        if ($front_key)
+            return $this->startConditions()->where('front_key', $front_key)->first();
+        else
+            return false;
+    }
     public function getAllWithPaginate($quantity)
     {
         return $this->startConditions()

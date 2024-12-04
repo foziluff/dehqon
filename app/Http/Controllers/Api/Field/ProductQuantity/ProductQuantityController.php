@@ -34,7 +34,7 @@ class ProductQuantityController extends Controller
     public function store(StoreProductQuantityRequest $request)
     {
         $record = $this->user->productQuantities()->create($request->validated());
-        return response()->json($record, 201);
+        return response()->json($record->load('culture'), 201);
     }
 
     /**
@@ -51,7 +51,7 @@ class ProductQuantityController extends Controller
      */
     public function update(UpdateProductQuantityRequest $request, $id)
     {
-        $record = $this->productQuantityRepository->update($id, $request);
+        $record = $this->productQuantityRepository->update($id, $request->validated());
         return response()->json($record, 200);
     }
 

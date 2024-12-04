@@ -28,7 +28,7 @@ class UpdateUsersRequest extends FormRequest
             'born_in'               => 'sometimes|date',
             'organization_id'       => 'sometimes|nullable|integer',
             'password'              => 'sometimes|nullable|min:9|max:20',
-            'gender'                => 'sometimes|integer|in:0,1',
+            'gender'                => 'sometimes|integer|in:1,2',
             'currency'              => 'sometimes|string|max:255',
             'image'                 => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'device'                => 'sometimes|nullable|string|max:255',

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('field_id');
+            $table->string('front_key')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->date('date')->nullable();

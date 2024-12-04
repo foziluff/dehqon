@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Actions\ImageAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Users\UpdateUsersRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Auth\User;
+use App\Repositories\Users\UsersRepository;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    private $usersRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->usersRepository = app(UsersRepository::class);
+    }
     public function login(LoginRequest $request)
     {
         $is_registered = User::where('phone', '=', $request->phone)->first();
@@ -37,4 +47,12 @@ class LoginController extends Controller
     {
         return response()->json(User::find(Auth::user()->id));
     }
+
+    public function update(UpdateUsersRequest $request)
+    {
+        $request = (new ImageAction())->handle($request);
+        $record = $this->usersRepository->selfUpdate($this->user->id, $request->only('name', 'surname', 'born_in', 'organization_id', 'gender', 'currency', 'image_path'));
+        return response()->json($record);
+    }
+
 }

@@ -24,6 +24,7 @@ class Field extends Model
         'prev_sowing_year',
         'user_id',
         'coordinates',
+        'front_key',
     ];
 
 //    protected $casts = [

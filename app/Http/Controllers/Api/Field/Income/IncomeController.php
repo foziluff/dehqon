@@ -34,7 +34,7 @@ class IncomeController extends Controller
     public function store(StoreIncomeRequest $request)
     {
         $record = $this->user->incomes()->create($request->validated());
-        return response()->json($record, 201);
+        return response()->json($record->load('culture'), 201);
     }
 
     /**
@@ -53,7 +53,7 @@ class IncomeController extends Controller
      */
     public function update(UpdateIncomeRequest $request, $id)
     {
-        $record = $this->incomeRepository->update($id, $request);
+        $record = $this->incomeRepository->update($id, $request->validated());
         return response()->json($record, 200);
     }
 

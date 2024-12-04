@@ -13,7 +13,7 @@ class ConversionConsumptionRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->with('consumptionProductionMean')->paginate($quantity);
+        return $this->startConditions()->with('consumptionProductionMean', 'stockConsumption.stock')->paginate($quantity);
     }
 
     public function getByWorkConversionIdPaginate($conversion_id, $quantity)
@@ -21,7 +21,7 @@ class ConversionConsumptionRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('conversion_id', $conversion_id)
-            ->with('consumptionProductionMean')
+            ->with('consumptionProductionMean', 'stockConsumption.stock')
             ->paginate($quantity);
     }
 
@@ -40,7 +40,7 @@ class ConversionConsumptionRepository extends CoreRepository
     {
         return $this->startConditions()
             ->with(
-                'consumptionProductionMean',
+                'consumptionProductionMean', 'stockConsumption.stock'
             )
             ->findOrFail($id);
     }

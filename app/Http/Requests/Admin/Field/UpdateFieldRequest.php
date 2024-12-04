@@ -32,6 +32,8 @@ class UpdateFieldRequest extends FormRequest
             'prev_sort'                 => 'sometimes|string|max:255',
             'prev_sowing_year'          => 'sometimes|integer|min:1900|max:'.(date('Y')),
             'coordinates'               => 'sometimes|string',
+
+            'front_key'                 => 'sometimes|nullable|string|max:255',
         ];
     }
 }

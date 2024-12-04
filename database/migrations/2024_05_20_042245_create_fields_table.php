@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('front_key')->nullable();
             $table->unsignedBigInteger('culture_id');
             $table->string('sort')->nullable();
             $table->double('area');

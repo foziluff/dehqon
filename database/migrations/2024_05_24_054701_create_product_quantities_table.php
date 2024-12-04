@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_quantities', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date');
+            $table->date('date');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('product_type_id');

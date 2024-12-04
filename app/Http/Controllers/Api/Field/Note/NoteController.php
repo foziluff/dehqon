@@ -53,6 +53,8 @@ class NoteController extends Controller
      */
     public function store(StoreNoteRequest $request)
     {
+        $record = $this->noteRepository->getByFrontId($request->front_key);
+        if ($record) return response()->json($record, 201);
         $record = $this->user->notes()->create($request->validated());
         app(NoteImagesAction::class)->handle($request, $record->id);
         $record = $this->noteRepository->getMineEditOrFail($record->id, $this->user->id);

@@ -23,6 +23,7 @@ class Note extends Model
         'defeated_area',
         'status',
         'user_seen',
+        'front_key',
     ];
 
     public function problem()

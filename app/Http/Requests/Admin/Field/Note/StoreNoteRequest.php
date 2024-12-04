@@ -39,6 +39,8 @@ class StoreNoteRequest extends FormRequest
                     }
                 },
             ],
+
+            'front_key'                 => 'sometimes|nullable|string|max:255',
         ];
     }
 }

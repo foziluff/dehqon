@@ -41,6 +41,7 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:3
 Route::middleware('auth:sanctum')->group(function (){
 
     Route::get('/user', [LoginController::class, 'getUser']);
+    Route::patch('/user/update', [LoginController::class, 'update']);
 
     Route::apiResource('/cultures', CultureController::class);
 
@@ -48,6 +49,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::apiResource('/stocks', StockController::class);
     Route::apiResource('/stocks-consumptions', StockConsumptionController::class);
     Route::apiResource('/product-quantities', ProductQuantityController::class)->except('show')->names('productQuantities');
+    Route::get('/fields/{id}/product-quantities', [ProductQuantityController::class, 'filterByField']);
 
     Route::get('/fuel-types', [FuelTypeController::class, 'index']);
     Route::get('/agro-markets', [AgroMarketController::class, 'index']);

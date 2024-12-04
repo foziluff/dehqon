@@ -32,6 +32,8 @@ class StoreFieldRequest extends FormRequest
             'prev_sort'                 => 'sometimes|nullable|string|max:255',
             'prev_sowing_year'          => 'sometimes|nullable|integer|min:1900|max:'.(date('Y')),
             'coordinates'               => 'required|string',
+
+            'front_key'                 => 'sometimes|nullable|string|max:255',
         ];
     }
 }

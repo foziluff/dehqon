@@ -45,6 +45,14 @@ class UsersRepository extends CoreRepository
         return $record;
     }
 
+    public function selfUpdate($id, $data)
+    {
+        $record = $this->getEditOrFail($id);
+        $record->update($data);
+
+        return $record->only('id', 'name', 'surname', 'phone', 'born_in', 'gender', 'currency', 'image_path');
+    }
+
     public function create($data)
     {
         return $this->startConditions()->create($data);

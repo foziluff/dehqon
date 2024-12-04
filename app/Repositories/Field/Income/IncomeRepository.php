@@ -13,7 +13,7 @@ class IncomeRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('id', 'desc')->with('productType')->paginate($quantity);
+        return $this->startConditions()->orderBy('id', 'desc')->with('culture')->paginate($quantity);
     }
 
     public function getByFieldIdPaginate($field_id, $quantity)
@@ -21,7 +21,7 @@ class IncomeRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
-            ->with('productType')
+            ->with('culture')
             ->paginate($quantity);
     }
 
@@ -39,6 +39,7 @@ class IncomeRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
+            ->with('culture')
             ->paginate(20);
     }
 
@@ -58,7 +59,7 @@ class IncomeRepository extends CoreRepository
     {
         return $this->startConditions()
             ->with(
-                'productType',
+                'culture',
                 'field',
                 'culture'
             )

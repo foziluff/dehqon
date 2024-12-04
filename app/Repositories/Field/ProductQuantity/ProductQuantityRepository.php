@@ -13,7 +13,7 @@ class ProductQuantityRepository extends CoreRepository
 
     public function getAllWithPaginate($quantity)
     {
-        return $this->startConditions()->orderBy('id', 'desc')->with('productType')->paginate($quantity);
+        return $this->startConditions()->orderBy('id', 'desc')->with('culture')->paginate($quantity);
     }
 
     public function getByFieldIdPaginate($field_id, $quantity)
@@ -21,7 +21,7 @@ class ProductQuantityRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
-            ->with('productType')
+            ->with('culture')
             ->paginate($quantity);
     }
 
@@ -34,9 +34,8 @@ class ProductQuantityRepository extends CoreRepository
     {
         return $this->startConditions()
             ->with(
-                'productType',
+                'culture',
                 'field',
-                'culture'
             )
             ->findOrFail($id);
     }

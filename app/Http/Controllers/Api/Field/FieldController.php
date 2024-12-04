@@ -31,6 +31,8 @@ class FieldController extends Controller
      */
     public function store(StoreFieldRequest $request)
     {
+        $field = $this->fieldRepository->getByFrontId($request->front_key);
+        if ($field) return response()->json($field, 201);
         $record = $this->user->fields()->create($request->validated());
         return response()->json($this->show($record->id)->original, 201);
     }
