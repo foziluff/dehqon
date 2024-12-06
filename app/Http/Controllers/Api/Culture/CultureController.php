@@ -32,8 +32,10 @@ class CultureController extends Controller
      */
     public function store(StoreCultureRequest $request)
     {
+        $record = $this->cultureRepository->getByFrontId($request->front_key);
+        if ($record) return response()->json($record, 201);
         $request = (new ImageAction())->handle($request);
-        $record = $this->user->cultures()->create($request->only(['title_ru', 'title_uz', 'title_tj', 'image_path']));
+        $record = $this->user->cultures()->create($request->only(['title_ru', 'title_uz', 'title_tj', 'image_path', 'front_key']));
         return response()->json($record, 201);
     }
 

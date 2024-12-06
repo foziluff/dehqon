@@ -26,6 +26,8 @@ class UpdateCultureRequest extends FormRequest
             'title_uz' => 'sometimes|string|max:100',
             'title_tj' => 'sometimes|string|max:100',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'front_key'                 => 'sometimes|nullable|string|max:255',
         ];
     }
 }

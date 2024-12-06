@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title_tj');
             $table->string('image_path');
             $table->unsignedBigInteger('user_id');
+            $table->string('front_key')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

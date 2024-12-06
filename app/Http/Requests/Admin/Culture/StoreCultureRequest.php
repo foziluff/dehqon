@@ -26,6 +26,8 @@ class StoreCultureRequest extends FormRequest
             'title_uz' => 'required|string|max:100',
             'title_tj' => 'required|string|max:100',
             'image'    => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            'front_key'                 => 'sometimes|nullable|string|max:255',
         ];
     }
 }

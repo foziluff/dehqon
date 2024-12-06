@@ -11,6 +11,12 @@ class CultureRepository extends CoreRepository
         return Model::class;
     }
 
+    public function getByFrontId($front_key)
+    {
+        return $this->startConditions()
+            ->where('front_key', $front_key)
+            ->first();
+    }
     public function getAllWithPaginate($quantity)
     {
         return $this->startConditions()->orderBy('title_ru', 'asc')->toBase()->paginate($quantity);

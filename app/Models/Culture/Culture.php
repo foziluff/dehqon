@@ -15,6 +15,7 @@ class Culture extends Model
         'title_uz',
         'title_tj',
         'image_path',
+        'front_key',
     ];
 
     public function seasons()

@@ -13,11 +13,9 @@ class NoteRepository extends CoreRepository
 
     public function getByFrontId($front_key)
     {
-        if ($front_key)
-            return $this->startConditions()->where('front_key', $front_key)->first();
-        else
-            return false;
+         return $this->startConditions()->where('front_key', $front_key)->with('images', 'field',  'field.culture','field.prevCulture', 'field.irrigation')->first();
     }
+
     public function getAllWithPaginate($quantity)
     {
         return $this->startConditions()
