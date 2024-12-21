@@ -26,7 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('consumption_naming_id')->nullable();
             $table->unsignedBigInteger('stock_consumption_id')->nullable();
             $table->string('consumption_naming')->nullable();
-            $table->integer('quantity');
+            $table->double('quantity');
             $table->string('quantity_unit');
             $table->double('price');
             $table->timestamps();
