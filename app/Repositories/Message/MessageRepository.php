@@ -25,6 +25,14 @@ class MessageRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getByNoteIdWithPaginateForFront($note_id, $quantity)
+    {
+        return $this->startConditions()
+            ->where('note_id', $note_id)
+            ->orderBy('id', 'desc')
+            ->paginate($quantity);
+    }
+
     public function search($value)
     {
         return $this->startConditions()->where('id', 'like', "%$value%")->toBase()->get();

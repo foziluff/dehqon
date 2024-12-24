@@ -27,6 +27,12 @@ class StockController extends Controller
         return response()->json($records);
     }
 
+    public function filterByMean($id)
+    {
+        $records = $this->stockRepository->getByMeanIdMine($id, $this->user->id);
+        return response()->json($records, 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

@@ -17,9 +17,7 @@ class OrganizationRepository extends CoreRepository
     }
     public function getAllForFront()
     {
-        $langItems = ['title', 'address', 'description'];
-        $records = $this->startConditions()->all();
-        return $this->transformLang($records, $langItems);
+        return $this->startConditions()->all();
     }
 
     public function search($value)

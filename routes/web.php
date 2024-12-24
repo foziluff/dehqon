@@ -168,8 +168,8 @@ Route::middleware(['auth:sanctum', 'moderator'])->prefix('admin')->group(functio
         Route::get('/fields/{field_id}/product-quantities', [ProductQuantityController::class, 'filterByField'])->name('fields.productQuantities');
         Route::get('/product-quantities/{id}', [ProductQuantityController::class, 'show'])->name('productQuantities.show');
 
+        Route::patch('note-access', [NoteShowController::class, 'update'])->name('noteAccess.update');
     });
 
 });
 
-Route::patch('note-access', [NoteShowController::class, 'update'])->name('noteAccess.update');

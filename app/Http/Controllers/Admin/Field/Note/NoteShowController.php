@@ -17,6 +17,12 @@ class NoteShowController extends  Controller
         $this->noteShowRepository = app(NoteShowRepository::class);
     }
 
+    public function index()
+    {
+        $records = $this->noteShowRepository->getAllByUserId($this->user->id);
+        return response()->json($records);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -38,6 +44,9 @@ class NoteShowController extends  Controller
         if ($this->user->id == $noteShow->asked_for_user_id)
         {
             $this->noteShowRepository->update($id, $request->only('access'));
+            if ($request->wantsJson()) {
+                return response()->json(['success' => 'Успешно одобрено!']);
+            }
             return redirect()->back()->with(['success' => 'Успешно одобрено!']);
         }
         abort(403);

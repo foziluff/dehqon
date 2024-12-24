@@ -58,6 +58,7 @@ class User extends Authenticatable
         'gender',
         'role',
         'currency',
+        'fcm_token',
         'image_path',
     ];
 

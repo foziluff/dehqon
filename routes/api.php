@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\Field\Note\NoteShowController;
+use App\Http\Controllers\Admin\Message\MessageController;
+use App\Http\Controllers\Admin\News\NewsController;
+use App\Http\Controllers\Admin\Question\QuestionController;
 use App\Http\Controllers\Api\AgroCredit\AgroCreditController;
 use App\Http\Controllers\Api\AgroMarket\AgroMarketController;
 use App\Http\Controllers\Api\Auth\LoginController;
@@ -32,8 +36,8 @@ use App\Http\Controllers\Api\Stock\StockController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/check-user/{phone}', [SendCodeController::class, 'check']);
-Route::post('/send-code', [SendCodeController::class, 'sendCode']);
-//    ->middleware('throttle:1,1');
+Route::post('/send-code', [SendCodeController::class, 'sendCode'])
+    ->middleware('throttle:1,1');
 Route::post('/verify-code', [VerifyCodeController::class, 'verifyCode'])->middleware('throttle:3,1');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:3,1');
@@ -47,6 +51,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::apiResource('/consumption-production-means', ConsumptionProductionMeanController::class);
     Route::apiResource('/stocks', StockController::class);
+    Route::get('/consumption-production-means/{id}/stocks', [StockController::class, 'filterByMean']);
     Route::apiResource('/stocks-consumptions', StockConsumptionController::class);
     Route::apiResource('/product-quantities', ProductQuantityController::class)->except('show')->names('productQuantities');
     Route::get('/fields/{id}/product-quantities', [ProductQuantityController::class, 'filterByField']);
@@ -94,6 +99,16 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/conversions/{id}/consumptions', [ConversionConsumptionController::class, 'filterByConversion']);
     Route::get('/conversions/{id}/quantities', [ConversionQuantityController::class, 'filterByConversion'])->name('conversions.quantities');
 
+
+    Route::post('/messages',    [MessageController::class, 'store']);
+    Route::get('/messages/{noteId}', [MessageController::class, 'index']);
+
+    Route::patch('/note-access/{noteShowId}', [NoteShowController::class, 'update']);
+    Route::get('/note-access', [NoteShowController::class, 'index']);
+
+    Route::get('/questions', [QuestionController::class, 'indexForFront']);
+
+    Route::get('/news', [NewsController::class, 'indexForFront']);
 
 });
 

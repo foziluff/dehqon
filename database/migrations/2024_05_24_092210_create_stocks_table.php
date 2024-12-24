@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('consumption_production_mean_id');
-            $table->integer('quantity');
+            $table->double('quantity');
             $table->string('quantity_unit');
             $table->double('price');
             $table->double('spent')->nullable()->default(0);

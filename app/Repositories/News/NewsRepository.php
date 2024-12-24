@@ -18,6 +18,14 @@ class NewsRepository extends CoreRepository
             ->paginate($quantity);
     }
 
+    public function getLast($quantity)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->take($quantity)
+            ->get();
+    }
+
 
     public function search($value)
     {

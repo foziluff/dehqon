@@ -16,6 +16,11 @@ class QuestionRepository extends CoreRepository
         return $this->startConditions()->orderBy('id', 'desc')->toBase()->paginate($quantity);
     }
 
+    public function getAllForFront()
+    {
+        return $this->startConditions()->orderBy('id', 'desc')->get();
+    }
+
     public function search($value)
     {
         return $this->startConditions()->where('question_ru', 'like', "%$value%")->toBase()->get();

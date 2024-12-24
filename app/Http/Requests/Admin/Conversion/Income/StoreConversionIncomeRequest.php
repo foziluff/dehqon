@@ -28,7 +28,7 @@ class StoreConversionIncomeRequest extends FormRequest
 //            'conversion_naming_id'  => 'required|exists:conversion_namings,id',
             'conversion_type'       => 'required|string|max:255',
             'conversion_naming'     => 'required|string|max:255',
-            'quantity'              => 'required|integer',
+            'quantity'              => 'required|numeric',
             'quantity_unit'         => 'required|string|max:255',
             'price'                 => 'required|numeric',
         ];

@@ -33,6 +33,7 @@ class UpdateUsersRequest extends FormRequest
             'image'                 => 'sometimes|nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'device'                => 'sometimes|nullable|string|max:255',
             'role'                  => 'sometimes|nullable|integer',
+            'fcm_token'             => 'sometimes|nullable|string|max:255',
         ];
     }
 }

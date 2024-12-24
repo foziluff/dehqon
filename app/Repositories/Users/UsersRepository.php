@@ -50,7 +50,7 @@ class UsersRepository extends CoreRepository
         $record = $this->getEditOrFail($id);
         $record->update($data);
 
-        return $record->only('id', 'name', 'surname', 'phone', 'born_in', 'gender', 'currency', 'image_path');
+        return $record->only('id', 'name', 'surname', 'phone', 'born_in', 'gender', 'currency', 'image_path', 'fcm_token');
     }
 
     public function create($data)

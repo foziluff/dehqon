@@ -31,6 +31,15 @@ class NewsController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function indexForFront()
+    {
+        $records = $this->newsRepository->getLast(100);
+        return response()->json($records);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

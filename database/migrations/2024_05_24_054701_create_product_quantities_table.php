@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('field_id');
             $table->unsignedBigInteger('product_type_id');
             $table->unsignedBigInteger('culture_id');
-            $table->integer('quantity');
+            $table->double('quantity');
             $table->string('quantity_unit');
             $table->timestamps();
 

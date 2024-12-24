@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('_token')->nullable();
 
             $table->integer('role')->nullable();
+            $table->string('fcm_token')->nullable();
 
             $table->unsignedBigInteger('organization_id')->nullable();
 

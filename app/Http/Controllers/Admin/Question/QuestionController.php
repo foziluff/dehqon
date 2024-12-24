@@ -24,6 +24,14 @@ class QuestionController extends Controller
         $records = $this->questionRepository->getAllWithPaginate(20);
         return view('admin.question.index', compact('records'));
     }
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexForFront()
+    {
+        $records = $this->questionRepository->getAllForFront();
+        return response()->json($records);
+    }
 
     /**
      * Show the form for creating a new resource.

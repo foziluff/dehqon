@@ -16,6 +16,16 @@ class StockRepository extends CoreRepository
         return $this->startConditions()->orderBy('id', 'desc')->with('consumptionProductionMean')->paginate($quantity);
     }
 
+    public function getByMeanIdMine($mean_id, $user_id)
+    {
+        return $this->startConditions()
+            ->orderBy('id', 'desc')
+            ->where('consumption_production_mean_id', $mean_id)
+            ->where('user_id', $user_id)
+            ->with('consumptionProductionMean')
+            ->paginate(20);
+    }
+
     public function getByUserIdPaginate($user_id, $quantity)
     {
         return $this->startConditions()

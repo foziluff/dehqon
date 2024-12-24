@@ -17,6 +17,14 @@ class NoteShowRepository extends CoreRepository
             ->findOrFail($id);
     }
 
+
+    public function getAllByUserId($user_id)
+    {
+        return $this->startConditions()
+            ->where('asked_for_user_id', $user_id)
+            ->get();
+    }
+
     public function count($asking_user_id, $asked_for_user_id)
     {
         return $this->startConditions()
@@ -39,7 +47,7 @@ class NoteShowRepository extends CoreRepository
     public function update($id, $data)
     {
         $record = $this->getEditOrFail($id);
-        $record->update($data);
+        $record->update(['access' => 1]);
         return $record;
     }
 

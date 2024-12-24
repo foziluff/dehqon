@@ -43,6 +43,7 @@ class SendCodeController extends Controller
     {
         $request->phone = substr($request->phone, 3);
         $request->merge(['code' => rand(1000, 9999)]);
+        if ($request->phone == "000000000") $request['code'] = 1111; // TODO временно потом убрать
 
         $login = env('OSONSMSLOGIN');
         $sender = env('OSONSMSSENDER');

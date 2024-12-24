@@ -16,6 +16,12 @@ class MessageController extends Controller
         $this->messageRepository = app(MessageRepository::class);
     }
 
+    public function index(int $noteId)
+    {
+        $messages = $this->messageRepository->getByNoteIdWithPaginateForFront($noteId, 20);
+        return response()->json($messages);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -25,8 +31,8 @@ class MessageController extends Controller
 
         broadcast(new MessageSent($message));
 
-        if ($request->ajax()) {
-            return response()->json(['message' => $message], 200);
+        if ($request->wantsJson()) {
+            return response()->json($message);
         }
 
         return redirect()->back()->with(['success' => 'Сообщение успешно отправлено!']);

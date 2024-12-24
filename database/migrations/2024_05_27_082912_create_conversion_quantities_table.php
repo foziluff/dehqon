@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('conversion_type');
             $table->string('conversion_naming');
             $table->unsignedBigInteger('conversion_id');
-            $table->integer('quantity');
+            $table->double('quantity');
             $table->string('quantity_unit');
             $table->timestamps();
 

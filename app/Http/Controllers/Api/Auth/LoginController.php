@@ -51,7 +51,7 @@ class LoginController extends Controller
     public function update(UpdateUsersRequest $request)
     {
         $request = (new ImageAction())->handle($request);
-        $record = $this->usersRepository->selfUpdate($this->user->id, $request->only('name', 'surname', 'born_in', 'organization_id', 'gender', 'currency', 'image_path'));
+        $record = $this->usersRepository->selfUpdate($this->user->id, $request->only('name', 'surname', 'born_in', 'organization_id', 'gender', 'currency', 'image_path', 'fcm_token'));
         return response()->json($record);
     }
 

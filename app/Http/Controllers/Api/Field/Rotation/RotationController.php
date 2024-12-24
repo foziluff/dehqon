@@ -52,8 +52,8 @@ class RotationController extends Controller
      */
     public function update(UpdateRotationRequest $request, $id)
     {
-        $record = $this->rotationRepository->update($id, $request);
-        return response()->json($record, 200);
+        $record = $this->rotationRepository->update($id, $request->validated());
+        return response()->json($record);
     }
 
     /**
