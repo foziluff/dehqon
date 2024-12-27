@@ -48,10 +48,23 @@ class MessageRepository extends CoreRepository
         return $this->startConditions()->findOrFail($id);
     }
 
+    public function getMineEditOrFail($id)
+    {
+        return $this->startConditions()->where('user_id', $this->user->id)->findOrFail($id);
+    }
+
 
     public function update($id, $data)
     {
         $record = $this->getEditOrFail($id);
+        $record->update($data);
+        return $record;
+    }
+
+
+    public function updateIfMine($id, $data)
+    {
+        $record = $this->getMineEditOrFail($id);
         $record->update($data);
         return $record;
     }
@@ -64,6 +77,12 @@ class MessageRepository extends CoreRepository
     public function delete($id)
     {
         $record = $this->getEditOrFail($id);
+        return $record->delete();
+    }
+
+    public function deleteIfMine($id)
+    {
+        $record = $this->getMineEditOrFail($id);
         return $record->delete();
     }
 

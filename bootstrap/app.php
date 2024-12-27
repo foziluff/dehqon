@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => IsAdmin::class,
             'moderator' => IsModerator::class,
             'moderatorAccessToUser' => moderatorAccessToUser::class,
-//            'throttleRedirect' => \App\Http\Middleware\RedirectOnThrottle::class,
+            'throttleRedirect' => \App\Http\Middleware\RedirectOnThrottle::class,
 
         ]);
     })

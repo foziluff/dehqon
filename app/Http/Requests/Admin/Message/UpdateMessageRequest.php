@@ -22,9 +22,7 @@ class UpdateMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'message' => 'required|string',
-            'user_id' => 'required|exists:users,id',
-            'note_id' => 'required|exists:notes,id',
+            'message'    => 'required|string',
         ];
     }
 }

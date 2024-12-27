@@ -102,6 +102,8 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::post('/messages',    [MessageController::class, 'store']);
     Route::get('/messages/{noteId}', [MessageController::class, 'index']);
+    Route::delete('/messages/{id}', [MessageController::class, 'destroy']);
+    Route::patch('/messages/{id}', [MessageController::class, 'update']);
 
     Route::patch('/note-access/{noteShowId}', [NoteShowController::class, 'update']);
     Route::get('/note-access', [NoteShowController::class, 'index']);
