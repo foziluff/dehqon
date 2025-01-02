@@ -26,10 +26,10 @@ class Note extends Model
         'front_key',
     ];
 
-    public function problem()
-    {
-        return $this->belongsTo(Problem::class);
-    }
+//    public function problem()
+//    {
+//        return $this->belongsTo(Problem::class);
+//    }
     public function images()
     {
         return $this->hasMany(NoteImage::class);

@@ -13,14 +13,16 @@ class NoteRepository extends CoreRepository
 
     public function getByFrontId($front_key)
     {
-         return $this->startConditions()->where('front_key', $front_key)->with('images', 'field',  'field.culture','field.prevCulture', 'field.irrigation')->first();
+        if ($front_key) {
+            return $this->startConditions()->where('front_key', $front_key)->with('images', 'field',  'field.culture','field.prevCulture', 'field.irrigation')->first();
+        } else return null;
     }
 
     public function getAllWithPaginate($quantity)
     {
         return $this->startConditions()
             ->orderBy('id', 'desc')
-            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'problem', 'images')
+            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'images')
             ->paginate($quantity);
     }
 
@@ -29,7 +31,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('user_id', $user_id)
-            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'problem', 'images')
+            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'images')
             ->paginate($quantity);
     }
 
@@ -38,7 +40,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->where('organization_id', $organization_id)
             ->orderBy('id', 'desc')
-            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'problem', 'organization', 'images')
+            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'organization', 'images')
             ->paginate($quantity);
     }
 
@@ -47,7 +49,7 @@ class NoteRepository extends CoreRepository
         return $this->startConditions()
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
-            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'problem', 'organization', 'images')
+            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'organization', 'images')
             ->paginate($quantity);
     }
 
@@ -57,7 +59,7 @@ class NoteRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
-//            ->with('problem', 'organization')
+//            ->with('organization')
             ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'images')
             ->get();
     }
@@ -68,7 +70,7 @@ class NoteRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('field_id', $field_id)
             ->where('user_id', $user_id)
-            ->with('problem', 'organization', 'field', 'field.culture','field.prevCulture', 'field.irrigation',  'images')
+            ->with('organization', 'field', 'field.culture','field.prevCulture', 'field.irrigation',  'images')
             ->paginate($quantity);
     }
 
@@ -78,7 +80,7 @@ class NoteRepository extends CoreRepository
             ->orderBy('id', 'desc')
             ->where('status', $status)
             ->where('user_id', $user_id)
-            ->with('problem', 'organization', 'field', 'field.culture','field.prevCulture', 'field.irrigation',  'images')
+            ->with('organization', 'field', 'field.culture','field.prevCulture', 'field.irrigation',  'images')
             ->paginate($quantity);
     }
 
@@ -97,14 +99,14 @@ class NoteRepository extends CoreRepository
     {
         return $this->startConditions()
             ->where('organization_id', $organization_id)
-            ->with('problem', 'field', 'field.culture','field.prevCulture', 'field.irrigation',  'images', 'organization')
+            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'images', 'organization')
             ->findOrFail($id);
     }
 
     public function getEditOrFail($id)
     {
         return $this->startConditions()
-            ->with('problem', 'field', 'field.culture','field.prevCulture', 'field.irrigation',  'images', 'organization')
+            ->with('field', 'field.culture','field.prevCulture', 'field.irrigation',  'images', 'organization')
             ->findOrFail($id);
     }
 
