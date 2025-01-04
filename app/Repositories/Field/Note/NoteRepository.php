@@ -124,7 +124,7 @@ class NoteRepository extends CoreRepository
     {
         $record = $this->getEditOrFail($id);
         $record->update($data);
-        return $record;
+        return $this->getEditOrFail($id);
     }
 
     public function create($data)

@@ -79,7 +79,7 @@ class NoteController extends Controller
     {
         $record = $this->noteRepository->update($id, $request->validated());
         app(NoteImagesAction::class)->handle($request, $record->id);
-        return response()->json($record, 200);
+        return response()->json($record->load('images'), 200);
     }
 
     /**
