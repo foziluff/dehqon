@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "okno-fermera",
+  "private_key_id": "f88a3e7dfc3ed08b201d73c59fcebdfadf2b504a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQClvnbbYpoVhICE\nJLFxySniZXIWmZpkkXKosIllV6630DadlxAKT4PzMlhjq2Cxm1OLb5qZJsHmVivK\nnmqH+j35ORMQGpAmgqFcOH4OXyVfciKIQ1q7jU+0l4oIr3HaGrKuqwTwxd/fhvMP\nICHQL0LgqZky4ox3iCAxrQVGtEmjY7fTP63kRyXClsXRg3r3BG4jSUh6pNaU73jf\n+GpayvZlTA2grvFd931Xr+3Wa8Hh84I2QYwF5XTFZhkBGeumd+h9SwQsS5gYUlil\ndc/2mG5IHYVuhUyiUFP70sObkefGDH6ixzp0G2LsKvBgkgMuviyU5pPIYUWlB2BR\nCZKoksnbAgMBAAECggEADHMG+HZdvoBqXgKawkI3spKnt1Z1FPK72whCxoLuIIGa\nNWVGxikWbyqSUXVqjBlvqAlYLzXzDVSrPpfkxpWF5cKWUcWJzreAwuC9zy4kX38l\nZHjMR7Dwkk8Dn9PI+6nsglddxdWgrQIbUnQgAt3AUNTl9fJNIx+6ObqWRKsY3a9q\nNmlIXWP7AQdW0Zng5dpQ2AwSQ0R63sk82KTLDV72SH+4zKxapCSD+HjGrh2bFvh4\nrFNtHP1kvbmV/A9THJmmHUH7QhWT5K3AYBHTuWqzQOFHYaoaGo8eotdWpPmBMfjT\nAhTLmm+aZCFB4eCUa9T0HWdnVaOgsEqSqpdw8pensQKBgQDWyk5OUasV1Uu3emMa\nkouWMVSpR+eB1XNDqumySg2wEhKO7uM4y5Xd3/4Ms9wxMRwWfNPguL9X3TkHIAin\nb5txqZJWBSVNXGKRCHD/WM0PgHLlK7Li98vohiNRQHbAZLn+TR8QWSSKwkyAcA4T\nXiN66FZTjTAIZpQT069gu5ScEwKBgQDFizCSM3QiDi8jIpNVbvH1TyHW+LnJnDsF\n5jSVhoevlyySXPJgJdazgCSq3kC+/08HtViVkqSSa/iUpg6No5BtRftdkqm1t0j5\n2WAwJblSIiNTlnZljfRzA0vfl385NsKlYKPioMMxCyxJxW5hefnAah2dPBwOXu31\nxz7ykkvEGQKBgQCtnB/nFgPfReRJjVcFZ2YEJCN2IHRzcQAVtdPnFAw0QKdXeKeY\nhJXCHQbPZaGY8UTuuD7Z6PpgHqO1qqLUE1XlbVamyMn52a6h49zRyAkXeo9jxQp2\ngiwC6kkpp51UrRXZAqUVJbhvn9UOC4SVCwZKlfkQ15H3eFJAJF4hJf1cmQKBgHO3\nY05hIahJUsdsG44yHT4ripEYxgwZnmGIRklIsvbiwVNDax9zSt9/Mvt8kcTQXYUQ\nb8G+UvUKlmTNGT1TEOlR0zsvDIbLxM3GzhemIXbBVJxESTqX+xfcWHezkOz87Oxf\nPeEldvGlr93O7yfegbR69LoEWhL4/L+6ZV9G32cRAoGATkxdPqPFWgj5RgiUFnsf\nua9e1CVHNVKrltfH048JwXJtSL36ekI9DTZvGzsx+cSryw8E2x28tAVC/Xo8pY8q\nAtzIj/7/JPXqAT3yckYr4B/tRpFxyYXPsH2rdp0lafggremVUYQ3+PqRr6kcSR2U\nrj1p9i66Y3dIddx5AJhyn/Q=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-19i1p@okno-fermera.iam.gserviceaccount.com",
+  "client_id": "113992711853371765021",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-19i1p%40okno-fermera.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

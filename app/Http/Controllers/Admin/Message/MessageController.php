@@ -1,20 +1,24 @@
 <?php
 namespace App\Http\Controllers\Admin\Message;
 
+use App\Actions\FireBasePushAction;
 use App\Events\MessageSent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Message\StoreMessageRequest;
 use App\Http\Requests\Admin\Message\UpdateMessageRequest;
+use App\Repositories\Field\Note\NoteRepository;
 use App\Repositories\Message\MessageRepository;
 
 class MessageController extends Controller
 {
     private $messageRepository;
+    private $noteRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->messageRepository = app(MessageRepository::class);
+        $this->noteRepository = app(NoteRepository::class);
     }
 
     public function index(int $noteId)
@@ -31,6 +35,9 @@ class MessageController extends Controller
         $message = $this->user->messages()->create($request->validated());
 
         broadcast(new MessageSent($message));
+        $note = $this->noteRepository->getEditOrFail($request->note_id);
+        if ($note->user->fcm_token)
+            app(FireBasePushAction::class)->handle($this->user->name . " " . $this->user->surname . " отправил вам сообщение!", $message->message, $note->user->fcm_token);
 
         if ($request->wantsJson()) {
             return response()->json($message);
