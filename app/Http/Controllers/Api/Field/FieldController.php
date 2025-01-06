@@ -31,7 +31,9 @@ class FieldController extends Controller
     public function reportsByField($field_id)
     {
         $record = $this->fieldRepository->reportsByField($field_id);
-        return response()->json($record);
+        return $record
+            ? response()->json($record)
+            : response()->json(['message' => 'No object'], 404);
     }
 
     /**

@@ -16,17 +16,20 @@ class FieldRepository extends CoreRepository
         $fieldMain = $this->getForReport($fieldId, 1);
         $fieldSide = $this->getForReport($fieldId, 2);
 
-        $this->mainFieldReport($fieldMain);
-        $this->sideFieldReport($fieldSide);
-        $fieldMain->side_production = $fieldSide->side_production;
+        if ($fieldMain && $fieldSide) {
+            $this->mainFieldReport($fieldMain);
+            $this->sideFieldReport($fieldSide);
+            $fieldMain->side_production = $fieldSide->side_production;
 
-        unset(
-            $fieldMain->incomes_sum_quantity,
-            $fieldMain->consumptions_sum_quantity,
-            $fieldMain->product_quantities_sum_quantity
-        );
+            unset(
+                $fieldMain->incomes_sum_quantity,
+                $fieldMain->consumptions_sum_quantity,
+                $fieldMain->product_quantities_sum_quantity
+            );
 
-        return $fieldMain;
+            return $fieldMain;
+        }
+        return null;
     }
 
     public function sideFieldReport(object $field)
@@ -85,6 +88,7 @@ class FieldRepository extends CoreRepository
         return $this->startConditions()
             ->select('id', 'culture_id', 'area')
             ->where('id', $fieldId)
+            ->where('user_id', $this->user->id)
             ->with('culture:id,title_ru,title_tj,title_uz')
             ->withSum(['incomes'            => fn($query) => $query->where('product_type_id', $productTypeId)], 'quantity')
             ->withSum(['consumptions'       => fn($query) => $query->where('product_type_id', $productTypeId)], 'quantity')
