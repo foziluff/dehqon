@@ -112,5 +112,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::get('/news', [NewsController::class, 'indexForFront']);
 
+    Route::get('/reports/fields/{id}', [FieldController::class, 'reportsByField']);
+
 });
 

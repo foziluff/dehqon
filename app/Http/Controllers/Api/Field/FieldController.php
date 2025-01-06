@@ -25,6 +25,14 @@ class FieldController extends Controller
         $records = $this->fieldRepository->getAllMineWithPaginate($this->user->id, 20);
         return response()->json($records, 200);
     }
+    /**
+     * Display a listing of the resource.
+     */
+    public function reportsByField($field_id)
+    {
+        $record = $this->fieldRepository->reportsByField($field_id);
+        return response()->json($record);
+    }
 
     /**
      * Store a newly created resource in storage.

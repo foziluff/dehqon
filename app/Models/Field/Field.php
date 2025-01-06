@@ -3,6 +3,9 @@
 namespace App\Models\Field;
 
 use App\Models\Culture\Culture;
+use App\Models\Field\Consumption\Consumption;
+use App\Models\Field\Income\Income;
+use App\Models\Field\ProductQuantity\ProductQuantity;
 use App\Models\FuelType\FuelType;
 use App\Models\Irrigation\Irrigation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -39,6 +42,21 @@ class Field extends Model
     public function fuelType()
     {
         return $this->belongsTo(FuelType::class);
+    }
+
+    public function incomes()
+    {
+        return $this->hasMany(Income::class);
+    }
+
+    public function consumptions()
+    {
+        return $this->hasMany(Consumption::class);
+    }
+
+    public function productQuantities()
+    {
+        return $this->hasMany(ProductQuantity::class);
     }
 
     public function irrigation()
