@@ -106,6 +106,13 @@
                         <div>Культуры</div>
                     </a>
                 </li>
+                <!-- Средства защиты -->
+                <li class="menu-item {{ Request::segment(2) === 'protective-equipments' ? 'active' : '' }}">
+                    <a href="{{ route('protectiveEquipments.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bxs-pear'></i>
+                        <div>Средства защиты</div>
+                    </a>
+                </li>
                 <!-- Ирригации -->
                 <li class="menu-item {{ Request::segment(2) === 'irrigations' ? 'active' : '' }}">
                     <a href="{{ route('irrigations.index') }}" class="menu-link">

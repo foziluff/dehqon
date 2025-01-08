@@ -26,6 +26,7 @@ use App\Models\Irrigation\Irrigation;
 use App\Models\Message\Message;
 use App\Models\News\News;
 use App\Models\Organization\Organization;
+use App\Models\ProtectiveEquipment\ProtectiveEquipment;
 use App\Models\Question\Question;
 use App\Models\Stock\Stock;
 use App\Models\Stock\StockConsumption;
@@ -234,6 +235,14 @@ class User extends Authenticatable
     public function fertilizers()
     {
         return $this->hasMany(Fertilizer::class);
+    }
+
+
+
+
+    public function protectiveEquipments()
+    {
+        return $this->hasMany(ProtectiveEquipment::class);
     }
 
 

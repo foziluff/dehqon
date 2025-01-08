@@ -45,6 +45,7 @@ use App\Http\Controllers\Admin\Message\MessageController;
 use App\Http\Controllers\Admin\News\NewsController;
 use App\Http\Controllers\Admin\News\NewsImageController;
 use App\Http\Controllers\Admin\Organization\OrganizationController;
+use App\Http\Controllers\Admin\ProtectiveEquipment\ProtectiveEquipmentController;
 use App\Http\Controllers\Admin\Question\QuestionController;
 use App\Http\Controllers\Admin\Stock\StockController;
 use App\Http\Controllers\Api\Auth\DeleteAccountController;
@@ -144,6 +145,7 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/agro-markets', AgroMarketController::class)->names('agroMarkets');
     Route::resource('/agro-credits', AgroCreditController::class)->names('agroCredits');
     Route::resource('/organizations', OrganizationController::class)->names('organizations');
+    Route::resource('/protective-equipments', ProtectiveEquipmentController::class)->names('protectiveEquipments');
 
 });
 
