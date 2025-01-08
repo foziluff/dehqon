@@ -22,6 +22,7 @@ class NewsRepository extends CoreRepository
     {
         return $this->startConditions()
             ->orderBy('id', 'desc')
+            ->with('images')
             ->take($quantity)
             ->get();
     }
