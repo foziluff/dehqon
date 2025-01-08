@@ -10,6 +10,7 @@ use App\Models\Conversion\Conversion;
 use App\Models\Conversion\Income\ConversionIncome;
 use App\Models\Conversion\Quantity\ConversionQuantity;
 use App\Models\Culture\Culture;
+use App\Models\Fertilizer\Fertilizer;
 use App\Models\Field\Consumption\Consumption;
 use App\Models\Field\Consumption\ConsumptionProductionMean;
 use App\Models\Field\Field;
@@ -226,6 +227,13 @@ class User extends Authenticatable
     public function stockConsumptions()
     {
         return $this->hasMany(StockConsumption::class);
+    }
+
+
+
+    public function fertilizers()
+    {
+        return $this->hasMany(Fertilizer::class);
     }
 
 

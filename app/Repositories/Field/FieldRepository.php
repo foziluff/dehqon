@@ -23,7 +23,7 @@ class FieldRepository extends CoreRepository
         if ($fieldMain && $fieldSide) {
             $this->mainFieldReport($fieldMain);
             $this->sideFieldReport($fieldSide);
-            $fieldMain->side_production = $fieldSide->side_production;
+            $fieldMain->side_productions = $fieldSide->side_production;
 
             unset(
                 $fieldMain->incomes_sum_quantity,

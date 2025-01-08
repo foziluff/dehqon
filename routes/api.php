@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Fertilizer\FertilizerController;
 use App\Http\Controllers\Admin\Field\Note\NoteShowController;
 use App\Http\Controllers\Admin\Message\MessageController;
 use App\Http\Controllers\Admin\News\NewsController;
@@ -111,6 +112,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/questions', [QuestionController::class, 'indexForFront']);
 
     Route::get('/news', [NewsController::class, 'indexForFront']);
+    Route::get('/fertilizers', [FertilizerController::class, 'indexForFront']);
 
     Route::get('/reports/fields/{id}', [FieldController::class, 'reportsByField']);
 

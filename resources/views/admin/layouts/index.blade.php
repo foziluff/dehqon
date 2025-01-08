@@ -91,6 +91,14 @@
                         <div>Пользователи</div>
                     </a>
                 </li>
+
+                <!-- Перечень удобрений -->
+                <li class="menu-item {{ Request::segment(2) === 'fertilizers' ? 'active' : '' }}">
+                    <a href="{{ route('fertilizers.index') }}" class="menu-link">
+                        <i class='menu-icon tf-icons bx bx-droplet'></i>
+                        <div>Перечень удобрений</div>
+                    </a>
+                </li>
                 <!-- Культуры -->
                 <li class="menu-item {{ Request::segment(2) === 'cultures' ? 'active' : '' }}">
                     <a href="{{ route('cultures.index') }}" class="menu-link">

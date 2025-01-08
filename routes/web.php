@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Culture\CultureController;
 use App\Http\Controllers\Admin\Culture\CultureSeasonController;
 use App\Http\Controllers\Admin\Culture\CultureSeasonImageController;
 use App\Http\Controllers\Admin\Culture\CultureSeasonWorkController;
+use App\Http\Controllers\Admin\Fertilizer\FertilizerController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionCategoryController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionController;
 use App\Http\Controllers\Admin\Field\Consumption\ConsumptionNamingController;
@@ -130,6 +131,7 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/conversion-quantities', ConversionQuantityController::class)->names('conversionQuantities');
 
     Route::resource('/news', NewsController::class)->names('news');
+    Route::resource('/fertilizers', FertilizerController::class)->names('fertilizers');
     Route::delete('/news-images/{id}', [NewsImageController::class, 'destroy'])->name('newsImages.destroy');
 
     Route::resource('/questions', QuestionController::class)->names('questions');
