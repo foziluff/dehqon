@@ -46,6 +46,7 @@ use App\Http\Controllers\Admin\News\NewsController;
 use App\Http\Controllers\Admin\News\NewsImageController;
 use App\Http\Controllers\Admin\Organization\OrganizationController;
 use App\Http\Controllers\Admin\ProtectiveEquipment\ProtectiveEquipmentController;
+use App\Http\Controllers\Admin\ProtectiveEquipment\ProtectiveEquipmentItemController;
 use App\Http\Controllers\Admin\Question\QuestionController;
 use App\Http\Controllers\Admin\Stock\StockController;
 use App\Http\Controllers\Api\Auth\DeleteAccountController;
@@ -146,6 +147,8 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/agro-credits', AgroCreditController::class)->names('agroCredits');
     Route::resource('/organizations', OrganizationController::class)->names('organizations');
     Route::resource('/protective-equipments', ProtectiveEquipmentController::class)->names('protectiveEquipments');
+    Route::resource('/protective-equipment-items', ProtectiveEquipmentItemController::class)->names('protectiveEquipmentItems');
+    Route::get('/protective-equipments/{id}/protective-equipment-items', [ProtectiveEquipmentItemController::class, 'filterByCulture'])->name('protectiveEquipments.protectiveEquipmentItems');
 
 });
 

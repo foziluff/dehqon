@@ -9,7 +9,7 @@
         <div class="card mb-4">
             <h5 class="card-header"><?php echo e($title); ?></h5>
             <div class="card-body">
-                <a href="<?php echo e(route('cultures.cultureSeasons', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Сезоны</a>
+                <a href="<?php echo e(route('protectiveEquipments.protectiveEquipmentItems', $record->id)); ?>" type="button" class="btn btn-outline-secondary mr-1">Items</a>
                 <div class="mt-3 form-control">
                     <div class="mt-3">
                         <div class="image-container">
