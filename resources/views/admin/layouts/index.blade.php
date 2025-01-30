@@ -109,7 +109,7 @@
                 <!-- Средства защиты -->
                 <li class="menu-item {{ Request::segment(2) === 'protective-equipments' ? 'active' : '' }}">
                     <a href="{{ route('protectiveEquipments.index') }}" class="menu-link">
-                        <i class='menu-icon tf-icons bx bxs-pear'></i>
+                        <i class='menu-icon tf-icons bx bxs-package'></i>
                         <div>Средства защиты</div>
                     </a>
                 </li>

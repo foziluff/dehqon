@@ -29,9 +29,7 @@ class IrrigationRepository extends CoreRepository
 
     public function getAllForFront()
     {
-        $langItems = ['title'];
-        $records = $this->startConditions()->all();
-        return $this->transformLang($records, $langItems);
+        return $this->startConditions()->with('irrigationTypes')->get();
     }
 
     public function getEditOrFail($id)

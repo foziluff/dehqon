@@ -15,4 +15,12 @@ class Irrigation extends Model
         'title_tj',
         'image_path',
     ];
+
+
+
+    public function irrigationTypes()
+    {
+        return $this->hasMany(IrrigationType::class);
+    }
+
 }

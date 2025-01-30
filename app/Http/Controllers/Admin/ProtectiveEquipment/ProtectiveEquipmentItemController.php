@@ -7,15 +7,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProtectiveEquipment\StoreProtectiveEquipmentItemRequest;
 use App\Http\Requests\Admin\ProtectiveEquipment\UpdateProtectiveEquipmentItemRequest;
 use App\Repositories\ProtectiveEquipment\ProtectiveEquipmentItemRepository;
+use App\Repositories\ProtectiveEquipment\ProtectiveEquipmentRepository;
 
 class ProtectiveEquipmentItemController extends Controller
 {
     private $protectiveEquipmentItem;
+    private $protectiveEquipment;
 
     public function __construct()
     {
         parent::__construct();
         $this->protectiveEquipmentItem = app(ProtectiveEquipmentItemRepository::class);
+        $this->protectiveEquipment = app(ProtectiveEquipmentRepository::class);
     }
     /**
      * Display a listing of the resource.
@@ -23,7 +26,25 @@ class ProtectiveEquipmentItemController extends Controller
     public function index()
     {
         $records = $this->protectiveEquipmentItem->getAllWithPaginate(20);
-        return view('admin.protectiveEquipmentItem.index', compact('records'));
+        return view('admin.protectiveEquipment.protectiveEquipmentItem.index', compact('records'));
+    }
+
+    /**
+     * Display a filterByCulture of the resource.
+     */
+    public function filterBy($id)
+    {
+        $records = $this->protectiveEquipmentItem->getByProtectiveEquipmentIdPaginate($id, 20);
+        return view('admin.protectiveEquipment.protectiveEquipmentItem.index', compact('records'));
+    }
+
+    /**
+     * Display a filterByCulture of the resource.
+     */
+    public function filterByForFront($id)
+    {
+        $records = $this->protectiveEquipmentItem->getByProtectiveEquipmentId($id);
+        return response()->json($records);
     }
 
     /**
@@ -31,7 +52,8 @@ class ProtectiveEquipmentItemController extends Controller
      */
     public function create()
     {
-        return view('admin.protectiveEquipmentItem.create');
+        $protectiveEquipments = $this->protectiveEquipment->getAll();
+        return view('admin.protectiveEquipment.protectiveEquipmentItem.create', compact('protectiveEquipments'));
     }
 
     /**
@@ -40,7 +62,7 @@ class ProtectiveEquipmentItemController extends Controller
     public function store(StoreProtectiveEquipmentItemRequest $request)
     {
         $request = (new ImageAction())->handle($request);
-        $record = $this->user->protectiveEquipmentItems()->create($request->validated());
+        $record = $this->user->protectiveEquipmentItems()->create($request->only(['title_ru','title_uz','title_tj', 'description_ru','description_uz','description_tj', 'image_path', 'protective_equipment_id']));
         return redirect()->route('protectiveEquipmentItems.edit', $record->id)->with(['success' => 'Успешно добавлен!']);
     }
 
@@ -50,7 +72,7 @@ class ProtectiveEquipmentItemController extends Controller
     public function show($id)
     {
         $record = $this->protectiveEquipmentItem->getEditOrFail($id);
-        return view('admin.protectiveEquipmentItem.show', compact('record'));
+        return view('admin.protectiveEquipment.protectiveEquipmentItem.show', compact('record'));
     }
 
     /**
@@ -59,7 +81,7 @@ class ProtectiveEquipmentItemController extends Controller
     public function edit(int $id)
     {
         $record = $this->protectiveEquipmentItem->getEditOrFail($id);
-        return view('admin.protectiveEquipmentItem.edit', compact('record'));
+        return view('admin.protectiveEquipment.protectiveEquipmentItem.edit', compact('record'));
     }
 
     /**
@@ -68,7 +90,7 @@ class ProtectiveEquipmentItemController extends Controller
     public function update(UpdateProtectiveEquipmentItemRequest $request, int $id)
     {
         $request = (new ImageAction())->handle($request);
-        $this->protectiveEquipmentItem->update($id, $request->only(['title_ru','title_uz','title_tj', 'image_path']));
+        $this->protectiveEquipmentItem->update($id, $request->only(['title_ru','title_uz','title_tj', 'description_ru','description_uz','description_tj', 'image_path']));
         return redirect()->back()->with(['success' => 'Успешно обновлен!']);
     }
 

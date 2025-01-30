@@ -10,7 +10,7 @@ class ProtectiveEquipmentItem extends Model
 {
     use HasFactory;
 
-    protected $table = 'protective_equipments';
+    protected $table = 'protective_equipment_items';
 
     protected $fillable = [
         'title_ru',

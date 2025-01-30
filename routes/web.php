@@ -148,7 +148,7 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::resource('/organizations', OrganizationController::class)->names('organizations');
     Route::resource('/protective-equipments', ProtectiveEquipmentController::class)->names('protectiveEquipments');
     Route::resource('/protective-equipment-items', ProtectiveEquipmentItemController::class)->names('protectiveEquipmentItems');
-    Route::get('/protective-equipments/{id}/protective-equipment-items', [ProtectiveEquipmentItemController::class, 'filterByCulture'])->name('protectiveEquipments.protectiveEquipmentItems');
+    Route::get('/protective-equipments/{id}/protective-equipment-items', [ProtectiveEquipmentItemController::class, 'filterBy'])->name('protectiveEquipments.protectiveEquipmentItems');
 
 });
 

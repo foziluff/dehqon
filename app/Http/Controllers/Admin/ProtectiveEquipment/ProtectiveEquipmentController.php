@@ -25,6 +25,14 @@ class ProtectiveEquipmentController extends Controller
         $records = $this->protectiveEquipment->getAllWithPaginate(20);
         return view('admin.protectiveEquipment.index', compact('records'));
     }
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexForFront()
+    {
+        $records = $this->protectiveEquipment->getAll();
+        return response()->json($records);
+    }
 
     /**
      * Show the form for creating a new resource.

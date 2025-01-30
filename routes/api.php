@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\Fertilizer\FertilizerController;
 use App\Http\Controllers\Admin\Field\Note\NoteShowController;
 use App\Http\Controllers\Admin\Message\MessageController;
 use App\Http\Controllers\Admin\News\NewsController;
+use App\Http\Controllers\Admin\ProtectiveEquipment\ProtectiveEquipmentController;
+use App\Http\Controllers\Admin\ProtectiveEquipment\ProtectiveEquipmentItemController;
 use App\Http\Controllers\Admin\Question\QuestionController;
 use App\Http\Controllers\Api\AgroCredit\AgroCreditController;
 use App\Http\Controllers\Api\AgroMarket\AgroMarketController;
@@ -112,6 +114,8 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/questions', [QuestionController::class, 'indexForFront']);
 
     Route::get('/news', [NewsController::class, 'indexForFront']);
+    Route::get('/protective-equipments', [ProtectiveEquipmentController::class, 'indexForFront']);
+    Route::get('/protective-equipments/{id}/protective-equipment-items', [ProtectiveEquipmentItemController::class, 'filterByForFront']);
     Route::get('/fertilizers', [FertilizerController::class, 'indexForFront']);
 
     Route::get('/reports/fields/{id}', [FieldController::class, 'reportsByField']);

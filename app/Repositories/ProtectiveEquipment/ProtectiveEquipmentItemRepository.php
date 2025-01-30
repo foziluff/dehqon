@@ -17,6 +17,20 @@ class ProtectiveEquipmentItemRepository extends CoreRepository
             ->where('front_key', $front_key)
             ->first();
     }
+
+    public function getByProtectiveEquipmentIdPaginate($protective_equipment_id, $quantity)
+    {
+        return $this->startConditions()
+            ->where('protective_equipment_id', $protective_equipment_id)
+            ->paginate($quantity);
+    }
+
+    public function getByProtectiveEquipmentId($protective_equipment_id)
+    {
+        return $this->startConditions()
+            ->where('protective_equipment_id', $protective_equipment_id)
+            ->get();
+    }
     public function getAllWithPaginate($quantity)
     {
         return $this->startConditions()->orderBy('title_ru', 'asc')->paginate($quantity);
